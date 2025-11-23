@@ -1,0 +1,104 @@
+// src/screens/TicketDetailScreen.js
+import React, { useState, useRef, useEffect } from 'react';
+import { View, Text, Image, TouchableOpacity, StyleSheet, StatusBar, ScrollView, Animated, ImageBackground, FlatList, Platform } from 'react-native';
+import { useFocusEffect } from '@react-navigation/native';
+import { Ionicons } from '@expo/vector-icons';
+import QRCode from 'react-native-qrcode-svg';
+import * as ScreenCapture from 'expo-screen-capture';
+import { COLORS, styles, width, BACKGROUND_URL, QR_SIZE } from '../config'; // Importando tudo do config
+
+export default function TicketDetailScreen({ route, navigation }) {
+  const { ticket } = route.params;
+  const [qrSalt, setQrSalt] = useState(0);
+  const progress = useRef(new Animated.Value(1)).current; 
+  const [activeIndex, setActiveIndex] = useState(0);
+  const ticketsArray = Array.from({ length: ticket.ticketQuantity || 1 }, (_, i) => i);
+
+  useFocusEffect(
+    React.useCallback(() => {
+      if (Platform.OS === 'web') return; 
+      const activateProtection = async () => { await ScreenCapture.preventScreenCaptureAsync(); };
+      activateProtection();
+      return () => { ScreenCapture.allowScreenCaptureAsync(); };
+    }, [])
+  );
+
+  const animateBar = () => {
+    progress.setValue(1); 
+    Animated.timing(progress, { toValue: 0, duration: 15000, useNativeDriver: false }).start(({ finished }) => {
+      if (finished) { setQrSalt(prev => prev + 1); animateBar(); }
+    });
+  };
+
+  useEffect(() => { animateBar(); }, []);
+  
+  const barWidth = progress.interpolate({ inputRange: [0, 1], outputRange: ['0%', '100%'] });
+
+  const renderTicketItem = ({ item, index }) => {
+    const dynamicQRValue = `${ticket.qrCodeBase || "TICKET"}-${index + 1}-${qrSalt}`;
+    return (
+      <ScrollView style={{ width: width }} contentContainerStyle={{ alignItems: 'center' }} showsVerticalScrollIndicator={false}>
+        <View style={styles.ticketCardContainer}>
+            <View style={styles.blueHeaderContainer}>
+              <ImageBackground source={{ uri: BACKGROUND_URL }} style={styles.ticketBlueTop} resizeMode="cover" />
+              <View style={styles.scannerStrip}><Animated.View style={[styles.scannerBar, { width: barWidth }]} /></View>
+            </View>
+            <View style={styles.ticketWhiteBottom}>
+              <View style={styles.qrSection}>
+                  <View style={styles.qrContainer}><QRCode value={dynamicQRValue} size={QR_SIZE} ecl="Q" /></View>
+                  <View style={styles.qrInfoColumn}>
+                    <View>
+                        <Text style={styles.label}>SETOR</Text><Text style={styles.valueTitle}>{ticket.section}</Text>
+                        <Text style={styles.label}>ACESSO</Text><Text style={styles.valueTitle}>{ticket.gate}</Text>
+                    </View>
+                    <TouchableOpacity style={styles.moreInfoBtn}><Text style={styles.moreInfoText}>Mais informação</Text></TouchableOpacity>
+                  </View>
+              </View>
+              <View style={styles.divider} />
+              <View style={styles.detailsGrid}>
+                  <View style={styles.gridRow}><View><Text style={styles.label}>TAXA</Text><Text style={styles.valueBold}>{ticket.priceInfo}</Text></View></View>
+                  <View style={[styles.gridRow, {marginTop: 15}]}>
+                    <View style={{flex: 1}}><Text style={styles.label}>SEÇÃO</Text><Text style={styles.valueBold}>{ticket.section}</Text></View>
+                    <View style={{flex: 1}}><Text style={styles.label}>FILEIRA</Text><Text style={styles.valueBold}>{ticket.rowInfo}</Text></View>
+                  </View>
+                  <View style={[styles.gridRow, {marginTop: 15}]}>
+                    <View style={{flex: 1}}><Text style={styles.label}>ABERTURA</Text><Text style={styles.valueBold}>{ticket.open}</Text></View>
+                    <View style={{flex: 1}}><Text style={styles.label}>INÍCIO</Text><Text style={styles.valueBold}>{ticket.start}</Text></View>
+                  </View>
+              </View>
+            </View>
+        </View>
+      </ScrollView>
+    );
+  };
+
+  return (
+    <View style={{flex: 1, backgroundColor: COLORS.bg, alignItems: Platform.OS === 'web' ? 'center' : 'stretch' }}>
+      <View style={{flex: 1, width: Platform.OS === 'web' ? width : '100%'}}>
+        <StatusBar barStyle="light-content" backgroundColor="#121618" />
+        <View style={styles.detailNavBar}>
+          <TouchableOpacity onPress={() => navigation.goBack()} style={{padding: 5}}><Ionicons name="chevron-back" size={26} color="#bbb" /></TouchableOpacity>
+          <View style={{flex: 1, paddingRight: 10}}>
+            <Text style={styles.navTitle} numberOfLines={1}>{ticket.eventTitle}</Text>
+            <Text style={styles.navSub} numberOfLines={1}>{ticket.subTitle}</Text>
+          </View>
+        </View>
+        <View style={{flex: 1}}>
+          <FlatList data={ticketsArray} renderItem={renderTicketItem} keyExtractor={(item) => item.toString()} horizontal pagingEnabled showsHorizontalScrollIndicator={false}
+            onMomentumScrollEnd={(event) => {
+              const index = Math.round(event.nativeEvent.contentOffset.x / width);
+              setActiveIndex(index);
+            }}
+          />
+          {ticket.ticketQuantity > 1 && (
+            <View style={styles.paginationContainer}>
+              {ticketsArray.map((_, i) => (
+                <View key={i} style={[ styles.paginationDot, i === activeIndex ? styles.dotActive : styles.dotInactive ]} />
+              ))}
+            </View>
+          )}
+        </View>
+      </View>
+    </View>
+  );
+}
