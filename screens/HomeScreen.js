@@ -6,16 +6,16 @@ import { TICKETS_DATA, COLORS, styles } from '../config'; // Importaremos de um 
 
 export default function HomeScreen({ navigation }) {
   const [tab, setTab] = useState('proximos');
-  const upcoming = TICKETS_DATA.filter(t => t.sortDate >= "2025-01-01").sort((a,b) => a.sortDate.localeCompare(b.sortDate));
+  const upcoming = TICKETS_DATA.filter(t => t.sortDate >= "2025-01-01").sort((a, b) => a.sortDate.localeCompare(b.sortDate));
   const past = TICKETS_DATA.filter(t => t.sortDate.includes("2024"));
 
   const renderCard = ({ item }) => (
-    <TouchableOpacity 
-      style={styles.listCard} 
+    <TouchableOpacity
+      style={styles.listCard}
       activeOpacity={0.9}
       onPress={() => navigation.navigate('TicketDetail', { ticket: item })}
     >
-      <Image source={{ uri: item.image }} style={styles.listCardImage} resizeMode="cover" />
+      <Image source={typeof item.image === 'string' ? { uri: item.image } : item.image} style={styles.listCardImage} resizeMode="cover" />
       <View style={styles.listCardInfo}>
         <Text style={styles.listTopLine} numberOfLines={1}>
           <Text style={styles.listCount}>{item.countText}</Text>
@@ -48,19 +48,19 @@ export default function HomeScreen({ navigation }) {
             </TouchableOpacity>
           </View>
         </View>
-        <ScrollView style={{flex:1}}>
+        <ScrollView style={{ flex: 1 }}>
           {tab === 'proximos' ? (
             <View>
               <Text style={styles.sectionTitle}>Próximos Shows</Text>
-              {upcoming.map((item, i) => <View key={i}>{renderCard({item})}</View>)}
+              {upcoming.map((item, i) => <View key={i}>{renderCard({ item })}</View>)}
             </View>
           ) : (
             <View>
               <Text style={styles.sectionTitle}>Novembro 2024</Text>
-              {past.map((item, i) => <View key={i}>{renderCard({item})}</View>)}
+              {past.map((item, i) => <View key={i}>{renderCard({ item })}</View>)}
             </View>
           )}
-          <View style={{height: 40}}/>
+          <View style={{ height: 40 }} />
         </ScrollView>
       </View>
     </SafeAreaView>

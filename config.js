@@ -5,21 +5,21 @@ import { StyleSheet, Dimensions, Platform } from 'react-native';
 const windowWidth = Dimensions.get('window').width;
 export const width = Platform.OS === 'web' && windowWidth > 500 ? 400 : windowWidth;
 export const CARD_WIDTH = width - 40;
-export const QR_SIZE = 125; 
+export const QR_SIZE = 125;
 
 // CONFIGURAÇÃO GERAL
 export const BACKGROUND_URL = "https://i.postimg.cc/XYj9d0Gn/Design-sem-nome.png";
 
 // CORES
 export const COLORS = {
-  bg: '#121618',          
-  blueHeader: '#0026b9',  
-  cyanBar: '#00FFFF',     
-  labelGrey: '#666666',   
-  valueBlack: '#000000',  
-  pillBtn: '#E6F6FE',     
-  pillText: '#0066CC',    
-  divider: '#EEEEEE',     
+  bg: '#121618',
+  blueHeader: '#0026b9',
+  cyanBar: '#00FFFF',
+  labelGrey: '#666666',
+  valueBlack: '#000000',
+  pillBtn: '#E6F6FE',
+  pillText: '#0066CC',
+  divider: '#EEEEEE',
   white: '#FFFFFF',
   cardBg: '#1A2224',
   teal: '#439193',
@@ -30,12 +30,90 @@ export const COLORS = {
 
 // DADOS (COM A CORREÇÃO DA VÍRGULA)
 export const TICKETS_DATA = [
-  { id: '1', eventTitle: "Oasis: Live '25", subTitle: "23/11/2025 - MorumBis", venue: "MorumBis", countText: "4 Ingressos", ticketQuantity: 4, dateText: "Domingo 23 21:00hs", image: "https://cdn.getcrowder.com/images/b0e11c30-87c6-429c-be01-64f8a7de5e51-768x768png.png?w=960&format=webp", sortDate: "2025-11-23", fullDate: "23/11/2025", section: "PISTA A", gate: "Portões 2 e 18", priceInfo: "Inteira - R$ 800", rowInfo: "Não numerado", qrCodeBase: "OASIS-SAT-22", open: "16:00", start: "21:00" },
-  { id: '2', eventTitle: "Oasis: Live '25", subTitle: "23/11/2025 - MorumBis", venue: "MorumBis", countText: "2 Ingressos", ticketQuantity: 2, dateText: "Domingo 23 21:00hs", image: "https://cdn.getcrowder.com/images/b0e11c30-87c6-429c-be01-64f8a7de5e51-768x768png.png?w=960&format=webp", sortDate: "2025-11-23", fullDate: "23/11/2025", section: "PISTA B", gate: "Portões 2 e 18", priceInfo: "Inteira - R$ 800", rowInfo: "Não numerado", qrCodeBase: "OASIS-SAT-22", open: "16:00", start: "21:00" },
-  { id: '3', eventTitle: "Oasis: Live '25", subTitle: "23/11/2025 - MorumBis", venue: "MorumBis", countText: "4 Ingressos", ticketQuantity: 4, dateText: "Domingo 23 21:00hs", image: "https://cdn.getcrowder.com/images/b0e11c30-87c6-429c-be01-64f8a7de5e51-768x768png.png?w=960&format=webp", sortDate: "2025-11-23", fullDate: "23/11/2025", section: "CADEIRA SUPERIOR", gate: "Portões 5 e 16", priceInfo: "Inteira - R$ 1.250", rowInfo: "Não numerado", qrCodeBase: "OASIS-SAT-23", open: "16:00", start: "21:00" },
-  { id: '4', eventTitle: "Oasis: Live '25", subTitle: "23/11/2025 - MorumBis", venue: "MorumBis", countText: "2 Ingressos", ticketQuantity: 2, dateText: "Domingo 23 21:00hs", image: "https://cdn.getcrowder.com/images/b0e11c30-87c6-429c-be01-64f8a7de5e51-768x768png.png?w=960&format=webp", sortDate: "2025-11-23", fullDate: "23/11/2025", section: "Arquibancada", gate: "Portões 6 e 15", priceInfo: "Inteira - R$ 590", rowInfo: "Não numerado", qrCodeBase: "OASIS-SAT-22", open: "16:00", start: "21:00" },
-  { id: '5', eventTitle: "Bruno Mars - São Paulo", venue: "MorumBis", countText: "2 Ingressos", ticketQuantity: 2, dateText: "Sexta-feira 04 21:00hs", sortDate: "2024-11-04", image: "https://th.bing.com/th/id/OIP.u3FfYYm0EBxOW9qqhT7OmAHaHa?o=7rm=3&rs=1&pid=ImgDetMain&o=7&rm=3" },
-  { id: '6', eventTitle: "Linkin Park - São Paulo", venue: "Allianz Parque", countText: "2 Ingressos", ticketQuantity: 2, dateText: "Sexta-feira 15 • 20:30", sortDate: "2024-11-15", image: "https://th.bing.com/th/id/OIP.KHc1ZiN_b-LwYPQfRAe9nAHaHa?w=174&h=180&c=7&r=0&o=7&dpr=1.1&pid=1.7&rm=3" }
+  {
+    id: '1',
+    eventTitle: "AVENGED SEVENFOLD",
+    subTitle: "LIFE IS BUT A DREAM - SP",
+    venue: "SÃO PAULO | Allianz Parque",
+    countText: "2 Ingressos",
+    ticketQuantity: 2,
+    dateText: "Sábado 31 15:00",
+    image: require('./assets/avenged_sevenfold.png'),
+    sortDate: "2026-01-31",
+    fullDate: "31/01/2026",
+    section: "Cadeira Superior",
+    gate: "Portão A",
+    rowInfo: "Não numerado",
+    open: "12:00",
+    start: "15:00",
+    ticketsList: [
+      { priceInfo: "Meia - R$ 155,00", qrCodeBase: "A7X-SP-01-M" },
+      { priceInfo: "Inteira - R$ 310,00", qrCodeBase: "A7X-SP-01-I" }
+    ]
+  },
+  {
+    id: '2',
+    eventTitle: "AVENGED SEVENFOLD",
+    subTitle: "LIFE IS BUT A DREAM - SP",
+    venue: "SÃO PAULO | Allianz Parque",
+    countText: "2 Ingressos",
+    ticketQuantity: 2,
+    dateText: "Sábado 31 15:00",
+    image: require('./assets/avenged_sevenfold.png'),
+    sortDate: "2026-01-31",
+    fullDate: "31/01/2026",
+    section: "Pista",
+    gate: "Portão B",
+    rowInfo: "Não numerado",
+    open: "12:00",
+    start: "15:00",
+    ticketsList: [
+      { priceInfo: "Meia - R$ 205,00", qrCodeBase: "A7X-SP-02-M" },
+      { priceInfo: "Inteira - R$ 410,00", qrCodeBase: "A7X-SP-02-I" }
+    ]
+  },
+  {
+    id: '3',
+    eventTitle: "AVENGED SEVENFOLD",
+    subTitle: "LIFE IS BUT A DREAM - SP",
+    venue: "SÃO PAULO | Allianz Parque",
+    countText: "2 Ingressos",
+    ticketQuantity: 2,
+    dateText: "Sábado 31 15:00",
+    image: require('./assets/avenged_sevenfold.png'),
+    sortDate: "2026-01-31",
+    fullDate: "31/01/2026",
+    section: "Cadeira Inferior",
+    gate: "Portão C",
+    rowInfo: "Não numerado",
+    open: "12:00",
+    start: "15:00",
+    ticketsList: [
+      { priceInfo: "Meia - R$ 250,00", qrCodeBase: "A7X-SP-03-M" },
+      { priceInfo: "Inteira - R$ 500,00", qrCodeBase: "A7X-SP-03-I" }
+    ]
+  },
+  {
+    id: '4',
+    eventTitle: "AVENGED SEVENFOLD",
+    subTitle: "LIFE IS BUT A DREAM - SP",
+    venue: "SÃO PAULO | Allianz Parque",
+    countText: "2 Ingressos",
+    ticketQuantity: 2,
+    dateText: "Sábado 31 15:00",
+    image: require('./assets/avenged_sevenfold.png'),
+    sortDate: "2026-01-31",
+    fullDate: "31/01/2026",
+    section: "Pista Premium",
+    gate: "Portão D",
+    rowInfo: "Não numerado",
+    open: "12:00",
+    start: "15:00",
+    ticketsList: [
+      { priceInfo: "Meia - R$ 405,00", qrCodeBase: "A7X-SP-04-M" },
+      { priceInfo: "Inteira - R$ 810,00", qrCodeBase: "A7X-SP-04-I" }
+    ]
+  }
 ];
 
 // ESTILOS
@@ -62,7 +140,7 @@ export const styles = StyleSheet.create({
   listDate: { color: COLORS.greyText, fontSize: 13, fontWeight: '400' },
   listTitle: { color: COLORS.white, fontSize: 16, fontWeight: '600', marginBottom: 3 },
   listVenue: { color: COLORS.greyText, fontSize: 13, fontWeight: '400' },
-  detailContainer: { flex: 1, backgroundColor: '#121212', alignItems: Platform.OS === 'web' ? 'center' : 'stretch' }, 
+  detailContainer: { flex: 1, backgroundColor: '#121212', alignItems: Platform.OS === 'web' ? 'center' : 'stretch' },
   detailNavBar: { flexDirection: 'row', alignItems: 'center', paddingTop: 60, paddingBottom: 15, paddingHorizontal: 20, zIndex: 100, backgroundColor: '#121212', width: Platform.OS === 'web' ? width : '100%', },
   navTitle: { color: '#fff', fontSize: 18, fontWeight: '700', marginLeft: 10, flexShrink: 1 },
   navSub: { color: '#bbb', fontSize: 13, marginLeft: 10, marginTop: 4, flexShrink: 1 },
@@ -78,7 +156,7 @@ export const styles = StyleSheet.create({
   ticketWhiteBottom: { padding: 20, backgroundColor: COLORS.white },
   qrSection: { flexDirection: 'row', alignItems: 'flex-start', marginTop: 5 },
   qrContainer: { paddingTop: 0 },
-  qrInfoColumn: { flex: 1, marginLeft: 15, justifyContent: 'flex-start', }, 
+  qrInfoColumn: { flex: 1, marginLeft: 15, justifyContent: 'flex-start', },
   label: { color: COLORS.labelGrey, fontSize: 10, fontWeight: '700', marginBottom: 2, textTransform: 'uppercase' },
   valueTitle: { color: COLORS.valueBlack, fontSize: 15, fontWeight: '700', lineHeight: 18, marginBottom: 8 },
   moreInfoBtn: { backgroundColor: COLORS.pillBtn, paddingVertical: 8, borderRadius: 6, alignItems: 'center', width: '100%', marginTop: 8 },
