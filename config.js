@@ -32,86 +32,86 @@ export const COLORS = {
 export const TICKETS_DATA = [
   {
     id: '1',
-    eventTitle: "AVENGED SEVENFOLD",
-    subTitle: "LIFE IS BUT A DREAM - SP",
+    eventTitle: "MY CHEMICAL ROMANCE",
+    subTitle: "SOUTH AMERICA 2026",
     venue: "SÃO PAULO | Allianz Parque",
     countText: "2 Ingressos",
     ticketQuantity: 2,
-    dateText: "Sábado 31 15:00",
+    dateText: "Quinta 05 21:00",
     image: require('./assets/avenged_sevenfold.png'),
-    sortDate: "2026-01-31",
-    fullDate: "31/01/2026",
+    sortDate: "2026-02-05",
+    fullDate: "05/02/2026",
     section: "Cadeira Superior",
     gate: "Portão A",
     rowInfo: "Não numerado",
-    open: "12:00",
-    start: "15:00",
+    open: "16:00",
+    start: "21:00",
     ticketsList: [
-      { priceInfo: "Meia - R$ 155,00", qrCodeBase: "A7X-SP-01-M" },
-      { priceInfo: "Inteira - R$ 310,00", qrCodeBase: "A7X-SP-01-I" }
+      { priceInfo: "Meia - R$ 197,50", qrCodeBase: "MCR-SP-01-M" },
+      { priceInfo: "Inteira - R$ 395,00", qrCodeBase: "MCR-SP-01-I" }
     ]
   },
   {
     id: '2',
-    eventTitle: "AVENGED SEVENFOLD",
-    subTitle: "LIFE IS BUT A DREAM - SP",
+    eventTitle: "MY CHEMICAL ROMANCE",
+    subTitle: "SOUTH AMERICA 2026",
     venue: "SÃO PAULO | Allianz Parque",
     countText: "2 Ingressos",
     ticketQuantity: 2,
-    dateText: "Sábado 31 15:00",
+    dateText: "Quinta 05 21:00",
     image: require('./assets/avenged_sevenfold.png'),
-    sortDate: "2026-01-31",
-    fullDate: "31/01/2026",
+    sortDate: "2026-02-05",
+    fullDate: "05/02/2026",
     section: "Pista",
     gate: "Portão B",
     rowInfo: "Não numerado",
-    open: "12:00",
-    start: "15:00",
+    open: "16:00",
+    start: "21:00",
     ticketsList: [
-      { priceInfo: "Meia - R$ 205,00", qrCodeBase: "A7X-SP-02-M" },
-      { priceInfo: "Inteira - R$ 410,00", qrCodeBase: "A7X-SP-02-I" }
+      { priceInfo: "Meia - R$ 247,50", qrCodeBase: "MCR-SP-02-M" },
+      { priceInfo: "Inteira - R$ 495,00", qrCodeBase: "MCR-SP-02-I" }
     ]
   },
   {
     id: '3',
-    eventTitle: "AVENGED SEVENFOLD",
-    subTitle: "LIFE IS BUT A DREAM - SP",
+    eventTitle: "MY CHEMICAL ROMANCE",
+    subTitle: "SOUTH AMERICA 2026",
     venue: "SÃO PAULO | Allianz Parque",
     countText: "2 Ingressos",
     ticketQuantity: 2,
-    dateText: "Sábado 31 15:00",
+    dateText: "Quinta 05 21:00",
     image: require('./assets/avenged_sevenfold.png'),
-    sortDate: "2026-01-31",
-    fullDate: "31/01/2026",
+    sortDate: "2026-02-05",
+    fullDate: "05/02/2026",
     section: "Cadeira Inferior",
     gate: "Portão C",
     rowInfo: "Não numerado",
-    open: "12:00",
-    start: "15:00",
+    open: "16:00",
+    start: "21:00",
     ticketsList: [
-      { priceInfo: "Meia - R$ 250,00", qrCodeBase: "A7X-SP-03-M" },
-      { priceInfo: "Inteira - R$ 500,00", qrCodeBase: "A7X-SP-03-I" }
+      { priceInfo: "Meia - R$ 322,50", qrCodeBase: "MCR-SP-03-M" },
+      { priceInfo: "Inteira - R$ 645,00", qrCodeBase: "MCR-SP-03-I" }
     ]
   },
   {
     id: '4',
-    eventTitle: "AVENGED SEVENFOLD",
-    subTitle: "LIFE IS BUT A DREAM - SP",
+    eventTitle: "MY CHEMICAL ROMANCE",
+    subTitle: "SOUTH AMERICA 2026",
     venue: "SÃO PAULO | Allianz Parque",
     countText: "2 Ingressos",
     ticketQuantity: 2,
-    dateText: "Sábado 31 15:00",
+    dateText: "Quinta 05 21:00",
     image: require('./assets/avenged_sevenfold.png'),
-    sortDate: "2026-01-31",
-    fullDate: "31/01/2026",
+    sortDate: "2026-02-05",
+    fullDate: "05/02/2026",
     section: "Pista Premium",
     gate: "Portão D",
     rowInfo: "Não numerado",
-    open: "12:00",
-    start: "15:00",
+    open: "16:00",
+    start: "21:00",
     ticketsList: [
-      { priceInfo: "Meia - R$ 405,00", qrCodeBase: "A7X-SP-04-M" },
-      { priceInfo: "Inteira - R$ 810,00", qrCodeBase: "A7X-SP-04-I" }
+      { priceInfo: "Meia - R$ 447,50", qrCodeBase: "MCR-SP-04-M" },
+      { priceInfo: "Inteira - R$ 895,00", qrCodeBase: "MCR-SP-04-I" }
     ]
   }
 ];
