@@ -31,7 +31,7 @@ export const COLORS = {
 // DADOS
 export const TICKETS_DATA = [
   {
-    id: '1',
+    id: '6',
     eventTitle: "BAD BUNNY: DeBÍ TiRAR MáS FOToS World Tour",
     subTitle: "20/02/2026 • Allianz Parque, São Paulo",
     venue: "SÃO PAULO, BRASIL | Allianz Parque",
@@ -41,100 +41,35 @@ export const TICKETS_DATA = [
     image: "https://cdn.getcrowder.com/images/bebfda30-5715-45da-92aa-9fc51cd39333-badbunny1920x720foto.gif",
     sortDate: "2026-02-20",
     fullDate: "20/02/2026",
-    section: "Pista",
-    gate: "Portão A",
-    rowInfo: "Não numerado",
-    open: "16:00",
-    start: "21:00",
-    ticketsList: [
-      { priceInfo: "Meia - R$ 297,50", qrCodeBase: "BB-SP-PISTA-M" },
-      { priceInfo: "Inteira - R$ 595,00", qrCodeBase: "BB-SP-PISTA-I" }
-    ]
-  },
-  {
-    id: '2',
-    eventTitle: "BAD BUNNY: DeBÍ TiRAR MáS FOToS World Tour",
-    subTitle: "20/02/2026 • Allianz Parque, São Paulo",
-    venue: "SÃO PAULO, BRASIL | Allianz Parque",
-    countText: "2 Ingressos",
-    ticketQuantity: 2,
-    dateText: "Sex 20 21:00",
-    image: "https://cdn.getcrowder.com/images/bebfda30-5715-45da-92aa-9fc51cd39333-badbunny1920x720foto.gif",
-    sortDate: "2026-02-20",
-    fullDate: "20/02/2026",
-    section: "Cadeira Inferior",
-    gate: "Portão A, C e D",
-    rowInfo: "Não numerado",
-    open: "16:00",
-    start: "21:00",
-    ticketsList: [
-      { priceInfo: "Meia - R$ 437,50", qrCodeBase: "BB-SP-CINF-M" },
-      { priceInfo: "Inteira - R$ 875,00", qrCodeBase: "BB-SP-CINF-I" }
-    ]
-  },
-  {
-    id: '3',
-    eventTitle: "BAD BUNNY: DeBÍ TiRAR MáS FOToS World Tour",
-    subTitle: "20/02/2026 • Allianz Parque, São Paulo",
-    venue: "SÃO PAULO, BRASIL | Allianz Parque",
-    countText: "2 Ingressos",
-    ticketQuantity: 2,
-    dateText: "Sex 20 21:00",
-    image: "https://cdn.getcrowder.com/images/bebfda30-5715-45da-92aa-9fc51cd39333-badbunny1920x720foto.gif",
-    sortDate: "2026-02-20",
-    fullDate: "20/02/2026",
-    section: "Cadeira Superior",
-    gate: "Portão A e B",
-    rowInfo: "Não numerado",
-    open: "16:00",
-    start: "21:00",
-    ticketsList: [
-      { priceInfo: "Meia - R$ 267,50", qrCodeBase: "BB-SP-CSUP-M" },
-      { priceInfo: "Inteira - R$ 535,00", qrCodeBase: "BB-SP-CSUP-I" }
-    ]
-  },
-  {
-    id: '4',
-    eventTitle: "OASIS: LIVE '25",
-    subTitle: "Live '25 World Tour",
-    venue: "SÃO PAULO, BRASIL | Estádio MorumBIS",
-    countText: "2 Ingressos",
-    ticketQuantity: 2,
-    dateText: "Sáb 22 21:00",
-    image: "https://roadiecrew.com/wp-content/uploads/oasis-sp-2025-819x1024-1.webp",
-    sortDate: "2025-11-22",
-    fullDate: "22/11/2025",
-    section: "Pista",
-    gate: "Portão A",
-    rowInfo: "Não numerado",
-    open: "16:00",
-    start: "21:00",
-    monthLabel: "Novembro 2025",
-    ticketsList: [
-      { priceInfo: "Meia - R$ 347,50", qrCodeBase: "OASIS-SP-PISTA-M" },
-      { priceInfo: "Inteira - R$ 695,00", qrCodeBase: "OASIS-SP-PISTA-I" }
-    ]
-  },
-  {
-    id: '5',
-    eventTitle: "SHAKIRA",
-    subTitle: "Las Mujeres Ya No Lloran World Tour",
-    venue: "SÃO PAULO, BRASIL | Estádio MorumBIS",
-    countText: "2 Ingressos",
-    ticketQuantity: 2,
-    dateText: "Sex 14 21:00",
-    image: "https://images.bubbleup.com/vipnation/1-default/2-vipnationcom/static_vip_1280x720_shakira_2024_national_1713201689.jpg",
-    sortDate: "2025-02-14",
-    fullDate: "14/02/2025",
-    section: "Cadeira Superior",
+    section: "PIT 1 | PIT 2",
     gate: "Portão B",
     rowInfo: "Não numerado",
     open: "16:00",
     start: "21:00",
-    monthLabel: "Fevereiro 2025",
     ticketsList: [
-      { priceInfo: "Meia - R$ 297,50", qrCodeBase: "SHAKIRA-SP-CSUP-M" },
-      { priceInfo: "Inteira - R$ 595,00", qrCodeBase: "SHAKIRA-SP-CSUP-I" }
+      { priceInfo: "Meia - R$ 537,50", qrCodeBase: "BB-SP-PIT-M" },
+      { priceInfo: "Inteira - R$ 1.075,00", qrCodeBase: "BB-SP-PIT-I" }
+    ]
+  },
+  {
+    id: '7',
+    eventTitle: "BAD BUNNY: DeBÍ TiRAR MáS FOToS World Tour",
+    subTitle: "20/02/2026 • Allianz Parque, São Paulo",
+    venue: "SÃO PAULO, BRASIL | Allianz Parque",
+    countText: "2 Ingressos",
+    ticketQuantity: 2,
+    dateText: "Sex 20 21:00",
+    image: "https://cdn.getcrowder.com/images/bebfda30-5715-45da-92aa-9fc51cd39333-badbunny1920x720foto.gif",
+    sortDate: "2026-02-20",
+    fullDate: "20/02/2026",
+    section: "Los Vecinos",
+    gate: "Portão B",
+    rowInfo: "Não numerado",
+    open: "16:00",
+    start: "21:00",
+    ticketsList: [
+      { priceInfo: "Meia - R$ 547,50", qrCodeBase: "BB-SP-LOSVEC-M" },
+      { priceInfo: "Inteira - R$ 1.095,00", qrCodeBase: "BB-SP-LOSVEC-I" }
     ]
   }
 ];
