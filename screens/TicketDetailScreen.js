@@ -2,13 +2,16 @@
 import React, { useState, useRef, useEffect } from 'react';
 import {
   View, Text, TouchableOpacity, StatusBar, ScrollView,
-  Animated, ImageBackground, Platform
+  Animated, ImageBackground, Platform, Dimensions
 } from 'react-native';
 import { useFocusEffect } from '@react-navigation/native';
 import { Ionicons } from '@expo/vector-icons';
 import QRCode from 'react-native-qrcode-svg';
 import * as ScreenCapture from 'expo-screen-capture';
 import { COLORS, styles, width, BACKGROUND_URL, QR_SIZE } from '../config';
+
+// Altura fixa do paginador para que o scroll vertical externo funcione
+const PAGER_HEIGHT = Dimensions.get('window').height * 0.72;
 
 export default function TicketDetailScreen({ route, navigation }) {
   const { ticket } = route.params;
@@ -43,8 +46,8 @@ export default function TicketDetailScreen({ route, navigation }) {
     const priceDisplay = isObject ? item.priceInfo : ticket.priceInfo;
 
     return (
-      <View key={index} style={{ width }}>
-        <View style={[styles.ticketCardContainer, { marginHorizontal: 20 }]}>
+      <View key={index} style={{ width, height: PAGER_HEIGHT, alignItems: 'center', paddingTop: 10 }}>
+        <View style={styles.ticketCardContainer}>
           <View style={styles.blueHeaderContainer}>
             <ImageBackground source={{ uri: BACKGROUND_URL }} style={styles.ticketBlueTop} resizeMode="cover" />
             <View style={styles.scannerStrip}>
@@ -119,24 +122,24 @@ export default function TicketDetailScreen({ route, navigation }) {
           </View>
         </View>
 
-        {/*
-          SCROLL VERTICAL: página inteira sobe e desce normalmente.
-          O scroll horizontal dos ingressos fica dentro com touch-action: pan-x,
-          que instrui o browser a capturar apenas gestos horizontais nesta área —
-          gestos verticais sobem para o ScrollView pai e funcionam normalmente.
-        */}
+        {/* Scroll VERTICAL da página — arrasta pra cima e pra baixo */}
         <ScrollView
           showsVerticalScrollIndicator={false}
-          contentContainerStyle={{ paddingBottom: 40 }}
-          bounces
+          bounces={true}
+          alwaysBounceVertical={true}
+          contentContainerStyle={{ paddingBottom: 60 }}
         >
-          {/* Paginador horizontal de ingressos */}
+          {/* Paginador HORIZONTAL entre ingressos — altura fixa, touch-action: pan-x */}
           <ScrollView
             horizontal
             pagingEnabled
             showsHorizontalScrollIndicator={false}
             scrollEventThrottle={16}
-            style={Platform.OS === 'web' ? { touchAction: 'pan-x' } : undefined}
+            style={[
+              { height: PAGER_HEIGHT },
+              Platform.OS === 'web' ? { touchAction: 'pan-x' } : {}
+            ]}
+            contentContainerStyle={{ alignItems: 'flex-start' }}
             onMomentumScrollEnd={(e) => {
               const index = Math.round(e.nativeEvent.contentOffset.x / width);
               setActiveIndex(index);
@@ -147,7 +150,7 @@ export default function TicketDetailScreen({ route, navigation }) {
 
           {/* Dots de paginação */}
           {ticketsArray.length > 1 && (
-            <View style={styles.paginationContainer}>
+            <View style={[styles.paginationContainer, { marginTop: 8 }]}>
               {ticketsArray.map((_, i) => (
                 <View key={i} style={[styles.paginationDot, i === activeIndex ? styles.dotActive : styles.dotInactive]} />
               ))}
