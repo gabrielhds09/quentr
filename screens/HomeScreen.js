@@ -2,12 +2,28 @@
 import React, { useState } from 'react';
 import { View, Text, Image, TouchableOpacity, StyleSheet, SafeAreaView, StatusBar, ScrollView, Platform } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
-import { TICKETS_DATA, COLORS, styles } from '../config'; // Importaremos de um arquivo de configuração
+import { TICKETS_DATA, COLORS, styles } from '../config';
+
+const TODAY = "2026-02-20";
 
 export default function HomeScreen({ navigation }) {
   const [tab, setTab] = useState('proximos');
-  const upcoming = TICKETS_DATA.filter(t => t.sortDate >= "2025-01-01").sort((a, b) => a.sortDate.localeCompare(b.sortDate));
-  const past = TICKETS_DATA.filter(t => t.sortDate.includes("2024"));
+
+  const upcoming = TICKETS_DATA
+    .filter(t => t.sortDate >= TODAY)
+    .sort((a, b) => a.sortDate.localeCompare(b.sortDate));
+
+  const past = TICKETS_DATA
+    .filter(t => t.sortDate < TODAY)
+    .sort((a, b) => b.sortDate.localeCompare(a.sortDate));
+
+  // Agrupa shows passados por mês (monthLabel)
+  const pastByMonth = past.reduce((acc, ticket) => {
+    const label = ticket.monthLabel || "Anterior";
+    if (!acc[label]) acc[label] = [];
+    acc[label].push(ticket);
+    return acc;
+  }, {});
 
   const renderCard = ({ item }) => (
     <TouchableOpacity
@@ -56,8 +72,12 @@ export default function HomeScreen({ navigation }) {
             </View>
           ) : (
             <View>
-              <Text style={styles.sectionTitle}>Novembro 2024</Text>
-              {past.map((item, i) => <View key={i}>{renderCard({ item })}</View>)}
+              {Object.entries(pastByMonth).map(([month, tickets]) => (
+                <View key={month}>
+                  <Text style={styles.sectionTitle}>{month}</Text>
+                  {tickets.map((item, i) => <View key={i}>{renderCard({ item })}</View>)}
+                </View>
+              ))}
             </View>
           )}
           <View style={{ height: 40 }} />

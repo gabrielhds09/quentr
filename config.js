@@ -92,6 +92,50 @@ export const TICKETS_DATA = [
       { priceInfo: "Meia - R$ 267,50", qrCodeBase: "BB-SP-CSUP-M" },
       { priceInfo: "Inteira - R$ 535,00", qrCodeBase: "BB-SP-CSUP-I" }
     ]
+  },
+  {
+    id: '4',
+    eventTitle: "OASIS: LIVE '25",
+    subTitle: "Live '25 World Tour",
+    venue: "SÃO PAULO, BRASIL | Estádio MorumBIS",
+    countText: "2 Ingressos",
+    ticketQuantity: 2,
+    dateText: "Sáb 22 21:00",
+    image: "https://roadiecrew.com/wp-content/uploads/oasis-sp-2025-819x1024-1.webp",
+    sortDate: "2025-11-22",
+    fullDate: "22/11/2025",
+    section: "Pista",
+    gate: "Portão A",
+    rowInfo: "Não numerado",
+    open: "16:00",
+    start: "21:00",
+    monthLabel: "Novembro 2025",
+    ticketsList: [
+      { priceInfo: "Meia - R$ 347,50", qrCodeBase: "OASIS-SP-PISTA-M" },
+      { priceInfo: "Inteira - R$ 695,00", qrCodeBase: "OASIS-SP-PISTA-I" }
+    ]
+  },
+  {
+    id: '5',
+    eventTitle: "SHAKIRA",
+    subTitle: "Las Mujeres Ya No Lloran World Tour",
+    venue: "SÃO PAULO, BRASIL | Estádio MorumBIS",
+    countText: "2 Ingressos",
+    ticketQuantity: 2,
+    dateText: "Sex 14 21:00",
+    image: "https://images.bubbleup.com/vipnation/1-default/2-vipnationcom/static_vip_1280x720_shakira_2024_national_1713201689.jpg",
+    sortDate: "2025-02-14",
+    fullDate: "14/02/2025",
+    section: "Cadeira Superior",
+    gate: "Portão B",
+    rowInfo: "Não numerado",
+    open: "16:00",
+    start: "21:00",
+    monthLabel: "Fevereiro 2025",
+    ticketsList: [
+      { priceInfo: "Meia - R$ 297,50", qrCodeBase: "SHAKIRA-SP-CSUP-M" },
+      { priceInfo: "Inteira - R$ 595,00", qrCodeBase: "SHAKIRA-SP-CSUP-I" }
+    ]
   }
 ];
 
