@@ -4,11 +4,11 @@ import { StyleSheet, Dimensions, Platform } from 'react-native';
 // AJUSTES DE TELA
 const windowWidth = Dimensions.get('window').width;
 export const width = Platform.OS === 'web' && windowWidth > 500 ? 400 : windowWidth;
-export const CARD_WIDTH = width * 0.96;
+export const CARD_WIDTH = width * 0.88; // Reduzido para criar espaçamento lateral
 export const QR_SIZE = 110;
 
 // CONFIGURAÇÃO GERAL
-export const BACKGROUND_URL = "https://images.tcdn.com.br/img/editor/up/1113098/ticket.jpg";
+export const BACKGROUND_URL = "https://i.postimg.cc/XYj9d0Gn/Design-sem-nome.png";
 export const TM_LOGO_URL = "https://i.postimg.cc/XYj9d0Gn/Design-sem-nome.png";
 
 // CORES

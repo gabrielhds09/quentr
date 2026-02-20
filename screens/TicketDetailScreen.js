@@ -12,7 +12,7 @@ import { COLORS, styles, width, BACKGROUND_URL, QR_SIZE, TICKETS_DATA, TM_LOGO_U
 
 // Altura fixa do paginador para que o scroll vertical externo funcione
 const PAGER_HEIGHT = Dimensions.get('window').height * 0.72;
-const ITEM_WIDTH = width * 0.96; // Ajuste para carrossel com visibilidade lateral
+const ITEM_WIDTH = width * 0.92; // Ajustado para carrossel com melhor visibilidade lateral
 
 export default function TicketDetailScreen({ route, navigation }) {
   const { ticket } = route.params;
@@ -75,17 +75,8 @@ export default function TicketDetailScreen({ route, navigation }) {
           <View style={{ borderRadius: 16, overflow: 'hidden', backgroundColor: '#fff' }}>
             <View style={styles.blueHeaderContainer}>
               <ImageBackground source={{ uri: BACKGROUND_URL }} style={styles.ticketBlueTop} resizeMode="cover">
-                {/* Logo Ticketmaster Centralizado e Dominante (MAIS AINDA) */}
-                <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', paddingTop: 10 }}>
-                  <Image
-                    source={{ uri: TM_LOGO_URL }}
-                    style={{ width: 260, height: 90, tintColor: '#fff' }}
-                    resizeMode="contain"
-                  />
-                  <Text style={{ color: '#00E5FF', fontSize: 17, fontWeight: '800', marginTop: -22 }}>
-                    #OAoVivoÉAgora
-                  </Text>
-                </View>
+                {/* Visual agora vem diretamente do BACKGROUND_URL conforme pedido */}
+                <View style={{ flex: 1 }} />
 
                 {/* Textos da Base (Taxa e Doação) */}
                 <View style={{ paddingBottom: 15, alignItems: 'center', paddingHorizontal: 25 }}>
