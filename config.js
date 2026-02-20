@@ -172,7 +172,7 @@ export const styles = StyleSheet.create({
   dotActive: { backgroundColor: COLORS.dotActive },
   dotInactive: { backgroundColor: COLORS.dotInactive },
   ticketCardContainer: { width: CARD_WIDTH, marginTop: 10, borderRadius: 16, overflow: 'hidden', backgroundColor: COLORS.white, shadowColor: "#000", shadowOffset: { width: 0, height: 4 }, shadowOpacity: 0.3, shadowRadius: 5, elevation: 5, marginBottom: 20 },
-  blueHeaderContainer: { position: 'relative', height: 270, width: '100%', backgroundColor: COLORS.blueHeader, overflow: 'hidden', },
+  blueHeaderContainer: { position: 'relative', height: 180, width: '100%', backgroundColor: COLORS.blueHeader, overflow: 'hidden', },
   ticketBlueTop: { width: '100%', height: '100%', justifyContent: 'center', alignItems: 'center' },
   scannerStrip: { height: 6, width: '100%', backgroundColor: 'rgba(0, 255, 255, 0.1)', overflow: 'hidden', position: 'absolute', bottom: 0 },
   scannerBar: { height: '100%', backgroundColor: COLORS.cyanBar, },
