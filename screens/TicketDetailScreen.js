@@ -56,20 +56,15 @@ export default function TicketDetailScreen({ route, navigation }) {
           {/* BLOCO SUPERIOR: Cabeçalho Azul + QR e Infos Base */}
           <View style={{ borderRadius: 16, overflow: 'hidden', backgroundColor: '#fff' }}>
             <View style={styles.blueHeaderContainer}>
-              {/* BANNER DE CATEGORIA (INTEGRADO NO TOPO) */}
-              <View style={styles.typeBanner}>
-                <Text style={styles.typeBannerText}>{categoryText}</Text>
-              </View>
-
               <ImageBackground source={{ uri: BACKGROUND_URL }} style={styles.ticketBlueTop} resizeMode="cover">
-                {/* Logo Ticketmaster Centralizado */}
-                <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', paddingTop: 15 }}>
+                {/* Logo Ticketmaster Centralizado e Dominante */}
+                <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', paddingTop: 30 }}>
                   <Image
                     source={{ uri: TM_LOGO_URL }}
-                    style={{ width: 170, height: 50, tintColor: '#fff' }}
+                    style={{ width: 220, height: 70, tintColor: '#fff' }}
                     resizeMode="contain"
                   />
-                  <Text style={{ color: '#00E5FF', fontSize: 13, fontWeight: '800', marginTop: -8 }}>
+                  <Text style={{ color: '#00E5FF', fontSize: 16, fontWeight: '800', marginTop: -15 }}>
                     #OAoVivoÉAgora
                   </Text>
                 </View>
