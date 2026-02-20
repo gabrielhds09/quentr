@@ -9,7 +9,7 @@ export const QR_SIZE = 110;
 
 // CONFIGURAÇÃO GERAL
 export const BACKGROUND_URL = "https://images.tcdn.com.br/img/editor/up/1113098/ticket.jpg";
-export const TM_LOGO_URL = "https://logos-world.net/wp-content/uploads/2021/11/Ticketmaster-Logo.png";
+export const TM_LOGO_URL = "https://www.ticketmaster.com/static/images/logo/Ticketmaster_Logo_White.png";
 
 // CORES
 export const COLORS = {
