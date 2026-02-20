@@ -41,7 +41,13 @@ export default function TicketDetailScreen({ route, navigation }) {
     const priceDisplay = isObject ? item.priceInfo : ticket.priceInfo;
 
     return (
-      <ScrollView style={{ width: width }} contentContainerStyle={{ alignItems: 'center' }} showsVerticalScrollIndicator={false}>
+      <ScrollView
+        style={{ width: width, flex: 1 }}
+        contentContainerStyle={{ alignItems: 'center', paddingBottom: 40 }}
+        showsVerticalScrollIndicator={false}
+        nestedScrollEnabled={true}
+        keyboardShouldPersistTaps="handled"
+      >
         <View style={styles.ticketCardContainer}>
           <View style={styles.blueHeaderContainer}>
             <ImageBackground source={{ uri: BACKGROUND_URL }} style={styles.ticketBlueTop} resizeMode="cover" />
@@ -88,7 +94,15 @@ export default function TicketDetailScreen({ route, navigation }) {
           </View>
         </View>
         <View style={{ flex: 1 }}>
-          <FlatList data={ticketsArray} renderItem={renderTicketItem} keyExtractor={(item) => item.toString()} horizontal pagingEnabled showsHorizontalScrollIndicator={false}
+          <FlatList
+            data={ticketsArray}
+            renderItem={renderTicketItem}
+            keyExtractor={(item) => item.toString()}
+            horizontal
+            pagingEnabled
+            showsHorizontalScrollIndicator={false}
+            nestedScrollEnabled={false}
+            directionalLockEnabled={true}
             onMomentumScrollEnd={(event) => {
               const index = Math.round(event.nativeEvent.contentOffset.x / width);
               setActiveIndex(index);
