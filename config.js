@@ -9,7 +9,7 @@ export const QR_SIZE = 110;
 
 // CONFIGURAÇÃO GERAL
 export const BACKGROUND_URL = "https://images.tcdn.com.br/img/editor/up/1113098/ticket.jpg";
-export const TM_LOGO_URL = "https://images.tcdn.com.br/img/editor/up/1113098/sem-nome.png";
+export const TM_LOGO_URL = "https://i.postimg.cc/XYj9d0Gn/Design-sem-nome.png";
 
 // CORES
 export const COLORS = {
