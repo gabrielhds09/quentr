@@ -4,11 +4,12 @@ import { StyleSheet, Dimensions, Platform } from 'react-native';
 // AJUSTES DE TELA
 const windowWidth = Dimensions.get('window').width;
 export const width = Platform.OS === 'web' && windowWidth > 500 ? 400 : windowWidth;
-export const CARD_WIDTH = width - 40;
-export const QR_SIZE = 125;
+export const CARD_WIDTH = width * 0.9;
+export const QR_SIZE = 110;
 
 // CONFIGURAÇÃO GERAL
-export const BACKGROUND_URL = "https://i.postimg.cc/XYj9d0Gn/Design-sem-nome.png";
+export const BACKGROUND_URL = "https://images.tcdn.com.br/img/editor/up/1113098/ticket.jpg";
+export const TM_LOGO_URL = "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Ticketmaster_logo.svg/1024px-Ticketmaster_logo.svg.png";
 
 // CORES
 export const COLORS = {
@@ -181,8 +182,8 @@ export const styles = StyleSheet.create({
   tabText: { fontWeight: '600', fontSize: 13 },
   textActive: { color: '#000000' },
   textInactive: { color: COLORS.greyText },
-  typeBanner: { backgroundColor: '#0026b9', paddingVertical: 12, alignItems: 'center', width: '100%' },
-  typeBannerText: { color: '#fff', fontSize: 16, fontWeight: '800', letterSpacing: 1.5 },
+  typeBanner: { backgroundColor: 'rgba(0,0,0,0.15)', paddingVertical: 8, alignItems: 'center', width: '100%', position: 'absolute', top: 0, zIndex: 10 },
+  typeBannerText: { color: '#fff', fontSize: 13, fontWeight: '800', letterSpacing: 1 },
   sectionTitle: { color: '#ddd', fontSize: 15, fontWeight: 'bold', marginLeft: 20, marginTop: 10, marginBottom: 10 },
   listCard: { backgroundColor: COLORS.cardBg, flexDirection: 'row', marginHorizontal: 20, marginBottom: 12, borderRadius: 8, height: 105, overflow: 'hidden' },
   listCardImage: { width: 105, height: '100%' },
@@ -201,8 +202,8 @@ export const styles = StyleSheet.create({
   dotActive: { backgroundColor: COLORS.dotActive },
   dotInactive: { backgroundColor: COLORS.dotInactive },
   ticketCardContainer: { width: CARD_WIDTH, marginTop: 10, paddingVertical: 10 },
-  blueHeaderContainer: { position: 'relative', height: 190, width: '100%', backgroundColor: COLORS.blueHeader, borderTopLeftRadius: 16, borderTopRightRadius: 16, overflow: 'hidden', },
-  ticketBlueTop: { width: '100%', height: '100%', justifyContent: 'center', alignItems: 'center' },
+  blueHeaderContainer: { position: 'relative', height: 180, width: '100%', backgroundColor: COLORS.blueHeader, borderTopLeftRadius: 16, borderTopRightRadius: 16, overflow: 'hidden', },
+  ticketBlueTop: { width: '100%', height: '100%', justifyContent: 'center', alignItems: 'center', paddingTop: 20 },
   scannerStrip: { height: 5, width: '100%', backgroundColor: 'rgba(0, 255, 255, 0.05)', overflow: 'hidden', position: 'absolute', bottom: 0 },
   scannerBar: { height: '100%', backgroundColor: COLORS.cyanBar, shadowColor: COLORS.cyanBar, shadowOffset: { width: 0, height: 0 }, shadowOpacity: 0.8, shadowRadius: 3 },
   ticketBoxTop: { padding: 20, backgroundColor: COLORS.white, borderBottomLeftRadius: 16, borderBottomRightRadius: 16, marginBottom: 12, paddingBottom: 25 },
@@ -210,12 +211,12 @@ export const styles = StyleSheet.create({
   qrSection: { flexDirection: 'row', alignItems: 'center' },
   qrContainer: { paddingTop: 0, paddingRight: 5 },
   qrInfoColumn: { flex: 1, marginLeft: 15, justifyContent: 'center', },
-  label: { color: COLORS.labelGrey, fontSize: 8.5, fontWeight: '700', marginBottom: 3, textTransform: 'uppercase', letterSpacing: 0.5 },
-  valueTitle: { color: COLORS.valueBlack, fontSize: 16.5, fontWeight: '700', lineHeight: 21, marginBottom: 5 },
-  moreInfoBtn: { backgroundColor: '#EBF8FF', paddingVertical: 10, borderRadius: 8, alignItems: 'center', width: '100%', marginTop: 8 },
-  moreInfoText: { color: '#0070E0', fontSize: 12.5, fontWeight: '700' },
-  divider: { height: 1.2, backgroundColor: '#F0F0F0', marginVertical: 20 },
+  label: { color: COLORS.labelGrey, fontSize: 8, fontWeight: '600', marginBottom: 2, textTransform: 'uppercase', letterSpacing: 0.8 },
+  valueTitle: { color: COLORS.valueBlack, fontSize: 16, fontWeight: '700', lineHeight: 21, marginBottom: 5 },
+  moreInfoBtn: { backgroundColor: '#EBF8FF', paddingVertical: 10, borderRadius: 10, alignItems: 'center', width: '100%', marginTop: 8 },
+  moreInfoText: { color: '#0070E0', fontSize: 12, fontWeight: '700' },
+  divider: { height: 1, backgroundColor: '#F6F6F6', marginVertical: 20 },
   detailsGrid: { flexDirection: 'column' },
   gridRow: { flexDirection: 'row', justifyContent: 'space-between' },
-  valueBold: { color: COLORS.valueBlack, fontSize: 17, fontWeight: '700' },
+  valueBold: { color: COLORS.valueBlack, fontSize: 16.5, fontWeight: '700' },
 });

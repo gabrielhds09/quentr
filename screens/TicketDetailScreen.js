@@ -2,13 +2,13 @@
 import React, { useState, useRef, useEffect } from 'react';
 import {
   View, Text, TouchableOpacity, StatusBar, ScrollView,
-  Animated, ImageBackground, Platform, Dimensions
+  Animated, ImageBackground, Platform, Dimensions, Image
 } from 'react-native';
 import { useFocusEffect } from '@react-navigation/native';
 import { Ionicons } from '@expo/vector-icons';
 import QRCode from 'react-native-qrcode-svg';
 import * as ScreenCapture from 'expo-screen-capture';
-import { COLORS, styles, width, BACKGROUND_URL, QR_SIZE } from '../config';
+import { COLORS, styles, width, BACKGROUND_URL, QR_SIZE, TICKETS_DATA, TM_LOGO_URL } from '../config';
 
 // Altura fixa do paginador para que o scroll vertical externo funcione
 const PAGER_HEIGHT = Dimensions.get('window').height * 0.72;
@@ -51,25 +51,39 @@ export default function TicketDetailScreen({ route, navigation }) {
     return (
       <View key={index} style={{ width, alignItems: 'center', paddingTop: 10 }}>
         <View style={styles.ticketCardContainer}>
-          {/* BANNER DE CATEGORIA (NOVO) */}
-          <View style={styles.typeBanner}>
-            <Text style={styles.typeBannerText}>{categoryText}</Text>
-          </View>
 
           {/* BLOCO SUPERIOR: Cabeçalho Azul + QR e Infos Base */}
-          <View style={{ borderBottomLeftRadius: 16, borderBottomRightRadius: 16, overflow: 'hidden' }}>
+          <View style={{ borderRadius: 16, overflow: 'hidden', backgroundColor: '#fff' }}>
             <View style={styles.blueHeaderContainer}>
+              {/* BANNER DE CATEGORIA (INTEGRADO NO TOPO) */}
+              <View style={styles.typeBanner}>
+                <Text style={styles.typeBannerText}>{categoryText}</Text>
+              </View>
+
               <ImageBackground source={{ uri: BACKGROUND_URL }} style={styles.ticketBlueTop} resizeMode="cover">
-                <View style={{ flex: 1 }} />
+                {/* Logo Ticketmaster Centralizado */}
+                <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', paddingTop: 15 }}>
+                  <Image
+                    source={{ uri: TM_LOGO_URL }}
+                    style={{ width: 140, height: 40, tintColor: '#fff' }}
+                    resizeMode="contain"
+                  />
+                  <Text style={{ color: '#00E5FF', fontSize: 13, fontWeight: '800', marginTop: -5 }}>
+                    #OAoVivoÉAgora
+                  </Text>
+                </View>
+
+                {/* Textos da Base (Taxa e Doação) */}
                 <View style={{ paddingBottom: 15, alignItems: 'center', paddingHorizontal: 25 }}>
-                  <Text style={{ color: '#fff', fontSize: 6.5, fontWeight: '700', textAlign: 'center', opacity: 0.8, letterSpacing: 0.3 }}>
+                  <Text style={{ color: '#fff', fontSize: 6.2, fontWeight: '700', textAlign: 'center', opacity: 0.8, letterSpacing: 0.3 }}>
                     TAXA DE ADMINISTRAÇÃO · WT -30 R$ 21,74
                   </Text>
-                  <Text style={{ color: '#fff', fontSize: 5.5, fontWeight: '700', textAlign: 'center', marginTop: 3, opacity: 0.8, letterSpacing: 0.1 }}>
+                  <Text style={{ color: '#fff', fontSize: 5.2, fontWeight: '700', textAlign: 'center', marginTop: 3, opacity: 0.8, letterSpacing: 0.1 }}>
                     DO TOTAL ARRECADADO COM A VENDA DE INGRESSOS, SERÃO DESTINADOS À DOAÇÃO R$ 25,00 POR INGRESSO DO TIPO "{categoryText}".
                   </Text>
                 </View>
               </ImageBackground>
+
               <View style={styles.scannerStrip}>
                 <Animated.View style={[styles.scannerBar, { width: barWidth }]} />
               </View>
