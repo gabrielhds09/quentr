@@ -1,13 +1,14 @@
 // src/screens/TicketDetailScreen.js
 import React, { useState, useRef, useEffect } from 'react';
-import { View, Text, TouchableOpacity, StatusBar, ScrollView, Animated, ImageBackground, Platform, Dimensions } from 'react-native';
+import {
+  View, Text, TouchableOpacity, StatusBar, ScrollView,
+  Animated, ImageBackground, Platform
+} from 'react-native';
 import { useFocusEffect } from '@react-navigation/native';
 import { Ionicons } from '@expo/vector-icons';
 import QRCode from 'react-native-qrcode-svg';
 import * as ScreenCapture from 'expo-screen-capture';
 import { COLORS, styles, width, BACKGROUND_URL, QR_SIZE } from '../config';
-
-const { height: SCREEN_HEIGHT } = Dimensions.get('window');
 
 export default function TicketDetailScreen({ route, navigation }) {
   const { ticket } = route.params;
@@ -36,15 +37,12 @@ export default function TicketDetailScreen({ route, navigation }) {
 
   const barWidth = progress.interpolate({ inputRange: [0, 1], outputRange: ['0%', '100%'] });
 
-  const handleHorizontalScroll = (event) => {
-    const index = Math.round(event.nativeEvent.contentOffset.x / width);
-    setActiveIndex(index);
-  };
-
   return (
     <View style={{ flex: 1, backgroundColor: COLORS.bg, alignItems: Platform.OS === 'web' ? 'center' : 'stretch' }}>
       <View style={{ flex: 1, width: Platform.OS === 'web' ? width : '100%' }}>
         <StatusBar barStyle="light-content" backgroundColor="#121618" />
+
+        {/* NavBar */}
         <View style={styles.detailNavBar}>
           <TouchableOpacity onPress={() => navigation.goBack()} style={{ padding: 5 }}>
             <Ionicons name="chevron-back" size={26} color="#bbb" />
@@ -55,90 +53,102 @@ export default function TicketDetailScreen({ route, navigation }) {
           </View>
         </View>
 
-        {/* Paginador horizontal */}
-        <ScrollView
-          horizontal
-          pagingEnabled
-          showsHorizontalScrollIndicator={false}
-          onMomentumScrollEnd={handleHorizontalScroll}
-          scrollEventThrottle={16}
-          style={{ flex: 1 }}
-          contentContainerStyle={{ alignItems: 'flex-start' }}
-        >
-          {ticketsArray.map((item, index) => {
-            const isObject = typeof item === 'object' && item !== null;
-            const dynamicQRValue = `${(isObject ? item.qrCodeBase : ticket.qrCodeBase) || 'TICKET'}-${index + 1}-${qrSalt}`;
-            const priceDisplay = isObject ? item.priceInfo : ticket.priceInfo;
+        {/* Área de ingressos: scroll horizontal entre ingressos */}
+        <View style={{ flex: 1, overflow: 'hidden' }}>
+          <ScrollView
+            horizontal
+            pagingEnabled
+            showsHorizontalScrollIndicator={false}
+            scrollEventThrottle={16}
+            style={[
+              { flex: 1 },
+              // No web, permite apenas pan horizontal neste nível
+              Platform.OS === 'web' ? { touchAction: 'pan-x' } : {}
+            ]}
+            onMomentumScrollEnd={(e) => {
+              const index = Math.round(e.nativeEvent.contentOffset.x / width);
+              setActiveIndex(index);
+            }}
+          >
+            {ticketsArray.map((item, index) => {
+              const isObject = typeof item === 'object' && item !== null;
+              const dynamicQRValue = `${(isObject ? item.qrCodeBase : ticket.qrCodeBase) || 'TICKET'}-${index + 1}-${qrSalt}`;
+              const priceDisplay = isObject ? item.priceInfo : ticket.priceInfo;
 
-            return (
-              // ScrollView vertical por ingresso
-              <ScrollView
-                key={index}
-                style={{ width: width }}
-                contentContainerStyle={{ alignItems: 'center', paddingBottom: 40, paddingTop: 10 }}
-                showsVerticalScrollIndicator={false}
-                nestedScrollEnabled={true}
-                bounces={true}
-              >
-                <View style={styles.ticketCardContainer}>
-                  <View style={styles.blueHeaderContainer}>
-                    <ImageBackground source={{ uri: BACKGROUND_URL }} style={styles.ticketBlueTop} resizeMode="cover" />
-                    <View style={styles.scannerStrip}>
-                      <Animated.View style={[styles.scannerBar, { width: barWidth }]} />
+              return (
+                // Scroll vertical por ingresso — pan-y para o browser liberar o gesto
+                <ScrollView
+                  key={index}
+                  style={[
+                    { width, flex: 1 },
+                    Platform.OS === 'web' ? { touchAction: 'pan-y', overflowY: 'auto' } : {}
+                  ]}
+                  contentContainerStyle={{ alignItems: 'center', paddingBottom: 40, paddingTop: 10 }}
+                  showsVerticalScrollIndicator={false}
+                  nestedScrollEnabled
+                  bounces
+                  scrollEnabled
+                >
+                  <View style={styles.ticketCardContainer}>
+                    <View style={styles.blueHeaderContainer}>
+                      <ImageBackground source={{ uri: BACKGROUND_URL }} style={styles.ticketBlueTop} resizeMode="cover" />
+                      <View style={styles.scannerStrip}>
+                        <Animated.View style={[styles.scannerBar, { width: barWidth }]} />
+                      </View>
+                    </View>
+                    <View style={styles.ticketWhiteBottom}>
+                      <View style={styles.qrSection}>
+                        <View style={styles.qrContainer}>
+                          <QRCode value={dynamicQRValue} size={QR_SIZE} ecl="Q" />
+                        </View>
+                        <View style={styles.qrInfoColumn}>
+                          <View>
+                            <Text style={styles.label}>SETOR</Text>
+                            <Text style={styles.valueTitle}>{ticket.section}</Text>
+                            <Text style={styles.label}>ACESSO</Text>
+                            <Text style={styles.valueTitle}>{ticket.gate}</Text>
+                          </View>
+                          <TouchableOpacity style={styles.moreInfoBtn}>
+                            <Text style={styles.moreInfoText}>Mais informação</Text>
+                          </TouchableOpacity>
+                        </View>
+                      </View>
+                      <View style={styles.divider} />
+                      <View style={styles.detailsGrid}>
+                        <View style={styles.gridRow}>
+                          <View>
+                            <Text style={styles.label}>TAXA</Text>
+                            <Text style={styles.valueBold}>{priceDisplay}</Text>
+                          </View>
+                        </View>
+                        <View style={[styles.gridRow, { marginTop: 15 }]}>
+                          <View style={{ flex: 1 }}>
+                            <Text style={styles.label}>SEÇÃO</Text>
+                            <Text style={styles.valueBold}>{ticket.section}</Text>
+                          </View>
+                          <View style={{ flex: 1 }}>
+                            <Text style={styles.label}>FILEIRA</Text>
+                            <Text style={styles.valueBold}>{ticket.rowInfo}</Text>
+                          </View>
+                        </View>
+                        <View style={[styles.gridRow, { marginTop: 15 }]}>
+                          <View style={{ flex: 1 }}>
+                            <Text style={styles.label}>ABERTURA</Text>
+                            <Text style={styles.valueBold}>{ticket.open}</Text>
+                          </View>
+                          <View style={{ flex: 1 }}>
+                            <Text style={styles.label}>INÍCIO</Text>
+                            <Text style={styles.valueBold}>{ticket.start}</Text>
+                          </View>
+                        </View>
+                      </View>
                     </View>
                   </View>
-                  <View style={styles.ticketWhiteBottom}>
-                    <View style={styles.qrSection}>
-                      <View style={styles.qrContainer}>
-                        <QRCode value={dynamicQRValue} size={QR_SIZE} ecl="Q" />
-                      </View>
-                      <View style={styles.qrInfoColumn}>
-                        <View>
-                          <Text style={styles.label}>SETOR</Text>
-                          <Text style={styles.valueTitle}>{ticket.section}</Text>
-                          <Text style={styles.label}>ACESSO</Text>
-                          <Text style={styles.valueTitle}>{ticket.gate}</Text>
-                        </View>
-                        <TouchableOpacity style={styles.moreInfoBtn}>
-                          <Text style={styles.moreInfoText}>Mais informação</Text>
-                        </TouchableOpacity>
-                      </View>
-                    </View>
-                    <View style={styles.divider} />
-                    <View style={styles.detailsGrid}>
-                      <View style={styles.gridRow}>
-                        <View>
-                          <Text style={styles.label}>TAXA</Text>
-                          <Text style={styles.valueBold}>{priceDisplay}</Text>
-                        </View>
-                      </View>
-                      <View style={[styles.gridRow, { marginTop: 15 }]}>
-                        <View style={{ flex: 1 }}>
-                          <Text style={styles.label}>SEÇÃO</Text>
-                          <Text style={styles.valueBold}>{ticket.section}</Text>
-                        </View>
-                        <View style={{ flex: 1 }}>
-                          <Text style={styles.label}>FILEIRA</Text>
-                          <Text style={styles.valueBold}>{ticket.rowInfo}</Text>
-                        </View>
-                      </View>
-                      <View style={[styles.gridRow, { marginTop: 15 }]}>
-                        <View style={{ flex: 1 }}>
-                          <Text style={styles.label}>ABERTURA</Text>
-                          <Text style={styles.valueBold}>{ticket.open}</Text>
-                        </View>
-                        <View style={{ flex: 1 }}>
-                          <Text style={styles.label}>INÍCIO</Text>
-                          <Text style={styles.valueBold}>{ticket.start}</Text>
-                        </View>
-                      </View>
-                    </View>
-                  </View>
-                </View>
-              </ScrollView>
-            );
-          })}
-        </ScrollView>
+                </ScrollView>
+              );
+            })}
+          </ScrollView>
+        </View>
 
         {/* Dots de paginação */}
         {ticket.ticketQuantity > 1 && (
