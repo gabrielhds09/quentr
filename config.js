@@ -84,7 +84,7 @@ export const TICKETS_DATA = [
     sortDate: "2026-02-20",
     fullDate: "20/02/2026",
     section: "Cadeira Superior",
-    gate: "Portão D",
+    gate: "Portão B",
     rowInfo: "Não numerado",
     open: "16:00",
     start: "21:00",
