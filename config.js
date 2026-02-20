@@ -56,8 +56,8 @@ export const TICKETS_DATA = [
     eventTitle: "BAD BUNNY: DeBÍ TiRAR MáS FOToS World Tour",
     subTitle: "20/02/2026 • Allianz Parque, São Paulo",
     venue: "SÃO PAULO, BRASIL | Allianz Parque",
-    countText: "2 Ingressos",
-    ticketQuantity: 2,
+    countText: "4 Ingressos",
+    ticketQuantity: 4,
     dateText: "Sex 20 21:00",
     image: "https://cdn.getcrowder.com/images/bebfda30-5715-45da-92aa-9fc51cd39333-badbunny1920x720foto.gif",
     sortDate: "2026-02-20",
@@ -68,8 +68,10 @@ export const TICKETS_DATA = [
     open: "16:00",
     start: "21:00",
     ticketsList: [
-      { priceInfo: "Meia - R$ 547,50", qrCodeBase: "BB-SP-CADINF-M" },
-      { priceInfo: "Inteira - R$ 1.095,00", qrCodeBase: "BB-SP-CADINF-I" }
+      { priceInfo: "Meia - R$ 547,50", qrCodeBase: "BB-SP-CADINF-M1" },
+      { priceInfo: "Meia - R$ 547,50", qrCodeBase: "BB-SP-CADINF-M2" },
+      { priceInfo: "Inteira - R$ 1.095,00", qrCodeBase: "BB-SP-CADINF-I1" },
+      { priceInfo: "Inteira - R$ 1.095,00", qrCodeBase: "BB-SP-CADINF-I2" }
     ]
   },
   {
@@ -77,8 +79,8 @@ export const TICKETS_DATA = [
     eventTitle: "BAD BUNNY: DeBÍ TiRAR MáS FOToS World Tour",
     subTitle: "20/02/2026 • Allianz Parque, São Paulo",
     venue: "SÃO PAULO, BRASIL | Allianz Parque",
-    countText: "2 Ingressos",
-    ticketQuantity: 2,
+    countText: "4 Ingressos",
+    ticketQuantity: 4,
     dateText: "Sex 20 21:00",
     image: "https://cdn.getcrowder.com/images/bebfda30-5715-45da-92aa-9fc51cd39333-badbunny1920x720foto.gif",
     sortDate: "2026-02-20",
@@ -89,8 +91,10 @@ export const TICKETS_DATA = [
     open: "16:00",
     start: "21:00",
     ticketsList: [
-      { priceInfo: "Meia - R$ 397,50", qrCodeBase: "BB-SP-CADSUP-M" },
-      { priceInfo: "Inteira - R$ 795,00", qrCodeBase: "BB-SP-CADSUP-I" }
+      { priceInfo: "Meia - R$ 397,50", qrCodeBase: "BB-SP-CADSUP-M1" },
+      { priceInfo: "Meia - R$ 397,50", qrCodeBase: "BB-SP-CADSUP-M2" },
+      { priceInfo: "Inteira - R$ 795,00", qrCodeBase: "BB-SP-CADSUP-I1" },
+      { priceInfo: "Inteira - R$ 795,00", qrCodeBase: "BB-SP-CADSUP-I2" }
     ]
   },
   {
