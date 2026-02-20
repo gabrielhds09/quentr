@@ -12,6 +12,7 @@ import { COLORS, styles, width, BACKGROUND_URL, QR_SIZE, TICKETS_DATA, TM_LOGO_U
 
 // Altura fixa do paginador para que o scroll vertical externo funcione
 const PAGER_HEIGHT = Dimensions.get('window').height * 0.72;
+const ITEM_WIDTH = width * 0.96; // Ajuste para carrossel com visibilidade lateral
 
 export default function TicketDetailScreen({ route, navigation }) {
   const { ticket } = route.params;
@@ -172,45 +173,46 @@ export default function TicketDetailScreen({ route, navigation }) {
           alwaysBounceVertical={true}
           contentContainerStyle={{ paddingBottom: 60, minHeight: PAGER_HEIGHT + 120 }}
         >
-          {/* Paginador HORIZONTAL entre ingressos — altura fixa, touch-action: pan-x */}
-          <ScrollView
-            horizontal
-            pagingEnabled={false} // Desabilitar pagingEnabled para usar snapToInterval customizado
-            snapToInterval={ITEM_WIDTH} // Intervalo justo para o carrossel
-            snapToAlignment="center"
-            decelerationRate="fast"
-            showsHorizontalScrollIndicator={false}
-            onScroll={handleScroll}
-            scrollEventThrottle={16}
-            contentContainerStyle={{ paddingHorizontal: (width - ITEM_WIDTH) / 2 }} // Centralizar o primeiro e último item
-          >
-            {tickets.map((item, index) => renderCard(item, index))}
-          </ScrollView>
-
-          {/* Dots de paginação */}
-          {ticketsArray.length > 1 && (
-            <View style={[styles.paginationContainer, { marginTop: 8 }]}>
-              {ticketsArray.map((_, i) => (
-                <View key={i} style={[styles.paginationDot, i === activeIndex ? styles.dotActive : styles.dotInactive]} />
-              ))}
-            </View>
-          )}
-
-          {/* Rodapé: Devolva ingresso (Re-adicionado conforme print) */}
-          <View style={{
-            flexDirection: 'row',
-            alignItems: 'center',
-            justifyContent: 'center',
-            marginTop: 20,
-            paddingBottom: 40
-          }}>
-            <Ionicons name="arrow-undo-sharp" size={18} color="#00E5FF" style={{ marginRight: 10 }} />
-            <Text style={{ color: '#fff', fontWeight: '600', fontSize: 13, opacity: 0.9 }}>
-              Devolva ingresso a Lorena Cristyne Silva Cardoso
-            </Text>
-          </View>
+          horizontal
+          pagingEnabled={false}
+          snapToInterval={ITEM_WIDTH}
+          snapToAlignment="start"
+          decelerationRate="fast"
+          showsHorizontalScrollIndicator={false}
+          onScroll={(e) => {
+            const index = Math.round(e.nativeEvent.contentOffset.x / ITEM_WIDTH);
+            setActiveIndex(index);
+          }}
+          scrollEventThrottle={16}
+          contentContainerStyle={{ paddingHorizontal: (width - ITEM_WIDTH) / 2 }}
+        >
+          {ticketsArray.map((item, index) => renderCard(item, index))}
         </ScrollView>
-      </View>
+
+        {/* Dots de paginação */}
+        {ticketsArray.length > 1 && (
+          <View style={[styles.paginationContainer, { marginTop: 8 }]}>
+            {ticketsArray.map((_, i) => (
+              <View key={i} style={[styles.paginationDot, i === activeIndex ? styles.dotActive : styles.dotInactive]} />
+            ))}
+          </View>
+        )}
+
+        {/* Rodapé: Devolva ingresso (Re-adicionado conforme print) */}
+        <View style={{
+          flexDirection: 'row',
+          alignItems: 'center',
+          justifyContent: 'center',
+          marginTop: 20,
+          paddingBottom: 40
+        }}>
+          <Ionicons name="arrow-undo-sharp" size={18} color="#00E5FF" style={{ marginRight: 10 }} />
+          <Text style={{ color: '#fff', fontWeight: '600', fontSize: 13, opacity: 0.9 }}>
+            Devolva ingresso a Lorena Cristyne Silva Cardoso
+          </Text>
+        </View>
+      </ScrollView>
     </View>
+    </View >
   );
 }
