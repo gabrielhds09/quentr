@@ -49,7 +49,18 @@ export default function TicketDetailScreen({ route, navigation }) {
       <View key={index} style={{ width, alignItems: 'center', paddingTop: 10 }}>
         <View style={styles.ticketCardContainer}>
           <View style={styles.blueHeaderContainer}>
-            <ImageBackground source={{ uri: BACKGROUND_URL }} style={styles.ticketBlueTop} resizeMode="cover" />
+            <ImageBackground source={{ uri: BACKGROUND_URL }} style={styles.ticketBlueTop} resizeMode="cover">
+              {/* Espaçador para empurrar o conteúdo para baixo */}
+              <View style={{ flex: 1 }} />
+              <View style={{ paddingBottom: 15, alignItems: 'center', paddingHorizontal: 30 }}>
+                <Text style={{ color: '#fff', fontSize: 8, fontWeight: '700', textAlign: 'center', opacity: 0.9 }}>
+                  TAXA DE ADMINISTRAÇÃO · WT -30 R$ 21,74
+                </Text>
+                <Text style={{ color: '#fff', fontSize: 7, fontWeight: '700', textAlign: 'center', marginTop: 3, opacity: 0.9 }}>
+                  DO TOTAL ARRECADADO COM A VENDA DE INGRESSOS, SERÃO DESTINADOS À DOAÇÃO R$ 25,00 POR INGRESSO DO TIPO "INTEIRA".
+                </Text>
+              </View>
+            </ImageBackground>
             <View style={styles.scannerStrip}>
               <Animated.View style={[styles.scannerBar, { width: barWidth }]} />
             </View>
@@ -153,6 +164,20 @@ export default function TicketDetailScreen({ route, navigation }) {
               ))}
             </View>
           )}
+
+          {/* Rodapé: Devolva ingresso (para bater com o print) */}
+          <View style={{
+            flexDirection: 'row',
+            alignItems: 'center',
+            justifyContent: 'center',
+            marginTop: 20,
+            paddingBottom: 30
+          }}>
+            <Ionicons name="arrow-undo-sharp" size={18} color="#00E5FF" style={{ marginRight: 10 }} />
+            <Text style={{ color: '#fff', fontWeight: '600', fontSize: 13 }}>
+              Devolva ingresso a Lorena Cristyne Silva Cardoso
+            </Text>
+          </View>
         </ScrollView>
       </View>
     </View>
