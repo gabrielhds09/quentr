@@ -4,7 +4,7 @@ import { StyleSheet, Dimensions, Platform } from 'react-native';
 // AJUSTES DE TELA
 const windowWidth = Dimensions.get('window').width;
 export const width = Platform.OS === 'web' && windowWidth > 500 ? 400 : windowWidth;
-export const CARD_WIDTH = width * 0.9;
+export const CARD_WIDTH = width * 0.94;
 export const QR_SIZE = 110;
 
 // CONFIGURAÇÃO GERAL
@@ -201,6 +201,7 @@ export const styles = StyleSheet.create({
   paginationDot: { width: 8, height: 8, borderRadius: 4, marginHorizontal: 4 },
   dotActive: { backgroundColor: COLORS.dotActive },
   dotInactive: { backgroundColor: COLORS.dotInactive },
+  carouselContainer: { width: width, alignItems: 'center' },
   ticketCardContainer: { width: CARD_WIDTH, marginTop: 10, paddingVertical: 10 },
   blueHeaderContainer: { position: 'relative', height: 180, width: '100%', backgroundColor: COLORS.blueHeader, borderTopLeftRadius: 16, borderTopRightRadius: 16, overflow: 'hidden', },
   ticketBlueTop: { width: '100%', height: '100%', justifyContent: 'center', alignItems: 'center', paddingTop: 20 },

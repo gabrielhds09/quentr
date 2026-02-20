@@ -49,7 +49,7 @@ export default function TicketDetailScreen({ route, navigation }) {
     const categoryText = isMeia ? 'MEIA-ENTRADA' : 'INTEIRA';
 
     return (
-      <View key={index} style={{ width, alignItems: 'center', paddingTop: 10 }}>
+      <View key={index} style={{ width: ITEM_WIDTH, alignItems: 'center', paddingTop: 10 }}>
         <View style={styles.ticketCardContainer}>
 
           {/* BLOCO SUPERIOR: Cabeçalho Azul + QR e Infos Base */}
@@ -65,10 +65,10 @@ export default function TicketDetailScreen({ route, navigation }) {
                 <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', paddingTop: 15 }}>
                   <Image
                     source={{ uri: TM_LOGO_URL }}
-                    style={{ width: 140, height: 40, tintColor: '#fff' }}
+                    style={{ width: 170, height: 50, tintColor: '#fff' }}
                     resizeMode="contain"
                   />
-                  <Text style={{ color: '#00E5FF', fontSize: 13, fontWeight: '800', marginTop: -5 }}>
+                  <Text style={{ color: '#00E5FF', fontSize: 13, fontWeight: '800', marginTop: -8 }}>
                     #OAoVivoÉAgora
                   </Text>
                 </View>
@@ -175,17 +175,16 @@ export default function TicketDetailScreen({ route, navigation }) {
           {/* Paginador HORIZONTAL entre ingressos — altura fixa, touch-action: pan-x */}
           <ScrollView
             horizontal
-            pagingEnabled
+            pagingEnabled={false} // Desabilitar pagingEnabled para usar snapToInterval customizado
+            snapToInterval={ITEM_WIDTH} // Intervalo justo para o carrossel
+            snapToAlignment="center"
+            decelerationRate="fast"
             showsHorizontalScrollIndicator={false}
+            onScroll={handleScroll}
             scrollEventThrottle={16}
-            style={Platform.OS === 'web' ? { touchAction: 'pan-x' } : undefined}
-            contentContainerStyle={{ alignItems: 'flex-start' }}
-            onMomentumScrollEnd={(e) => {
-              const index = Math.round(e.nativeEvent.contentOffset.x / width);
-              setActiveIndex(index);
-            }}
+            contentContainerStyle={{ paddingHorizontal: (width - ITEM_WIDTH) / 2 }} // Centralizar o primeiro e último item
           >
-            {ticketsArray.map((item, index) => renderCard(item, index))}
+            {tickets.map((item, index) => renderCard(item, index))}
           </ScrollView>
 
           {/* Dots de paginação */}
