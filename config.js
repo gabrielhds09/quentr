@@ -4,12 +4,12 @@ import { StyleSheet, Dimensions, Platform } from 'react-native';
 // AJUSTES DE TELA
 const windowWidth = Dimensions.get('window').width;
 export const width = Platform.OS === 'web' && windowWidth > 500 ? 400 : windowWidth;
-export const CARD_WIDTH = width * 0.94;
+export const CARD_WIDTH = width * 0.96;
 export const QR_SIZE = 110;
 
 // CONFIGURAÇÃO GERAL
 export const BACKGROUND_URL = "https://images.tcdn.com.br/img/editor/up/1113098/ticket.jpg";
-export const TM_LOGO_URL = "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Ticketmaster_logo.svg/1024px-Ticketmaster_logo.svg.png";
+export const TM_LOGO_URL = "https://logos-world.net/wp-content/uploads/2021/11/Ticketmaster-Logo.png";
 
 // CORES
 export const COLORS = {
@@ -203,8 +203,8 @@ export const styles = StyleSheet.create({
   dotInactive: { backgroundColor: COLORS.dotInactive },
   carouselContainer: { width: width, alignItems: 'center' },
   ticketCardContainer: { width: CARD_WIDTH, marginTop: 10, paddingVertical: 10 },
-  blueHeaderContainer: { position: 'relative', height: 200, width: '100%', backgroundColor: COLORS.blueHeader, borderTopLeftRadius: 16, borderTopRightRadius: 16, overflow: 'hidden', },
-  ticketBlueTop: { width: '100%', height: '100%', justifyContent: 'center', alignItems: 'center', paddingTop: 10 },
+  blueHeaderContainer: { position: 'relative', height: 220, width: '100%', backgroundColor: COLORS.blueHeader, borderTopLeftRadius: 16, borderTopRightRadius: 16, overflow: 'hidden', },
+  ticketBlueTop: { width: '100%', height: '100%', justifyContent: 'center', alignItems: 'center', paddingTop: 0 },
   scannerStrip: { height: 5, width: '100%', backgroundColor: 'rgba(0, 255, 255, 0.05)', overflow: 'hidden', position: 'absolute', bottom: 0 },
   scannerBar: { height: '100%', backgroundColor: COLORS.cyanBar, shadowColor: COLORS.cyanBar, shadowOffset: { width: 0, height: 0 }, shadowOpacity: 0.8, shadowRadius: 3 },
   ticketBoxTop: { padding: 20, backgroundColor: COLORS.white, borderBottomLeftRadius: 16, borderBottomRightRadius: 16, marginBottom: 12, paddingBottom: 25 },

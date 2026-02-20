@@ -12,7 +12,7 @@ import { COLORS, styles, width, BACKGROUND_URL, QR_SIZE, TICKETS_DATA, TM_LOGO_U
 
 // Altura fixa do paginador para que o scroll vertical externo funcione
 const PAGER_HEIGHT = Dimensions.get('window').height * 0.72;
-const ITEM_WIDTH = width * 0.96; // Ajuste para carrossel com visibilidade lateral
+const ITEM_WIDTH = width * 0.98; // Ajuste para carrossel com visibilidade lateral máxima
 
 export default function TicketDetailScreen({ route, navigation }) {
   const { ticket } = route.params;
@@ -50,21 +50,21 @@ export default function TicketDetailScreen({ route, navigation }) {
     const categoryText = isMeia ? 'MEIA-ENTRADA' : 'INTEIRA';
 
     return (
-      <View key={index} style={{ width: ITEM_WIDTH, alignItems: 'center', paddingTop: 10 }}>
+      <View key={index} style={{ width: ITEM_WIDTH, alignItems: 'center', paddingTop: 5 }}>
         <View style={styles.ticketCardContainer}>
 
           {/* BLOCO SUPERIOR: Cabeçalho Azul + QR e Infos Base */}
           <View style={{ borderRadius: 16, overflow: 'hidden', backgroundColor: '#fff' }}>
             <View style={styles.blueHeaderContainer}>
               <ImageBackground source={{ uri: BACKGROUND_URL }} style={styles.ticketBlueTop} resizeMode="cover">
-                {/* Logo Ticketmaster Centralizado e Dominante */}
-                <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', paddingTop: 30 }}>
+                {/* Logo Ticketmaster Centralizado e Dominante (MAIS AINDA) */}
+                <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', paddingTop: 5 }}>
                   <Image
                     source={{ uri: TM_LOGO_URL }}
-                    style={{ width: 220, height: 70, tintColor: '#fff' }}
+                    style={{ width: 280, height: 100, tintColor: '#fff' }}
                     resizeMode="contain"
                   />
-                  <Text style={{ color: '#00E5FF', fontSize: 16, fontWeight: '800', marginTop: -15 }}>
+                  <Text style={{ color: '#00E5FF', fontSize: 18, fontWeight: '800', marginTop: -25 }}>
                     #OAoVivoÉAgora
                   </Text>
                 </View>
