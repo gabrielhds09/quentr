@@ -28,90 +28,69 @@ export const COLORS = {
   dotInactive: '#444444'
 };
 
-// DADOS (COM A CORREÇÃO DA VÍRGULA)
+// DADOS
 export const TICKETS_DATA = [
   {
     id: '1',
-    eventTitle: "MY CHEMICAL ROMANCE",
-    subTitle: "SOUTH AMERICA 2026",
+    eventTitle: "BAD BUNNY: DeBÍ TiRAR MáS FOToS World Tour",
+    subTitle: "20/02/2026 • Allianz Parque, São Paulo",
     venue: "SÃO PAULO, BRASIL | Allianz Parque",
     countText: "2 Ingressos",
     ticketQuantity: 2,
-    dateText: "Quinta 05 21:00",
-    image: "https://tse3.mm.bing.net/th/id/OIP.cKhDeV7yQMduBzIlH6Ig8gHaHa?rs=1&pid=ImgDetMain&o=7&rm=3",
-    sortDate: "2026-02-05",
-    fullDate: "05/02/2026",
-    section: "Cadeira Superior",
+    dateText: "Sex 20 21:00",
+    image: "https://cdn.getcrowder.com/images/bebfda30-5715-45da-92aa-9fc51cd39333-badbunny1920x720foto.gif",
+    sortDate: "2026-02-20",
+    fullDate: "20/02/2026",
+    section: "Pista",
     gate: "Portão A",
     rowInfo: "Não numerado",
     open: "16:00",
     start: "21:00",
     ticketsList: [
-      { priceInfo: "Meia - R$ 197,50", qrCodeBase: "MCR-SP-01-M" },
-      { priceInfo: "Inteira - R$ 395,00", qrCodeBase: "MCR-SP-01-I" }
+      { priceInfo: "Meia - R$ 297,50", qrCodeBase: "BB-SP-PISTA-M" },
+      { priceInfo: "Inteira - R$ 595,00", qrCodeBase: "BB-SP-PISTA-I" }
     ]
   },
   {
     id: '2',
-    eventTitle: "MY CHEMICAL ROMANCE",
-    subTitle: "SOUTH AMERICA 2026",
+    eventTitle: "BAD BUNNY: DeBÍ TiRAR MáS FOToS World Tour",
+    subTitle: "20/02/2026 • Allianz Parque, São Paulo",
     venue: "SÃO PAULO, BRASIL | Allianz Parque",
     countText: "2 Ingressos",
     ticketQuantity: 2,
-    dateText: "Quinta 05 21:00",
-    image: "https://tse3.mm.bing.net/th/id/OIP.cKhDeV7yQMduBzIlH6Ig8gHaHa?rs=1&pid=ImgDetMain&o=7&rm=3",
-    sortDate: "2026-02-05",
-    fullDate: "05/02/2026",
-    section: "Pista",
-    gate: "Portão B",
+    dateText: "Sex 20 21:00",
+    image: "https://cdn.getcrowder.com/images/bebfda30-5715-45da-92aa-9fc51cd39333-badbunny1920x720foto.gif",
+    sortDate: "2026-02-20",
+    fullDate: "20/02/2026",
+    section: "Cadeira Inferior",
+    gate: "Portão A, C e D",
     rowInfo: "Não numerado",
     open: "16:00",
     start: "21:00",
     ticketsList: [
-      { priceInfo: "Meia - R$ 247,50", qrCodeBase: "MCR-SP-02-M" },
-      { priceInfo: "Inteira - R$ 495,00", qrCodeBase: "MCR-SP-02-I" }
+      { priceInfo: "Meia - R$ 437,50", qrCodeBase: "BB-SP-CINF-M" },
+      { priceInfo: "Inteira - R$ 875,00", qrCodeBase: "BB-SP-CINF-I" }
     ]
   },
   {
     id: '3',
-    eventTitle: "MY CHEMICAL ROMANCE",
-    subTitle: "SOUTH AMERICA 2026",
+    eventTitle: "BAD BUNNY: DeBÍ TiRAR MáS FOToS World Tour",
+    subTitle: "20/02/2026 • Allianz Parque, São Paulo",
     venue: "SÃO PAULO, BRASIL | Allianz Parque",
     countText: "2 Ingressos",
     ticketQuantity: 2,
-    dateText: "Quinta 05 21:00",
-    image: "https://tse3.mm.bing.net/th/id/OIP.cKhDeV7yQMduBzIlH6Ig8gHaHa?rs=1&pid=ImgDetMain&o=7&rm=3",
-    sortDate: "2026-02-05",
-    fullDate: "05/02/2026",
-    section: "Cadeira Inferior",
-    gate: "Portão C",
+    dateText: "Sex 20 21:00",
+    image: "https://cdn.getcrowder.com/images/bebfda30-5715-45da-92aa-9fc51cd39333-badbunny1920x720foto.gif",
+    sortDate: "2026-02-20",
+    fullDate: "20/02/2026",
+    section: "Cadeira Superior",
+    gate: "Portão A e B",
     rowInfo: "Não numerado",
     open: "16:00",
     start: "21:00",
     ticketsList: [
-      { priceInfo: "Meia - R$ 322,50", qrCodeBase: "MCR-SP-03-M" },
-      { priceInfo: "Inteira - R$ 645,00", qrCodeBase: "MCR-SP-03-I" }
-    ]
-  },
-  {
-    id: '4',
-    eventTitle: "MY CHEMICAL ROMANCE",
-    subTitle: "SOUTH AMERICA 2026",
-    venue: "SÃO PAULO, BRASIL | Allianz Parque",
-    countText: "2 Ingressos",
-    ticketQuantity: 2,
-    dateText: "Quinta 05 21:00",
-    image: "https://tse3.mm.bing.net/th/id/OIP.cKhDeV7yQMduBzIlH6Ig8gHaHa?rs=1&pid=ImgDetMain&o=7&rm=3",
-    sortDate: "2026-02-05",
-    fullDate: "05/02/2026",
-    section: "Pista Premium",
-    gate: "Portão D",
-    rowInfo: "Não numerado",
-    open: "16:00",
-    start: "21:00",
-    ticketsList: [
-      { priceInfo: "Meia - R$ 447,50", qrCodeBase: "MCR-SP-04-M" },
-      { priceInfo: "Inteira - R$ 895,00", qrCodeBase: "MCR-SP-04-I" }
+      { priceInfo: "Meia - R$ 267,50", qrCodeBase: "BB-SP-CSUP-M" },
+      { priceInfo: "Inteira - R$ 535,00", qrCodeBase: "BB-SP-CSUP-I" }
     ]
   }
 ];
