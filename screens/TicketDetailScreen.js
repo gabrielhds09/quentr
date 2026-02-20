@@ -12,17 +12,35 @@ import { COLORS, styles, width, BACKGROUND_URL, QR_SIZE, TICKETS_DATA, TM_LOGO_U
 
 // Altura fixa do paginador para que o scroll vertical externo funcione
 const PAGER_HEIGHT = Dimensions.get('window').height * 0.72;
-const ITEM_WIDTH = width * 0.98; // Ajuste para carrossel com visibilidade lateral máxima
+const ITEM_WIDTH = width * 0.96; // Ajuste para carrossel com visibilidade lateral
 
 export default function TicketDetailScreen({ route, navigation }) {
   const { ticket } = route.params;
   const [qrSalt, setQrSalt] = useState(0);
   const progress = useRef(new Animated.Value(1)).current;
   const [activeIndex, setActiveIndex] = useState(0);
+
+  // Animação de entrada (descida simples)
+  const translateY = useRef(new Animated.Value(-60)).current;
+  const opacityAnim = useRef(new Animated.Value(0)).current;
   const ticketsArray = ticket.ticketsList || Array.from({ length: ticket.ticketQuantity || 1 }, (_, i) => i);
 
   useFocusEffect(
     React.useCallback(() => {
+      // Inicia animação de descida
+      Animated.parallel([
+        Animated.timing(translateY, {
+          toValue: 0,
+          duration: 700,
+          useNativeDriver: true,
+        }),
+        Animated.timing(opacityAnim, {
+          toValue: 1,
+          duration: 700,
+          useNativeDriver: true,
+        })
+      ]).start();
+
       if (Platform.OS === 'web') return;
       const activateProtection = async () => { await ScreenCapture.preventScreenCaptureAsync(); };
       activateProtection();
@@ -58,13 +76,13 @@ export default function TicketDetailScreen({ route, navigation }) {
             <View style={styles.blueHeaderContainer}>
               <ImageBackground source={{ uri: BACKGROUND_URL }} style={styles.ticketBlueTop} resizeMode="cover">
                 {/* Logo Ticketmaster Centralizado e Dominante (MAIS AINDA) */}
-                <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', paddingTop: 5 }}>
+                <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', paddingTop: 10 }}>
                   <Image
                     source={{ uri: TM_LOGO_URL }}
-                    style={{ width: 280, height: 100, tintColor: '#fff' }}
+                    style={{ width: 260, height: 90, tintColor: '#fff' }}
                     resizeMode="contain"
                   />
-                  <Text style={{ color: '#00E5FF', fontSize: 18, fontWeight: '800', marginTop: -25 }}>
+                  <Text style={{ color: '#00E5FF', fontSize: 17, fontWeight: '800', marginTop: -22 }}>
                     #OAoVivoÉAgora
                   </Text>
                 </View>
