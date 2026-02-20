@@ -48,41 +48,47 @@ export default function TicketDetailScreen({ route, navigation }) {
     return (
       <View key={index} style={{ width, alignItems: 'center', paddingTop: 10 }}>
         <View style={styles.ticketCardContainer}>
-          <View style={styles.blueHeaderContainer}>
-            <ImageBackground source={{ uri: BACKGROUND_URL }} style={styles.ticketBlueTop} resizeMode="cover">
-              {/* Espaçador para empurrar o conteúdo para baixo */}
-              <View style={{ flex: 1 }} />
-              <View style={{ paddingBottom: 15, alignItems: 'center', paddingHorizontal: 30 }}>
-                <Text style={{ color: '#fff', fontSize: 6.5, fontWeight: '700', textAlign: 'center', opacity: 0.85 }}>
-                  TAXA DE ADMINISTRAÇÃO · WT -30 R$ 21,74
-                </Text>
-                <Text style={{ color: '#fff', fontSize: 5.5, fontWeight: '700', textAlign: 'center', marginTop: 2, opacity: 0.85 }}>
-                  DO TOTAL ARRECADADO COM A VENDA DE INGRESSOS, SERÃO DESTINADOS À DOAÇÃO R$ 25,00 POR INGRESSO DO TIPO "INTEIRA".
-                </Text>
+          {/* BLOCO SUPERIOR: Cabeçalho Azul + QR e Infos Base */}
+          <View style={{ borderRadius: 16, overflow: 'hidden' }}>
+            <View style={styles.blueHeaderContainer}>
+              <ImageBackground source={{ uri: BACKGROUND_URL }} style={styles.ticketBlueTop} resizeMode="cover">
+                <View style={{ flex: 1 }} />
+                <View style={{ paddingBottom: 12, alignItems: 'center', paddingHorizontal: 25 }}>
+                  <Text style={{ color: '#fff', fontSize: 6, fontWeight: '700', textAlign: 'center', opacity: 0.8, letterSpacing: 0.3 }}>
+                    TAXA DE ADMINISTRAÇÃO · WT -30 R$ 21,74
+                  </Text>
+                  <Text style={{ color: '#fff', fontSize: 5, fontWeight: '700', textAlign: 'center', marginTop: 2, opacity: 0.8, letterSpacing: 0.1 }}>
+                    DO TOTAL ARRECADADO COM A VENDA DE INGRESSOS, SERÃO DESTINADOS À DOAÇÃO R$ 25,00 POR INGRESSO DO TIPO "INTEIRA".
+                  </Text>
+                </View>
+              </ImageBackground>
+              <View style={styles.scannerStrip}>
+                <Animated.View style={[styles.scannerBar, { width: barWidth }]} />
               </View>
-            </ImageBackground>
-            <View style={styles.scannerStrip}>
-              <Animated.View style={[styles.scannerBar, { width: barWidth }]} />
+            </View>
+
+            <View style={styles.ticketBoxTop}>
+              <View style={styles.qrSection}>
+                <View style={styles.qrContainer}>
+                  <QRCode value={dynamicQRValue} size={QR_SIZE} ecl="Q" />
+                </View>
+                <View style={styles.qrInfoColumn}>
+                  <View>
+                    <Text style={styles.label}>SETOR</Text>
+                    <Text style={styles.valueTitle}>{ticket.section}</Text>
+                    <Text style={styles.label}>ACESSO</Text>
+                    <Text style={styles.valueTitle}>{ticket.gate}</Text>
+                  </View>
+                  <TouchableOpacity style={styles.moreInfoBtn}>
+                    <Text style={styles.moreInfoText}>Mais informação</Text>
+                  </TouchableOpacity>
+                </View>
+              </View>
             </View>
           </View>
-          <View style={styles.ticketWhiteBottom}>
-            <View style={styles.qrSection}>
-              <View style={styles.qrContainer}>
-                <QRCode value={dynamicQRValue} size={QR_SIZE} ecl="Q" />
-              </View>
-              <View style={styles.qrInfoColumn}>
-                <View>
-                  <Text style={styles.label}>SETOR</Text>
-                  <Text style={styles.valueTitle}>{ticket.section}</Text>
-                  <Text style={styles.label}>ACESSO</Text>
-                  <Text style={styles.valueTitle}>{ticket.gate}</Text>
-                </View>
-                <TouchableOpacity style={styles.moreInfoBtn}>
-                  <Text style={styles.moreInfoText}>Mais informação</Text>
-                </TouchableOpacity>
-              </View>
-            </View>
-            <View style={styles.divider} />
+
+          {/* BLOCO INFERIOR: Detalhes do Ingresso */}
+          <View style={styles.ticketBoxBottom}>
             <View style={styles.detailsGrid}>
               <View style={styles.gridRow}>
                 <View>
@@ -90,17 +96,21 @@ export default function TicketDetailScreen({ route, navigation }) {
                   <Text style={styles.valueBold}>{priceDisplay}</Text>
                 </View>
               </View>
-              <View style={[styles.gridRow, { marginTop: 15 }]}>
+
+              <View style={styles.divider} />
+
+              <View style={[styles.gridRow]}>
                 <View style={{ flex: 1 }}>
                   <Text style={styles.label}>SEÇÃO</Text>
-                  <Text style={styles.valueBold}>{ticket.section}</Text>
+                  <Text style={styles.valueBold}>{ticket.section.toUpperCase()}</Text>
                 </View>
                 <View style={{ flex: 1 }}>
                   <Text style={styles.label}>FILEIRA</Text>
                   <Text style={styles.valueBold}>{ticket.rowInfo}</Text>
                 </View>
               </View>
-              <View style={[styles.gridRow, { marginTop: 15 }]}>
+
+              <View style={[styles.gridRow, { marginTop: 18 }]}>
                 <View style={{ flex: 1 }}>
                   <Text style={styles.label}>ABERTURA</Text>
                   <Text style={styles.valueBold}>{ticket.open}</Text>
