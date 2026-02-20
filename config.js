@@ -41,14 +41,14 @@ export const TICKETS_DATA = [
     image: "https://cdn.getcrowder.com/images/bebfda30-5715-45da-92aa-9fc51cd39333-badbunny1920x720foto.gif",
     sortDate: "2026-02-20",
     fullDate: "20/02/2026",
-    section: "PIT 1",
+    section: "Pista",
     gate: "Portão B",
     rowInfo: "Não numerado",
     open: "16:00",
     start: "21:00",
     ticketsList: [
-      { priceInfo: "Meia - R$ 537,50", qrCodeBase: "BB-SP-PIT1-M" },
-      { priceInfo: "Inteira - R$ 1.075,00", qrCodeBase: "BB-SP-PIT1-I" }
+      { priceInfo: "Meia - R$ 537,50", qrCodeBase: "BB-SP-PISTA-M" },
+      { priceInfo: "Inteira - R$ 1.075,00", qrCodeBase: "BB-SP-PISTA-I" }
     ]
   },
   {
@@ -62,14 +62,14 @@ export const TICKETS_DATA = [
     image: "https://cdn.getcrowder.com/images/bebfda30-5715-45da-92aa-9fc51cd39333-badbunny1920x720foto.gif",
     sortDate: "2026-02-20",
     fullDate: "20/02/2026",
-    section: "PIT 2",
-    gate: "Portão B",
+    section: "Cadeira Inferior",
+    gate: "Portão C",
     rowInfo: "Não numerado",
     open: "16:00",
     start: "21:00",
     ticketsList: [
-      { priceInfo: "Meia - R$ 537,50", qrCodeBase: "BB-SP-PIT2-M" },
-      { priceInfo: "Inteira - R$ 1.075,00", qrCodeBase: "BB-SP-PIT2-I" }
+      { priceInfo: "Meia - R$ 547,50", qrCodeBase: "BB-SP-CADINF-M" },
+      { priceInfo: "Inteira - R$ 1.095,00", qrCodeBase: "BB-SP-CADINF-I" }
     ]
   },
   {
@@ -83,14 +83,14 @@ export const TICKETS_DATA = [
     image: "https://cdn.getcrowder.com/images/bebfda30-5715-45da-92aa-9fc51cd39333-badbunny1920x720foto.gif",
     sortDate: "2026-02-20",
     fullDate: "20/02/2026",
-    section: "Los Vecinos",
-    gate: "Portão B",
+    section: "Cadeira Superior",
+    gate: "Portão D",
     rowInfo: "Não numerado",
     open: "16:00",
     start: "21:00",
     ticketsList: [
-      { priceInfo: "Meia - R$ 547,50", qrCodeBase: "BB-SP-LOSVEC-M" },
-      { priceInfo: "Inteira - R$ 1.095,00", qrCodeBase: "BB-SP-LOSVEC-I" }
+      { priceInfo: "Meia - R$ 397,50", qrCodeBase: "BB-SP-CADSUP-M" },
+      { priceInfo: "Inteira - R$ 795,00", qrCodeBase: "BB-SP-CADSUP-I" }
     ]
   }
 ];
