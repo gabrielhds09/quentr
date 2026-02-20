@@ -127,7 +127,7 @@ export default function TicketDetailScreen({ route, navigation }) {
           showsVerticalScrollIndicator={false}
           bounces={true}
           alwaysBounceVertical={true}
-          contentContainerStyle={{ paddingBottom: 60 }}
+          contentContainerStyle={{ paddingBottom: 60, minHeight: PAGER_HEIGHT + 120 }}
         >
           {/* Paginador HORIZONTAL entre ingressos — altura fixa, touch-action: pan-x */}
           <ScrollView
@@ -135,10 +135,7 @@ export default function TicketDetailScreen({ route, navigation }) {
             pagingEnabled
             showsHorizontalScrollIndicator={false}
             scrollEventThrottle={16}
-            style={[
-              { height: PAGER_HEIGHT },
-              Platform.OS === 'web' ? { touchAction: 'pan-x' } : {}
-            ]}
+            style={Platform.OS === 'web' ? { touchAction: 'pan-x' } : undefined}
             contentContainerStyle={{ alignItems: 'flex-start' }}
             onMomentumScrollEnd={(e) => {
               const index = Math.round(e.nativeEvent.contentOffset.x / width);
