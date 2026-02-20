@@ -46,7 +46,7 @@ export default function TicketDetailScreen({ route, navigation }) {
     const priceDisplay = isObject ? item.priceInfo : ticket.priceInfo;
 
     return (
-      <View key={index} style={{ width, height: PAGER_HEIGHT, alignItems: 'center', paddingTop: 10 }}>
+      <View key={index} style={{ width, alignItems: 'center', paddingTop: 10 }}>
         <View style={styles.ticketCardContainer}>
           <View style={styles.blueHeaderContainer}>
             <ImageBackground source={{ uri: BACKGROUND_URL }} style={styles.ticketBlueTop} resizeMode="cover" />
