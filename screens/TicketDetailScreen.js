@@ -179,14 +179,15 @@ export default function TicketDetailScreen({ route, navigation }) {
           </View>
         </View>
 
-        {/* Scroll VERTICAL da página — arrasta pra cima e pra baixo */}
-        <Animated.View style={{ flex: 1, transform: [{ translateY }], opacity: opacityAnim }}>
+        {/* EFEITO DE ENTRADA (DESCIDA) */}
+        <Animated.View style={{ flex: 1, opacity: opacityAnim, transform: [{ translateY }] }}>
           <ScrollView
             showsVerticalScrollIndicator={false}
             bounces={true}
             alwaysBounceVertical={true}
             contentContainerStyle={{ paddingBottom: 60, minHeight: PAGER_HEIGHT + 120 }}
           >
+            {/* Paginador HORIZONTAL entre ingressos */}
             <ScrollView
               horizontal
               pagingEnabled={false}
@@ -227,7 +228,8 @@ export default function TicketDetailScreen({ route, navigation }) {
               </Text>
             </View>
           </ScrollView>
+        </Animated.View>
       </View>
-    </View >
+    </View>
   );
 }
