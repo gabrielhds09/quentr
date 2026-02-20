@@ -45,20 +45,28 @@ export default function TicketDetailScreen({ route, navigation }) {
     const dynamicQRValue = `${(isObject ? item.qrCodeBase : ticket.qrCodeBase) || 'TICKET'}-${index + 1}-${qrSalt}`;
     const priceDisplay = isObject ? item.priceInfo : ticket.priceInfo;
 
+    const isMeia = priceDisplay && priceDisplay.toUpperCase().includes('MEIA');
+    const categoryText = isMeia ? 'MEIA-ENTRADA' : 'INTEIRA';
+
     return (
       <View key={index} style={{ width, alignItems: 'center', paddingTop: 10 }}>
         <View style={styles.ticketCardContainer}>
+          {/* BANNER DE CATEGORIA (NOVO) */}
+          <View style={styles.typeBanner}>
+            <Text style={styles.typeBannerText}>{categoryText}</Text>
+          </View>
+
           {/* BLOCO SUPERIOR: Cabeçalho Azul + QR e Infos Base */}
-          <View style={{ borderRadius: 16, overflow: 'hidden' }}>
+          <View style={{ borderBottomLeftRadius: 16, borderBottomRightRadius: 16, overflow: 'hidden' }}>
             <View style={styles.blueHeaderContainer}>
               <ImageBackground source={{ uri: BACKGROUND_URL }} style={styles.ticketBlueTop} resizeMode="cover">
                 <View style={{ flex: 1 }} />
-                <View style={{ paddingBottom: 12, alignItems: 'center', paddingHorizontal: 25 }}>
-                  <Text style={{ color: '#fff', fontSize: 6, fontWeight: '700', textAlign: 'center', opacity: 0.8, letterSpacing: 0.3 }}>
+                <View style={{ paddingBottom: 15, alignItems: 'center', paddingHorizontal: 25 }}>
+                  <Text style={{ color: '#fff', fontSize: 6.5, fontWeight: '700', textAlign: 'center', opacity: 0.8, letterSpacing: 0.3 }}>
                     TAXA DE ADMINISTRAÇÃO · WT -30 R$ 21,74
                   </Text>
-                  <Text style={{ color: '#fff', fontSize: 5, fontWeight: '700', textAlign: 'center', marginTop: 2, opacity: 0.8, letterSpacing: 0.1 }}>
-                    DO TOTAL ARRECADADO COM A VENDA DE INGRESSOS, SERÃO DESTINADOS À DOAÇÃO R$ 25,00 POR INGRESSO DO TIPO "INTEIRA".
+                  <Text style={{ color: '#fff', fontSize: 5.5, fontWeight: '700', textAlign: 'center', marginTop: 3, opacity: 0.8, letterSpacing: 0.1 }}>
+                    DO TOTAL ARRECADADO COM A VENDA DE INGRESSOS, SERÃO DESTINADOS À DOAÇÃO R$ 25,00 POR INGRESSO DO TIPO "{categoryText}".
                   </Text>
                 </View>
               </ImageBackground>
@@ -110,7 +118,7 @@ export default function TicketDetailScreen({ route, navigation }) {
                 </View>
               </View>
 
-              <View style={[styles.gridRow, { marginTop: 18 }]}>
+              <View style={[styles.gridRow, { marginTop: 22 }]}>
                 <View style={{ flex: 1 }}>
                   <Text style={styles.label}>ABERTURA</Text>
                   <Text style={styles.valueBold}>{ticket.open}</Text>
@@ -174,6 +182,20 @@ export default function TicketDetailScreen({ route, navigation }) {
               ))}
             </View>
           )}
+
+          {/* Rodapé: Devolva ingresso (Re-adicionado conforme print) */}
+          <View style={{
+            flexDirection: 'row',
+            alignItems: 'center',
+            justifyContent: 'center',
+            marginTop: 20,
+            paddingBottom: 40
+          }}>
+            <Ionicons name="arrow-undo-sharp" size={18} color="#00E5FF" style={{ marginRight: 10 }} />
+            <Text style={{ color: '#fff', fontWeight: '600', fontSize: 13, opacity: 0.9 }}>
+              Devolva ingresso a Lorena Cristyne Silva Cardoso
+            </Text>
+          </View>
         </ScrollView>
       </View>
     </View>
