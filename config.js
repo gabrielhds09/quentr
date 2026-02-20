@@ -92,6 +92,72 @@ export const TICKETS_DATA = [
       { priceInfo: "Meia - R$ 397,50", qrCodeBase: "BB-SP-CADSUP-M" },
       { priceInfo: "Inteira - R$ 795,00", qrCodeBase: "BB-SP-CADSUP-I" }
     ]
+  },
+  {
+    id: '1',
+    eventTitle: "My Chemical Romance",
+    subTitle: "27/09/2025 • Allianz Parque, São Paulo",
+    venue: "SÃO PAULO, BRASIL | Allianz Parque",
+    countText: "2 Ingressos",
+    ticketQuantity: 2,
+    dateText: "Sáb 27 21:00",
+    image: "https://i.postimg.cc/XYj9d0Gn/Design-sem-nome.png",
+    sortDate: "2025-09-27",
+    fullDate: "27/09/2025",
+    monthLabel: "Setembro 2025",
+    section: "Pista",
+    gate: "Portão B",
+    rowInfo: "Não numerado",
+    open: "16:00",
+    start: "21:00",
+    ticketsList: [
+      { priceInfo: "Meia - R$ 450,00", qrCodeBase: "MCR-SP-PISTA-M" },
+      { priceInfo: "Inteira - R$ 900,00", qrCodeBase: "MCR-SP-PISTA-I" }
+    ]
+  },
+  {
+    id: '2',
+    eventTitle: "My Chemical Romance",
+    subTitle: "27/09/2025 • Allianz Parque, São Paulo",
+    venue: "SÃO PAULO, BRASIL | Allianz Parque",
+    countText: "2 Ingressos",
+    ticketQuantity: 2,
+    dateText: "Sáb 27 21:00",
+    image: "https://i.postimg.cc/XYj9d0Gn/Design-sem-nome.png",
+    sortDate: "2025-09-27",
+    fullDate: "27/09/2025",
+    monthLabel: "Setembro 2025",
+    section: "Cadeira Inferior",
+    gate: "Portão C",
+    rowInfo: "Não numerado",
+    open: "16:00",
+    start: "21:00",
+    ticketsList: [
+      { priceInfo: "Meia - R$ 375,00", qrCodeBase: "MCR-SP-CADINF-M" },
+      { priceInfo: "Inteira - R$ 750,00", qrCodeBase: "MCR-SP-CADINF-I" }
+    ]
+  },
+  {
+    id: '3',
+    eventTitle: "My Chemical Romance",
+    subTitle: "27/09/2025 • Allianz Parque, São Paulo",
+    venue: "SÃO PAULO, BRASIL | Allianz Parque",
+    countText: "2 Ingressos",
+    ticketQuantity: 2,
+    dateText: "Sáb 27 21:00",
+    image: "https://i.postimg.cc/XYj9d0Gn/Design-sem-nome.png",
+    sortDate: "2025-09-27",
+    fullDate: "27/09/2025",
+    monthLabel: "Setembro 2025",
+    section: "Cadeira Superior",
+    gate: "Portão D",
+    rowInfo: "Não numerado",
+    open: "16:00",
+    start: "21:00",
+    ticketsList: [
+      { priceInfo: "Meia - R$ 275,00", qrCodeBase: "MCR-SP-CADSUP-M" },
+      { priceInfo: "Inteira - R$ 550,00", qrCodeBase: "MCR-SP-CADSUP-I" }
+    ]
   }
 ];
 
