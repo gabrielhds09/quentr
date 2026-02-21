@@ -1,6 +1,6 @@
 // src/screens/HomeScreen.js
 import React, { useState } from 'react';
-import { View, Text, Image, TouchableOpacity, StyleSheet, SafeAreaView, StatusBar, ScrollView, Platform } from 'react-native';
+import { View, Text, Image, TouchableOpacity, StyleSheet, SafeAreaView, StatusBar, ScrollView, Platform, Dimensions } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { TICKETS_DATA, COLORS, styles } from '../config';
 
