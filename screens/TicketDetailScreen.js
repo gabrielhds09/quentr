@@ -11,7 +11,7 @@ import * as ScreenCapture from 'expo-screen-capture';
 import { COLORS, styles, width, BACKGROUND_URL, QR_SIZE, TICKETS_DATA, TM_LOGO_URL } from '../config';
 
 // Altura fixa do paginador para que o scroll vertical externo funcione
-const PAGER_HEIGHT = Dimensions.get('window').height * 0.72;
+const PAGER_HEIGHT = Dimensions.get('window').height * 0.78;
 const ITEM_WIDTH = width * 0.94; // Snap interval equilibrado para o novo CARD_WIDTH
 
 export default function TicketDetailScreen({ route, navigation }) {
@@ -119,6 +119,9 @@ export default function TicketDetailScreen({ route, navigation }) {
             <View style={styles.detailsGrid}>
               <View style={styles.gridRow}>
                 <View>
+                  <Text style={[styles.label, { marginBottom: 4 }]}>SETOR</Text>
+                  <Text style={[styles.valueBold, { fontSize: 18, marginBottom: 12 }]}>{ticket.section}</Text>
+
                   <Text style={styles.label}>TAXA</Text>
                   <Text style={styles.valueBold}>{priceDisplay}</Text>
                 </View>
