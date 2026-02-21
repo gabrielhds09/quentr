@@ -12,7 +12,7 @@ import { COLORS, styles, width, BACKGROUND_URL, QR_SIZE, TICKETS_DATA, TM_LOGO_U
 
 // Altura fixa do paginador para que o scroll vertical externo funcione
 const PAGER_HEIGHT = Dimensions.get('window').height * 0.72;
-const ITEM_WIDTH = width * 0.92; // Ajustado para carrossel com melhor visibilidade lateral
+const ITEM_WIDTH = width * 0.94; // Snap interval equilibrado para o novo CARD_WIDTH
 
 export default function TicketDetailScreen({ route, navigation }) {
   const { ticket } = route.params;
@@ -96,17 +96,17 @@ export default function TicketDetailScreen({ route, navigation }) {
 
             <View style={styles.ticketBoxTop}>
               <View style={styles.qrSection}>
-                <View style={styles.qrContainer}>
+                <View style={[styles.qrContainer, { flex: 1.1 }]}>
                   <QRCode value={dynamicQRValue} size={QR_SIZE} ecl="Q" />
                 </View>
-                <View style={styles.qrInfoColumn}>
+                <View style={[styles.qrInfoColumn, { flex: 1 }]}>
                   <View>
-                    <Text style={styles.label}>SETOR</Text>
+                    <Text style={[styles.label, { letterSpacing: 1.2, fontSize: 7.5 }]}>SETOR</Text>
                     <Text style={styles.valueTitle}>{ticket.section}</Text>
-                    <Text style={styles.label}>ACESSO</Text>
+                    <Text style={[styles.label, { letterSpacing: 1.2, fontSize: 7.5, marginTop: 4 }]}>ACESSO</Text>
                     <Text style={styles.valueTitle}>{ticket.gate}</Text>
                   </View>
-                  <TouchableOpacity style={styles.moreInfoBtn}>
+                  <TouchableOpacity style={[styles.moreInfoBtn, { borderRadius: 12, paddingVertical: 12 }]}>
                     <Text style={styles.moreInfoText}>Mais informação</Text>
                   </TouchableOpacity>
                 </View>
@@ -198,7 +198,7 @@ export default function TicketDetailScreen({ route, navigation }) {
 
             {/* Dots de paginação */}
             {ticketsArray.length > 1 && (
-              <View style={[styles.paginationContainer, { marginTop: 8 }]}>
+              <View style={[styles.paginationContainer, { marginTop: 15, marginBottom: 10 }]}>
                 {ticketsArray.map((_, i) => (
                   <View key={i} style={[styles.paginationDot, i === activeIndex ? styles.dotActive : styles.dotInactive]} />
                 ))}

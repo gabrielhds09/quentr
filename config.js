@@ -4,8 +4,8 @@ import { StyleSheet, Dimensions, Platform } from 'react-native';
 // AJUSTES DE TELA
 const windowWidth = Dimensions.get('window').width;
 export const width = Platform.OS === 'web' && windowWidth > 500 ? 400 : windowWidth;
-export const CARD_WIDTH = width * 0.88; // Reduzido para criar espaçamento lateral
-export const QR_SIZE = 110;
+export const CARD_WIDTH = width * 0.90; // Reduzido mais para espaçamento visível
+export const QR_SIZE = 125; // Aumentado conforme referência
 
 // CONFIGURAÇÃO GERAL
 export const BACKGROUND_URL = "https://i.postimg.cc/XYj9d0Gn/Design-sem-nome.png";
@@ -203,7 +203,7 @@ export const styles = StyleSheet.create({
   dotInactive: { backgroundColor: COLORS.dotInactive },
   carouselContainer: { width: width, alignItems: 'center' },
   ticketCardContainer: { width: CARD_WIDTH, marginTop: 10, paddingVertical: 10 },
-  blueHeaderContainer: { position: 'relative', height: 230, width: '100%', backgroundColor: COLORS.blueHeader, borderTopLeftRadius: 16, borderTopRightRadius: 16, overflow: 'hidden', },
+  blueHeaderContainer: { position: 'relative', height: 250, width: '100%', backgroundColor: COLORS.blueHeader, borderTopLeftRadius: 16, borderTopRightRadius: 16, overflow: 'hidden', },
   ticketBlueTop: { width: '100%', height: '100%', justifyContent: 'center', alignItems: 'center', paddingTop: 0 },
   scannerStrip: { height: 5, width: '100%', backgroundColor: 'rgba(0, 255, 255, 0.05)', overflow: 'hidden', position: 'absolute', bottom: 0 },
   scannerBar: { height: '100%', backgroundColor: COLORS.cyanBar, shadowColor: COLORS.cyanBar, shadowOffset: { width: 0, height: 0 }, shadowOpacity: 0.8, shadowRadius: 3 },
