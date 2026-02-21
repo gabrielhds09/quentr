@@ -2,17 +2,14 @@
 import React, { useState, useRef, useEffect } from 'react';
 import {
   View, Text, TouchableOpacity, StatusBar, ScrollView,
-  Animated, ImageBackground, Platform, Dimensions, Image
+  Animated, ImageBackground, Platform, Dimensions, PanResponder
 } from 'react-native';
 import { useFocusEffect } from '@react-navigation/native';
 import { Ionicons } from '@expo/vector-icons';
 import QRCode from 'react-native-qrcode-svg';
-import * as ScreenCapture from 'expo-screen-capture';
 import { COLORS, styles, width, BACKGROUND_URL, QR_SIZE, TICKETS_DATA, TM_LOGO_URL } from '../config';
 
-// Altura fixa do paginador para que o scroll vertical externo funcione
-const PAGER_HEIGHT = Dimensions.get('window').height * 0.78;
-const ITEM_WIDTH = width * 0.94; // Snap interval equilibrado para o novo CARD_WIDTH
+const ITEM_WIDTH = width * 0.94;
 
 export default function TicketDetailScreen({ route, navigation }) {
   const { ticket } = route.params;
@@ -20,17 +17,41 @@ export default function TicketDetailScreen({ route, navigation }) {
   const progress = useRef(new Animated.Value(1)).current;
   const [activeIndex, setActiveIndex] = useState(0);
 
-  // Animação de entrada removida para fidelidade absoluta
-  const translateY = useRef(new Animated.Value(0)).current;
+  // Animado para o arraste (Pull-down / Pull-up)
+  const panY = useRef(new Animated.Value(0)).current;
   const opacityAnim = useRef(new Animated.Value(1)).current;
   const ticketsArray = ticket.ticketsList || Array.from({ length: ticket.ticketQuantity || 1 }, (_, i) => i);
 
+  // PanResponder para detectar o arraste em qualquer lugar da tela/ingresso
+  const panResponder = useRef(
+    PanResponder.create({
+      onMoveShouldSetPanResponder: (_, gestureState) => {
+        // Intercepta movimentos verticais
+        return Math.abs(gestureState.dy) > 10;
+      },
+      onPanResponderMove: (_, gestureState) => {
+        // Aplica resistência (o movimento do ingresso é 70% do movimento do dedo)
+        panY.setValue(gestureState.dy * 0.7);
+      },
+      onPanResponderRelease: () => {
+        // Volta suavemente para a posição original (mola)
+        Animated.spring(panY, {
+          toValue: 0,
+          friction: 8,
+          tension: 40,
+          useNativeDriver: false,
+        }).start();
+      },
+      onPanResponderTerminate: () => {
+        Animated.spring(panY, { toValue: 0, useNativeDriver: false }).start();
+      },
+    })
+  ).current;
+
   useFocusEffect(
     React.useCallback(() => {
-      // Exibe imediatamente sem animação
       opacityAnim.setValue(1);
-      translateY.setValue(0);
-
+      panY.setValue(0);
     }, [])
   );
 
@@ -135,7 +156,7 @@ export default function TicketDetailScreen({ route, navigation }) {
       <View style={{ flex: 1, width: Platform.OS === 'web' ? width : '100%' }}>
         <StatusBar barStyle="light-content" backgroundColor="#121618" />
 
-        {/* NavBar fixa */}
+        {/* NavBar fixa - Não deve se mover */}
         <View style={[styles.detailNavBar, { paddingVertical: 8 }]}>
           <TouchableOpacity onPress={() => navigation.goBack()} style={{ padding: 5 }}>
             <Ionicons name="chevron-back" size={26} color="#bbb" />
@@ -146,44 +167,48 @@ export default function TicketDetailScreen({ route, navigation }) {
           </View>
         </View>
 
-        {/* EFEITO DE ENTRADA (DESCIDA) + CONTAINER PRINCIPAL COM BOUNCE */}
-        {/* NAVEGAÇÃO E SCROLL COM EFEITO PULL-DOWN */}
-        <Animated.ScrollView
-          showsVerticalScrollIndicator={false}
-          bounces={true}
-          alwaysBounceVertical={true}
-          overScrollMode="always"
-          style={{ flex: 1, opacity: opacityAnim, transform: [{ translateY }] }}
-          contentContainerStyle={{
-            paddingTop: 0,
-            paddingBottom: 80,
-            minHeight: Dimensions.get('window').height + 500, // Espaço extra massivo para pull-down (arraste)
+        {/* ÁREA DE ARRASTE (PANRESPONDER) */}
+        <Animated.View
+          {...panResponder.panHandlers}
+          style={{
+            flex: 1,
+            opacity: opacityAnim,
+            transform: [{ translateY: panY }]
           }}
         >
-          {/* Paginador HORIZONTAL entre ingressos (apenas se houver mais de um) */}
-          {ticketsArray.length > 1 ? (
-            <ScrollView
-              horizontal
-              pagingEnabled={false}
-              snapToInterval={ITEM_WIDTH}
-              snapToAlignment="start"
-              decelerationRate="fast"
-              showsHorizontalScrollIndicator={false}
-              onScroll={(e) => {
-                const index = Math.round(e.nativeEvent.contentOffset.x / ITEM_WIDTH);
-                setActiveIndex(index);
-              }}
-              scrollEventThrottle={16}
-              contentContainerStyle={{ paddingHorizontal: (width - ITEM_WIDTH) / 2 }}
-            >
-              {ticketsArray.map((item, index) => renderCard(item, index))}
-            </ScrollView>
-          ) : (
-            <View style={{ width: width, alignItems: 'center' }}>
-              {ticketsArray.map((item, index) => renderCard(item, index))}
-            </View>
-          )}
-        </Animated.ScrollView>
+          <ScrollView
+            showsVerticalScrollIndicator={false}
+            bounces={false} // Desativa o bounce do sistema para usar o nosso PanResponder
+            style={{ flex: 1 }}
+            contentContainerStyle={{
+              paddingTop: 0,
+              paddingBottom: 100,
+            }}
+          >
+            {ticketsArray.length > 1 ? (
+              <ScrollView
+                horizontal
+                pagingEnabled={false}
+                snapToInterval={ITEM_WIDTH}
+                snapToAlignment="start"
+                decelerationRate="fast"
+                showsHorizontalScrollIndicator={false}
+                onScroll={(e) => {
+                  const index = Math.round(e.nativeEvent.contentOffset.x / ITEM_WIDTH);
+                  setActiveIndex(index);
+                }}
+                scrollEventThrottle={16}
+                contentContainerStyle={{ paddingHorizontal: (width - ITEM_WIDTH) / 2 }}
+              >
+                {ticketsArray.map((item, index) => renderCard(item, index))}
+              </ScrollView>
+            ) : (
+              <View style={{ width: width, alignItems: 'center' }}>
+                {ticketsArray.map((item, index) => renderCard(item, index))}
+              </View>
+            )}
+          </ScrollView>
+        </Animated.View>
       </View>
     </View>
   );

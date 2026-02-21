@@ -169,7 +169,14 @@ export const TICKETS_DATA = [
 
 // ESTILOS
 export const styles = StyleSheet.create({
-  container: { flex: 1, backgroundColor: COLORS.bg, alignItems: Platform.OS === 'web' ? 'center' : 'stretch' },
+  container: {
+    flex: 1,
+    backgroundColor: COLORS.bg,
+    alignItems: Platform.OS === 'web' ? 'center' : 'stretch',
+    touchAction: 'none',       // Bloqueia interações do sistema (zoom/scroll nativo) para controle total
+    userSelect: 'none',        // Previne seleção de texto acidental
+    overscrollBehavior: 'none' // Impede o "puxar para recarregar" do navegador
+  },
   webWrapper: { width: Platform.OS === 'web' ? width : '100%', flex: 1 },
   header: { paddingTop: 60, paddingHorizontal: 20, paddingBottom: 15, flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' },
   headerTitle: { color: COLORS.white, fontSize: 24, fontWeight: '700' },
