@@ -4,7 +4,7 @@ import { View, Text, Image, TouchableOpacity, StyleSheet, SafeAreaView, StatusBa
 import { Ionicons } from '@expo/vector-icons';
 import { TICKETS_DATA, COLORS, styles } from '../config';
 
-const TODAY = "2026-02-20";
+const TODAY = "2026-02-21";
 
 export default function HomeScreen({ navigation }) {
   const [tab, setTab] = useState('proximos');
@@ -64,7 +64,17 @@ export default function HomeScreen({ navigation }) {
             </TouchableOpacity>
           </View>
         </View>
-        <ScrollView style={{ flex: 1 }}>
+        <ScrollView
+          showsVerticalScrollIndicator={false}
+          bounces={true}
+          alwaysBounceVertical={true}
+          overScrollMode="always"
+          contentContainerStyle={{
+            paddingBottom: 80,
+            minHeight: Dimensions.get('window').height + 200, // Efeito "puxar para baixo" na lista
+          }}
+          style={{ flex: 1 }}
+        >
           {tab === 'proximos' ? (
             <View>
               <Text style={styles.sectionTitle}>Próximos Shows</Text>
