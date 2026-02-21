@@ -74,7 +74,7 @@ export default function TicketDetailScreen({ route, navigation }) {
           {/* BLOCO SUPERIOR: Cabeçalho Azul + QR e Infos Base */}
           <View style={{ borderRadius: 16, overflow: 'hidden', backgroundColor: '#fff' }}>
             <View style={styles.blueHeaderContainer}>
-              <ImageBackground source={{ uri: BACKGROUND_URL }} style={styles.ticketBlueTop} resizeMode="cover">
+              <ImageBackground source={{ uri: BACKGROUND_URL }} style={styles.ticketBlueTop} resizeMode="contain">
                 {/* Visual vem diretamente do BACKGROUND_URL com logo embutida */}
                 <View style={{ flex: 1 }} />
 
@@ -178,9 +178,9 @@ export default function TicketDetailScreen({ route, navigation }) {
             alwaysBounceVertical={true}
             overScrollMode="always"
             contentContainerStyle={{
-              paddingTop: 20,
+              paddingTop: 40,
               paddingBottom: 40,
-              minHeight: PAGER_HEIGHT + 100
+              minHeight: PAGER_HEIGHT + 150
             }}
           >
             {/* Paginador HORIZONTAL entre ingressos */}
