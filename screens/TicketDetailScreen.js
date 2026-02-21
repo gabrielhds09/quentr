@@ -147,43 +147,43 @@ export default function TicketDetailScreen({ route, navigation }) {
         </View>
 
         {/* EFEITO DE ENTRADA (DESCIDA) + CONTAINER PRINCIPAL COM BOUNCE */}
-        <Animated.View style={{ flex: 1, opacity: opacityAnim, transform: [{ translateY }] }}>
-          <ScrollView
-            showsVerticalScrollIndicator={false}
-            bounces={true}
-            alwaysBounceVertical={true}
-            overScrollMode="always"
-            contentContainerStyle={{
-              paddingTop: 0,
-              paddingBottom: 80,
-              minHeight: Dimensions.get('window').height + 300, // Efeito "descce mais" (over-scroll) conforme foto
-            }}
-          >
-            {/* Paginador HORIZONTAL entre ingressos (apenas se houver mais de um) */}
-            {ticketsArray.length > 1 ? (
-              <ScrollView
-                horizontal
-                pagingEnabled={false}
-                snapToInterval={ITEM_WIDTH}
-                snapToAlignment="start"
-                decelerationRate="fast"
-                showsHorizontalScrollIndicator={false}
-                onScroll={(e) => {
-                  const index = Math.round(e.nativeEvent.contentOffset.x / ITEM_WIDTH);
-                  setActiveIndex(index);
-                }}
-                scrollEventThrottle={16}
-                contentContainerStyle={{ paddingHorizontal: (width - ITEM_WIDTH) / 2 }}
-              >
-                {ticketsArray.map((item, index) => renderCard(item, index))}
-              </ScrollView>
-            ) : (
-              <View style={{ width: width, alignItems: 'center' }}>
-                {ticketsArray.map((item, index) => renderCard(item, index))}
-              </View>
-            )}
-          </ScrollView>
-        </Animated.View>
+        {/* NAVEGAÇÃO E SCROLL COM EFEITO PULL-DOWN */}
+        <Animated.ScrollView
+          showsVerticalScrollIndicator={false}
+          bounces={true}
+          alwaysBounceVertical={true}
+          overScrollMode="always"
+          style={{ flex: 1, opacity: opacityAnim, transform: [{ translateY }] }}
+          contentContainerStyle={{
+            paddingTop: 0,
+            paddingBottom: 80,
+            minHeight: Dimensions.get('window').height + 500, // Espaço extra massivo para pull-down (arraste)
+          }}
+        >
+          {/* Paginador HORIZONTAL entre ingressos (apenas se houver mais de um) */}
+          {ticketsArray.length > 1 ? (
+            <ScrollView
+              horizontal
+              pagingEnabled={false}
+              snapToInterval={ITEM_WIDTH}
+              snapToAlignment="start"
+              decelerationRate="fast"
+              showsHorizontalScrollIndicator={false}
+              onScroll={(e) => {
+                const index = Math.round(e.nativeEvent.contentOffset.x / ITEM_WIDTH);
+                setActiveIndex(index);
+              }}
+              scrollEventThrottle={16}
+              contentContainerStyle={{ paddingHorizontal: (width - ITEM_WIDTH) / 2 }}
+            >
+              {ticketsArray.map((item, index) => renderCard(item, index))}
+            </ScrollView>
+          ) : (
+            <View style={{ width: width, alignItems: 'center' }}>
+              {ticketsArray.map((item, index) => renderCard(item, index))}
+            </View>
+          )}
+        </Animated.ScrollView>
       </View>
     </View>
   );
