@@ -207,7 +207,7 @@ export const styles = StyleSheet.create({
   ticketBlueTop: { width: '100%', height: '100%', justifyContent: 'center', alignItems: 'center', paddingTop: 0 },
   scannerStrip: { height: 2, width: '100%', backgroundColor: 'rgba(0, 255, 255, 0.05)', overflow: 'hidden', position: 'absolute', bottom: 0 },
   scannerBar: { height: '100%', backgroundColor: COLORS.cyanBar, shadowColor: COLORS.cyanBar, shadowOffset: { width: 0, height: 0 }, shadowOpacity: 0.8, shadowRadius: 3 },
-  ticketBoxTop: { padding: 20, backgroundColor: COLORS.white, borderBottomLeftRadius: 16, borderBottomRightRadius: 16, marginBottom: 5, paddingBottom: 25 },
+  ticketBoxTop: { padding: 20, backgroundColor: COLORS.white, borderBottomLeftRadius: 16, borderBottomRightRadius: 16, marginBottom: 1.5, paddingBottom: 25 },
   ticketBoxBottom: { paddingHorizontal: 20, paddingVertical: 22, backgroundColor: COLORS.white, borderRadius: 16 },
   qrSection: { flexDirection: 'row', alignItems: 'center' },
   qrContainer: { paddingTop: 0, paddingRight: 5 },
