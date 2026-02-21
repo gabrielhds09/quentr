@@ -74,7 +74,7 @@ export default function TicketDetailScreen({ route, navigation }) {
           {/* BLOCO SUPERIOR: Cabeçalho Azul + QR e Infos Base */}
           <View style={{ borderRadius: 16, overflow: 'hidden', backgroundColor: '#fff' }}>
             <View style={styles.blueHeaderContainer}>
-              <ImageBackground source={{ uri: BACKGROUND_URL }} style={styles.ticketBlueTop} resizeMode="contain">
+              <ImageBackground source={{ uri: BACKGROUND_URL }} style={styles.ticketBlueTop} resizeMode="cover">
                 {/* Visual vem diretamente do BACKGROUND_URL com logo embutida */}
                 <View style={{ flex: 1 }} />
 
@@ -170,7 +170,7 @@ export default function TicketDetailScreen({ route, navigation }) {
           </View>
         </View>
 
-        {/* EFEITO DE ENTRADA (DESCIDA) */}
+        {/* EFEITO DE ENTRADA (DESCIDA) + CONTAINER PRINCIPAL COM BOUNCE */}
         <Animated.View style={{ flex: 1, opacity: opacityAnim, transform: [{ translateY }] }}>
           <ScrollView
             showsVerticalScrollIndicator={false}
@@ -178,27 +178,32 @@ export default function TicketDetailScreen({ route, navigation }) {
             alwaysBounceVertical={true}
             overScrollMode="always"
             contentContainerStyle={{
-              paddingTop: 40,
-              paddingBottom: 40,
-              minHeight: PAGER_HEIGHT + 150
+              paddingTop: 60, // Deeper pull-down start
+              paddingBottom: 80,
+              alignItems: 'center'
             }}
           >
-            {/* Paginador HORIZONTAL entre ingressos */}
-            <ScrollView
-              horizontal
-              pagingEnabled={false}
-              snapToInterval={ITEM_WIDTH}
-              snapToAlignment="start"
-              decelerationRate="fast"
-              showsHorizontalScrollIndicator={false}
-              onScroll={(e) => {
-                const index = Math.round(e.nativeEvent.contentOffset.x / ITEM_WIDTH);
-                setActiveIndex(index);
-              }}
-              scrollEventThrottle={16}
-            >
-              {ticketsArray.map((item, index) => renderCard(item, index))}
-            </ScrollView>
+            {/* Paginador HORIZONTAL entre ingressos (apenas se houver mais de um) */}
+            {ticketsArray.length > 1 ? (
+              <ScrollView
+                horizontal
+                pagingEnabled={false}
+                snapToInterval={ITEM_WIDTH}
+                snapToAlignment="start"
+                decelerationRate="fast"
+                showsHorizontalScrollIndicator={false}
+                onScroll={(e) => {
+                  const index = Math.round(e.nativeEvent.contentOffset.x / ITEM_WIDTH);
+                  setActiveIndex(index);
+                }}
+                scrollEventThrottle={16}
+                contentContainerStyle={{ paddingHorizontal: (width - ITEM_WIDTH) / 2 }}
+              >
+                {ticketsArray.map((item, index) => renderCard(item, index))}
+              </ScrollView>
+            ) : (
+              ticketsArray.map((item, index) => renderCard(item, index))
+            )}
           </ScrollView>
         </Animated.View>
       </View>

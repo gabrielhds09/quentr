@@ -203,7 +203,7 @@ export const styles = StyleSheet.create({
   dotInactive: { backgroundColor: COLORS.dotInactive },
   carouselContainer: { width: width, alignItems: 'center' },
   ticketCardContainer: { width: CARD_WIDTH, marginTop: 0, paddingVertical: 10 },
-  blueHeaderContainer: { position: 'relative', height: 310, width: '100%', backgroundColor: '#0149D2', borderTopLeftRadius: 8, borderTopRightRadius: 8, overflow: 'hidden', },
+  blueHeaderContainer: { position: 'relative', height: 330, width: '100%', backgroundColor: '#0149D2', borderTopLeftRadius: 8, borderTopRightRadius: 8, overflow: 'hidden', },
   ticketBlueTop: { width: '100%', height: '100%', justifyContent: 'center', alignItems: 'center' },
   scannerStrip: { height: 2, width: '100%', backgroundColor: 'rgba(0, 255, 255, 0.05)', overflow: 'hidden', position: 'absolute', bottom: 0 },
   scannerBar: { height: '100%', backgroundColor: COLORS.cyanBar, shadowColor: COLORS.cyanBar, shadowOffset: { width: 0, height: 0 }, shadowOpacity: 0.8, shadowRadius: 3 },
