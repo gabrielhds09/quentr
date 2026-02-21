@@ -211,9 +211,8 @@ export default function TicketDetailScreen({ route, navigation }) {
             )}
 
           </ScrollView>
-        </ScrollView>
-      </Animated.View>
+        </Animated.View>
+      </View>
     </View>
-    </View >
   );
 }
