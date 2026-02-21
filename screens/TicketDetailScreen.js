@@ -20,31 +20,17 @@ export default function TicketDetailScreen({ route, navigation }) {
   const progress = useRef(new Animated.Value(1)).current;
   const [activeIndex, setActiveIndex] = useState(0);
 
-  // Animação de entrada (descida simples)
-  const translateY = useRef(new Animated.Value(-60)).current;
-  const opacityAnim = useRef(new Animated.Value(0)).current;
+  // Animação de entrada removida para fidelidade absoluta
+  const translateY = useRef(new Animated.Value(0)).current;
+  const opacityAnim = useRef(new Animated.Value(1)).current;
   const ticketsArray = ticket.ticketsList || Array.from({ length: ticket.ticketQuantity || 1 }, (_, i) => i);
 
   useFocusEffect(
     React.useCallback(() => {
-      // Inicia animação de descida
-      Animated.parallel([
-        Animated.timing(translateY, {
-          toValue: 0,
-          duration: 700,
-          useNativeDriver: true,
-        }),
-        Animated.timing(opacityAnim, {
-          toValue: 1,
-          duration: 700,
-          useNativeDriver: true,
-        })
-      ]).start();
+      // Exibe imediatamente sem animação
+      opacityAnim.setValue(1);
+      translateY.setValue(0);
 
-      if (Platform.OS === 'web') return;
-      const activateProtection = async () => { await ScreenCapture.preventScreenCaptureAsync(); };
-      activateProtection();
-      return () => { ScreenCapture.allowScreenCaptureAsync(); };
     }, [])
   );
 
@@ -68,27 +54,21 @@ export default function TicketDetailScreen({ route, navigation }) {
     const categoryText = isMeia ? 'MEIA-ENTRADA' : 'INTEIRA';
 
     return (
-      <View key={index} style={{ width: ITEM_WIDTH, alignItems: 'center', paddingTop: 5 }}>
+      <View key={index} style={{ width: ITEM_WIDTH, alignItems: 'center' }}>
         <View style={styles.ticketCardContainer}>
-
-          {/* BLOCO SUPERIOR: Cabeçalho Azul + QR e Infos Base */}
-          <View style={{ borderRadius: 16, overflow: 'hidden', backgroundColor: '#fff' }}>
-            <View style={styles.blueHeaderContainer}>
-              <ImageBackground source={{ uri: BACKGROUND_URL }} style={styles.ticketBlueTop} resizeMode="cover">
-                {/* Visual vem diretamente do BACKGROUND_URL com logo embutida */}
+          <View style={{ borderRadius: 8, overflow: 'hidden', backgroundColor: '#fff' }}>
+            <View style={[styles.blueHeaderContainer, { backgroundColor: '#0149D2' }]}>
+              <ImageBackground source={{ uri: BACKGROUND_URL }} style={styles.ticketBlueTop} resizeMode="contain">
                 <View style={{ flex: 1 }} />
-
-                {/* Textos da Base (Taxa e Doação) */}
                 <View style={{ paddingBottom: 15, alignItems: 'center', paddingHorizontal: 25 }}>
-                  <Text style={{ color: '#fff', fontSize: 6.2, fontWeight: '700', textAlign: 'center', opacity: 0.8, letterSpacing: 0.3 }}>
+                  <Text style={{ color: '#fff', fontSize: 8.5, fontWeight: '800', textAlign: 'center', opacity: 0.95, letterSpacing: 0.4 }}>
                     TAXA DE ADMINISTRAÇÃO · WT -30 R$ 21,74
                   </Text>
-                  <Text style={{ color: '#fff', fontSize: 5.2, fontWeight: '700', textAlign: 'center', marginTop: 3, opacity: 0.8, letterSpacing: 0.1 }}>
+                  <Text style={{ color: '#fff', fontSize: 7.2, fontWeight: '800', textAlign: 'center', marginTop: 4, opacity: 0.95, letterSpacing: 0.2 }}>
                     DO TOTAL ARRECADADO COM A VENDA DE INGRESSOS, SERÃO DESTINADOS À DOAÇÃO R$ 25,00 POR INGRESSO DO TIPO "{categoryText}".
                   </Text>
                 </View>
               </ImageBackground>
-
               <View style={styles.scannerStrip}>
                 <Animated.View style={[styles.scannerBar, { width: barWidth }]} />
               </View>
@@ -101,12 +81,12 @@ export default function TicketDetailScreen({ route, navigation }) {
                 </View>
                 <View style={[styles.qrInfoColumn, { flex: 1 }]}>
                   <View>
-                    <Text style={[styles.label, { letterSpacing: 1.2, fontSize: 7.5 }]}>SETOR</Text>
-                    <Text style={styles.valueTitle}>{ticket.section}</Text>
-                    <Text style={[styles.label, { letterSpacing: 1.2, fontSize: 7.5, marginTop: 4 }]}>ACESSO</Text>
-                    <Text style={styles.valueTitle}>{ticket.gate}</Text>
+                    <Text style={[styles.label, { letterSpacing: 1.2, fontSize: 8 }]}>SETOR</Text>
+                    <Text style={[styles.valueTitle, { fontSize: 16.5, fontWeight: '600' }]}>{ticket.section}</Text>
+                    <Text style={[styles.label, { letterSpacing: 1.2, fontSize: 8, marginTop: 5 }]}>ACESSO</Text>
+                    <Text style={[styles.valueTitle, { fontSize: 16.5, fontWeight: '600' }]}>{ticket.gate}</Text>
                   </View>
-                  <TouchableOpacity style={[styles.moreInfoBtn, { borderRadius: 12, paddingVertical: 12 }]}>
+                  <TouchableOpacity style={styles.moreInfoBtn}>
                     <Text style={styles.moreInfoText}>Mais informação</Text>
                   </TouchableOpacity>
                 </View>
@@ -114,36 +94,32 @@ export default function TicketDetailScreen({ route, navigation }) {
             </View>
           </View>
 
-          {/* BLOCO INFERIOR: Detalhes do Ingresso */}
           <View style={styles.ticketBoxBottom}>
             <View style={styles.detailsGrid}>
               <View style={styles.gridRow}>
                 <View>
-                  <Text style={[styles.label, { letterSpacing: 1.2, fontSize: 7.5 }]}>TAXA</Text>
+                  <Text style={[styles.label, { letterSpacing: 1.2, fontSize: 8 }]}>TAXA</Text>
                   <Text style={styles.valueBold}>{priceDisplay}</Text>
                 </View>
               </View>
-
               <View style={styles.divider} />
-
-              <View style={[styles.gridRow]}>
+              <View style={styles.gridRow}>
                 <View style={{ flex: 1 }}>
-                  <Text style={[styles.label, { letterSpacing: 1.2, fontSize: 7.5 }]}>SEÇÃO</Text>
+                  <Text style={[styles.label, { letterSpacing: 1.2, fontSize: 8 }]}>SEÇÃO</Text>
                   <Text style={styles.valueBold}>{ticket.section.toUpperCase()}</Text>
                 </View>
                 <View style={{ flex: 1 }}>
-                  <Text style={[styles.label, { letterSpacing: 1.2, fontSize: 7.5 }]}>FILEIRA</Text>
+                  <Text style={[styles.label, { letterSpacing: 1.2, fontSize: 8 }]}>FILEIRA</Text>
                   <Text style={styles.valueBold}>{ticket.rowInfo}</Text>
                 </View>
               </View>
-
               <View style={[styles.gridRow, { marginTop: 22 }]}>
                 <View style={{ flex: 1 }}>
-                  <Text style={[styles.label, { letterSpacing: 1.2, fontSize: 7.5 }]}>ABERTURA</Text>
+                  <Text style={[styles.label, { letterSpacing: 1.2, fontSize: 8 }]}>ABERTURA</Text>
                   <Text style={styles.valueBold}>{ticket.open}</Text>
                 </View>
                 <View style={{ flex: 1 }}>
-                  <Text style={[styles.label, { letterSpacing: 1.2, fontSize: 7.5 }]}>INÍCIO</Text>
+                  <Text style={[styles.label, { letterSpacing: 1.2, fontSize: 8 }]}>INÍCIO</Text>
                   <Text style={styles.valueBold}>{ticket.start}</Text>
                 </View>
               </View>
@@ -178,9 +154,9 @@ export default function TicketDetailScreen({ route, navigation }) {
             alwaysBounceVertical={true}
             overScrollMode="always"
             contentContainerStyle={{
-              paddingTop: 60, // Deeper pull-down start
+              paddingTop: 0,
               paddingBottom: 80,
-              alignItems: 'center'
+              minHeight: Dimensions.get('window').height + 300, // Efeito "descce mais" (over-scroll) conforme foto
             }}
           >
             {/* Paginador HORIZONTAL entre ingressos (apenas se houver mais de um) */}
@@ -202,7 +178,9 @@ export default function TicketDetailScreen({ route, navigation }) {
                 {ticketsArray.map((item, index) => renderCard(item, index))}
               </ScrollView>
             ) : (
-              ticketsArray.map((item, index) => renderCard(item, index))
+              <View style={{ width: width, alignItems: 'center' }}>
+                {ticketsArray.map((item, index) => renderCard(item, index))}
+              </View>
             )}
           </ScrollView>
         </Animated.View>
