@@ -160,7 +160,7 @@ export default function TicketDetailScreen({ route, navigation }) {
         <StatusBar barStyle="light-content" backgroundColor="#121618" />
 
         {/* NavBar fixa */}
-        <View style={styles.detailNavBar}>
+        <View style={[styles.detailNavBar, { paddingVertical: 8 }]}>
           <TouchableOpacity onPress={() => navigation.goBack()} style={{ padding: 5 }}>
             <Ionicons name="chevron-back" size={26} color="#bbb" />
           </TouchableOpacity>
@@ -178,9 +178,9 @@ export default function TicketDetailScreen({ route, navigation }) {
             alwaysBounceVertical={true}
             overScrollMode="always"
             contentContainerStyle={{
-              paddingTop: 12,
-              paddingBottom: 60,
-              minHeight: PAGER_HEIGHT + 120
+              paddingTop: 20,
+              paddingBottom: 40,
+              minHeight: PAGER_HEIGHT + 100
             }}
           >
             {/* Paginador HORIZONTAL entre ingressos */}
@@ -201,18 +201,10 @@ export default function TicketDetailScreen({ route, navigation }) {
               {ticketsArray.map((item, index) => renderCard(item, index))}
             </ScrollView>
 
-            {/* Dots de paginação */}
-            {ticketsArray.length > 1 && (
-              <View style={[styles.paginationContainer, { marginTop: 15, marginBottom: 10 }]}>
-                {ticketsArray.map((_, i) => (
-                  <View key={i} style={[styles.paginationDot, i === activeIndex ? styles.dotActive : styles.dotInactive]} />
-                ))}
-              </View>
-            )}
-
           </ScrollView>
-        </Animated.View>
-      </View>
+        </ScrollView>
+      </Animated.View>
     </View>
+    </View >
   );
 }
