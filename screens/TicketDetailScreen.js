@@ -119,10 +119,7 @@ export default function TicketDetailScreen({ route, navigation }) {
             <View style={styles.detailsGrid}>
               <View style={styles.gridRow}>
                 <View>
-                  <Text style={[styles.label, { marginBottom: 4 }]}>SETOR</Text>
-                  <Text style={[styles.valueBold, { fontSize: 18, marginBottom: 12 }]}>{ticket.section}</Text>
-
-                  <Text style={styles.label}>TAXA</Text>
+                  <Text style={[styles.label, { letterSpacing: 1.2, fontSize: 7.5 }]}>TAXA</Text>
                   <Text style={styles.valueBold}>{priceDisplay}</Text>
                 </View>
               </View>
@@ -131,22 +128,22 @@ export default function TicketDetailScreen({ route, navigation }) {
 
               <View style={[styles.gridRow]}>
                 <View style={{ flex: 1 }}>
-                  <Text style={styles.label}>SEÇÃO</Text>
+                  <Text style={[styles.label, { letterSpacing: 1.2, fontSize: 7.5 }]}>SEÇÃO</Text>
                   <Text style={styles.valueBold}>{ticket.section.toUpperCase()}</Text>
                 </View>
                 <View style={{ flex: 1 }}>
-                  <Text style={styles.label}>FILEIRA</Text>
+                  <Text style={[styles.label, { letterSpacing: 1.2, fontSize: 7.5 }]}>FILEIRA</Text>
                   <Text style={styles.valueBold}>{ticket.rowInfo}</Text>
                 </View>
               </View>
 
               <View style={[styles.gridRow, { marginTop: 22 }]}>
                 <View style={{ flex: 1 }}>
-                  <Text style={styles.label}>ABERTURA</Text>
+                  <Text style={[styles.label, { letterSpacing: 1.2, fontSize: 7.5 }]}>ABERTURA</Text>
                   <Text style={styles.valueBold}>{ticket.open}</Text>
                 </View>
                 <View style={{ flex: 1 }}>
-                  <Text style={styles.label}>INÍCIO</Text>
+                  <Text style={[styles.label, { letterSpacing: 1.2, fontSize: 7.5 }]}>INÍCIO</Text>
                   <Text style={styles.valueBold}>{ticket.start}</Text>
                 </View>
               </View>
