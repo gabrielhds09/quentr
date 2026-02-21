@@ -210,22 +210,10 @@ export default function TicketDetailScreen({ route, navigation }) {
               </View>
             )}
 
-            {/* Rodapé: Devolva ingresso (Re-adicionado conforme print) */}
-            <View style={{
-              flexDirection: 'row',
-              alignItems: 'center',
-              justifyContent: 'center',
-              marginTop: 20,
-              paddingBottom: 40
-            }}>
-              <Ionicons name="arrow-undo-sharp" size={18} color="#00E5FF" style={{ marginRight: 10 }} />
-              <Text style={{ color: '#fff', fontWeight: '600', fontSize: 13, opacity: 0.9 }}>
-                Devolva ingresso a Lorena Cristyne Silva Cardoso
-              </Text>
-            </View>
           </ScrollView>
-        </Animated.View>
-      </View>
+        </ScrollView>
+      </Animated.View>
     </View>
+    </View >
   );
 }
