@@ -32,73 +32,6 @@ export const COLORS = {
 // DADOS
 export const TICKETS_DATA = [
   {
-    id: '9',
-    eventTitle: "BAD BUNNY: DeBÍ TiRAR MáS FOToS World Tour",
-    subTitle: "21/02/2026 • Allianz Parque, São Paulo",
-    venue: "SÃO PAULO, BRASIL | Allianz Parque",
-    countText: "4 Ingressos",
-    ticketQuantity: 4,
-    dateText: "Sáb 21 21:00",
-    image: "https://cdn.getcrowder.com/images/bebfda30-5715-45da-92aa-9fc51cd39333-badbunny1920x720foto.gif",
-    sortDate: "2026-02-21",
-    fullDate: "21/02/2026",
-    section: "Pista Premium",
-    gate: "Portão A",
-    rowInfo: "Não numerado",
-    open: "16:00",
-    start: "21:00",
-    ticketsList: [
-      { priceInfo: "Meia - R$ 747,50", qrCodeBase: "BB-SP-PREMIUM-M1" },
-      { priceInfo: "Meia - R$ 747,50", qrCodeBase: "BB-SP-PREMIUM-M2" },
-      { priceInfo: "Inteira - R$ 1.495,00", qrCodeBase: "BB-SP-PREMIUM-I1" },
-      { priceInfo: "Inteira - R$ 1.495,00", qrCodeBase: "BB-SP-PREMIUM-I2" }
-    ]
-  },
-  {
-    id: '6',
-    eventTitle: "BAD BUNNY: DeBÍ TiRAR MáS FOToS World Tour",
-    subTitle: "21/02/2026 • Allianz Parque, São Paulo",
-    venue: "SÃO PAULO, BRASIL | Allianz Parque",
-    countText: "2 Ingressos",
-    ticketQuantity: 2,
-    dateText: "Sáb 21 21:00",
-    image: "https://cdn.getcrowder.com/images/bebfda30-5715-45da-92aa-9fc51cd39333-badbunny1920x720foto.gif",
-    sortDate: "2026-02-21",
-    fullDate: "21/02/2026",
-    section: "Pista",
-    gate: "Portão B",
-    rowInfo: "Não numerado",
-    open: "16:00",
-    start: "21:00",
-    ticketsList: [
-      { priceInfo: "Meia - R$ 537,50", qrCodeBase: "BB-SP-PISTA-M" },
-      { priceInfo: "Inteira - R$ 1.075,00", qrCodeBase: "BB-SP-PISTA-I" }
-    ]
-  },
-  {
-    id: '7',
-    eventTitle: "BAD BUNNY: DeBÍ TiRAR MáS FOToS World Tour",
-    subTitle: "21/02/2026 • Allianz Parque, São Paulo",
-    venue: "SÃO PAULO, BRASIL | Allianz Parque",
-    countText: "4 Ingressos",
-    ticketQuantity: 4,
-    dateText: "Sáb 21 21:00",
-    image: "https://cdn.getcrowder.com/images/bebfda30-5715-45da-92aa-9fc51cd39333-badbunny1920x720foto.gif",
-    sortDate: "2026-02-21",
-    fullDate: "21/02/2026",
-    section: "Cadeira Inferior",
-    gate: "Portões A, C e D",
-    rowInfo: "Não numerado",
-    open: "16:00",
-    start: "21:00",
-    ticketsList: [
-      { priceInfo: "Meia - R$ 547,50", qrCodeBase: "BB-SP-CADINF-M1" },
-      { priceInfo: "Meia - R$ 547,50", qrCodeBase: "BB-SP-CADINF-M2" },
-      { priceInfo: "Inteira - R$ 1.095,00", qrCodeBase: "BB-SP-CADINF-I1" },
-      { priceInfo: "Inteira - R$ 1.095,00", qrCodeBase: "BB-SP-CADINF-I2" }
-    ]
-  },
-  {
     id: '8',
     eventTitle: "BAD BUNNY: DeBÍ TiRAR MáS FOToS World Tour",
     subTitle: "21/02/2026 • Allianz Parque, São Paulo",
@@ -110,7 +43,7 @@ export const TICKETS_DATA = [
     sortDate: "2026-02-21",
     fullDate: "21/02/2026",
     section: "Cadeira Superior",
-    gate: "Portão B",
+    gate: "Portão A",
     rowInfo: "Não numerado",
     open: "16:00",
     start: "21:00",
