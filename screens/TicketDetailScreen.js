@@ -75,13 +75,8 @@ export default function TicketDetailScreen({ route, navigation }) {
           <View style={{ borderRadius: 16, overflow: 'hidden', backgroundColor: '#fff' }}>
             <View style={styles.blueHeaderContainer}>
               <ImageBackground source={{ uri: BACKGROUND_URL }} style={styles.ticketBlueTop} resizeMode="cover">
-                {/* Visual agora vem diretamente do BACKGROUND_URL conforme pedido */}
-
-                {/* Logo e Slogan Centralizados */}
-                <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-                  <Image source={{ uri: TM_LOGO_URL }} style={{ width: 220, height: 60 }} resizeMode="contain" />
-                  <Text style={{ color: '#00E5FF', fontSize: 18, fontWeight: '700', marginTop: -5, letterSpacing: -0.5 }}>#OAoVivoÉAgora</Text>
-                </View>
+                {/* Visual vem diretamente do BACKGROUND_URL com logo embutida */}
+                <View style={{ flex: 1 }} />
 
                 {/* Textos da Base (Taxa e Doação) */}
                 <View style={{ paddingBottom: 15, alignItems: 'center', paddingHorizontal: 25 }}>
@@ -201,7 +196,6 @@ export default function TicketDetailScreen({ route, navigation }) {
                 setActiveIndex(index);
               }}
               scrollEventThrottle={16}
-              contentContainerStyle={{ paddingHorizontal: (width - ITEM_WIDTH) / 2 }}
             >
               {ticketsArray.map((item, index) => renderCard(item, index))}
             </ScrollView>
