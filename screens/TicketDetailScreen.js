@@ -179,7 +179,12 @@ export default function TicketDetailScreen({ route, navigation }) {
             showsVerticalScrollIndicator={false}
             bounces={true}
             alwaysBounceVertical={true}
-            contentContainerStyle={{ paddingBottom: 60, minHeight: PAGER_HEIGHT + 120 }}
+            overScrollMode="always"
+            contentContainerStyle={{
+              paddingTop: 12,
+              paddingBottom: 60,
+              minHeight: PAGER_HEIGHT + 120
+            }}
           >
             {/* Paginador HORIZONTAL entre ingressos */}
             <ScrollView
