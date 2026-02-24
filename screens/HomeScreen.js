@@ -4,7 +4,7 @@ import { View, Text, Image, TouchableOpacity, StyleSheet, SafeAreaView, StatusBa
 import { Ionicons } from '@expo/vector-icons';
 import { TICKETS_DATA, COLORS, styles } from '../config';
 
-const TODAY = "2026-02-21";
+const TODAY = "2026-02-24";
 
 export default function HomeScreen({ navigation }) {
   const [tab, setTab] = useState('proximos');
