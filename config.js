@@ -8,7 +8,7 @@ export const CARD_WIDTH = width * 0.90; // Reduzido mais para espaçamento visí
 export const QR_SIZE = 125; // Aumentado conforme referência
 
 // CONFIGURAÇÃO GERAL
-export const BACKGROUND_URL = "https://i.postimg.cc/XYj9d0Gn/Design-sem-nome.png";
+export const BACKGROUND_URL = "https://i.postimg.cc/9Xn9b2gM/rufus-bg.png"; // Placeholder for Rufus
 export const TM_LOGO_URL = "https://i.postimg.cc/XYj9d0Gn/Design-sem-nome.png";
 
 // CORES
@@ -32,114 +32,129 @@ export const COLORS = {
 // DADOS
 export const TICKETS_DATA = [
   {
-    id: '9',
-    eventTitle: "AC/DC: Pwr Up Tour MorumBis",
-    subTitle: "24/02/2026 • Estádio MorumBis, São Paulo",
-    venue: "MorumBis",
-    countText: "4 Ingressos",
-    ticketQuantity: 4,
-    dateText: "Ter 24 21:00",
-    image: require('./assets/acdc.jpg'),
-    sortDate: "2026-02-24",
-    fullDate: "24/02/2026",
-    section: "PISTA A",
-    gate: "PORTÃO 02",
-    rowInfo: "Não numerado",
-    open: "16:00",
-    start: "21:00",
-    ticketsList: [
-      { priceInfo: "Meia - R$ 675,00", qrCodeBase: "ACDC-SP-PISTA-M1" },
-      { priceInfo: "Meia - R$ 675,00", qrCodeBase: "ACDC-SP-PISTA-M2" },
-      { priceInfo: "Inteira - R$ 1.350,00", qrCodeBase: "ACDC-SP-PISTA-I1" },
-      { priceInfo: "Inteira - R$ 1.350,00", qrCodeBase: "ACDC-SP-PISTA-I2" }
-    ]
-  },
-  {
-    id: '6',
-    eventTitle: "AC/DC: Pwr Up Tour MorumBis",
-    subTitle: "24/02/2026 • Estádio MorumBis, São Paulo",
-    venue: "MorumBis",
+    id: 'rufus-premium',
+    eventTitle: "RÜFÜS DU SOL: SÃO PAULO",
+    subTitle: "27/02/2026 • Mercado Livre Arena Pacaembu, São Paulo",
+    venue: "Mercado Livre Arena Pacaembu",
     countText: "2 Ingressos",
     ticketQuantity: 2,
-    dateText: "Ter 24 21:00",
-    image: require('./assets/acdc.jpg'),
-    sortDate: "2026-02-24",
-    fullDate: "24/02/2026",
-    section: "PISTA B",
-    gate: "PORTÃO 04",
+    dateText: "Sex 27 19:45",
+    image: "https://i.postimg.cc/9Xn9b2gM/rufus-bg.png",
+    sortDate: "2026-02-27",
+    fullDate: "27/02/2026",
+    section: "Pista Premium",
+    gate: "PORTÃO PRINCIPAL",
     rowInfo: "Não numerado",
     open: "16:00",
-    start: "21:00",
+    start: "19:45",
     ticketsList: [
-      { priceInfo: "Meia - R$ 675,00", qrCodeBase: "ACDC-SP-PISTA-M" },
-      { priceInfo: "Inteira - R$ 1.350,00", qrCodeBase: "ACDC-SP-PISTA-I" }
+      { priceInfo: "Inteira - R$ 850,00", qrCodeBase: "RUFUS-SP-PREMIUM-I1" },
+      { priceInfo: "Inteira - R$ 850,00", qrCodeBase: "RUFUS-SP-PREMIUM-I2" }
     ]
   },
   {
-    id: '7',
-    eventTitle: "AC/DC: Pwr Up Tour MorumBis",
-    subTitle: "24/02/2026 • Estádio MorumBis, São Paulo",
-    venue: "MorumBis",
-    countText: "4 Ingressos",
-    ticketQuantity: 4,
-    dateText: "Ter 24 21:00",
-    image: require('./assets/acdc.jpg'),
-    sortDate: "2026-02-24",
-    fullDate: "24/02/2026",
-    section: "CADEIRA INFERIOR",
-    gate: "PORTÃO 17A",
-    rowInfo: "Não numerado",
-    open: "16:00",
-    start: "21:00",
-    ticketsList: [
-      { priceInfo: "Meia - R$ 795,00", qrCodeBase: "ACDC-SP-CADINF-M1" },
-      { priceInfo: "Meia - R$ 795,00", qrCodeBase: "ACDC-SP-CADINF-M2" },
-      { priceInfo: "Inteira - R$ 1.590,00", qrCodeBase: "ACDC-SP-CADINF-I1" },
-      { priceInfo: "Inteira - R$ 1.590,00", qrCodeBase: "ACDC-SP-CADINF-I2" }
-    ]
-  },
-  {
-    id: '8',
-    eventTitle: "AC/DC: Pwr Up Tour MorumBis",
-    subTitle: "24/02/2026 • Estádio MorumBis, São Paulo",
-    venue: "MorumBis",
-    countText: "4 Ingressos",
-    ticketQuantity: 4,
-    dateText: "Ter 24 21:00",
-    image: require('./assets/acdc.jpg'),
-    sortDate: "2026-02-24",
-    fullDate: "24/02/2026",
-    section: "CADEIRA SUPERIOR",
-    gate: "PORTÃO 05",
-    rowInfo: "Não numerado",
-    open: "16:00",
-    start: "21:00",
-    ticketsList: [
-      { priceInfo: "Meia - R$ 745,00", qrCodeBase: "ACDC-SP-CADSUP-M1" },
-      { priceInfo: "Meia - R$ 745,00", qrCodeBase: "ACDC-SP-CADSUP-M2" },
-      { priceInfo: "Inteira - R$ 1.490,00", qrCodeBase: "ACDC-SP-CADSUP-I1" },
-      { priceInfo: "Inteira - R$ 1.490,00", qrCodeBase: "ACDC-SP-CADSUP-I2" }
-    ]
-  },
-  {
-    id: '10',
-    eventTitle: "AC/DC: Pwr Up Tour MorumBis",
-    subTitle: "24/02/2026 • Estádio MorumBis, São Paulo",
-    venue: "MorumBis",
+    id: 'rufus-pista',
+    eventTitle: "RÜFÜS DU SOL: SÃO PAULO",
+    subTitle: "27/02/2026 • Mercado Livre Arena Pacaembu, São Paulo",
+    venue: "Mercado Livre Arena Pacaembu",
     countText: "2 Ingressos",
     ticketQuantity: 2,
-    dateText: "Ter 24 21:00",
-    image: require('./assets/acdc.jpg'),
-    sortDate: "2026-02-24",
-    fullDate: "24/02/2026",
-    section: "ARQUIBANCADA",
-    gate: "PORTÃO 06",
+    dateText: "Sex 27 19:45",
+    image: "https://i.postimg.cc/9Xn9b2gM/rufus-bg.png",
+    sortDate: "2026-02-27",
+    fullDate: "27/02/2026",
+    section: "Pista",
+    gate: "PORTÃO B",
     rowInfo: "Não numerado",
     open: "16:00",
-    start: "21:00",
+    start: "19:45",
     ticketsList: [
-      { priceInfo: "Meia - R$ 425,00", qrCodeBase: "ACDC-SP-ARQ-M" },
-      { priceInfo: "Inteira - R$ 850,00", qrCodeBase: "ACDC-SP-ARQ-I" }
+      { priceInfo: "Inteira - R$ 590,00", qrCodeBase: "RUFUS-SP-PISTA-I1" },
+      { priceInfo: "Inteira - R$ 590,00", qrCodeBase: "RUFUS-SP-PISTA-I2" }
+    ]
+  },
+  {
+    id: 'rufus-arq-norte',
+    eventTitle: "RÜFÜS DU SOL: SÃO PAULO",
+    subTitle: "27/02/2026 • Mercado Livre Arena Pacaembu, São Paulo",
+    venue: "Mercado Livre Arena Pacaembu",
+    countText: "2 Ingressos",
+    ticketQuantity: 2,
+    dateText: "Sex 27 19:45",
+    image: "https://i.postimg.cc/9Xn9b2gM/rufus-bg.png",
+    sortDate: "2026-02-27",
+    fullDate: "27/02/2026",
+    section: "Arquibancada Norte",
+    gate: "PORTÃO C",
+    rowInfo: "Não numerado",
+    open: "16:00",
+    start: "19:45",
+    ticketsList: [
+      { priceInfo: "Inteira - R$ 620,00", qrCodeBase: "RUFUS-SP-ARQN-I1" },
+      { priceInfo: "Inteira - R$ 620,00", qrCodeBase: "RUFUS-SP-ARQN-I2" }
+    ]
+  },
+  {
+    id: 'rufus-cad-leste',
+    eventTitle: "RÜFÜS DU SOL: SÃO PAULO",
+    subTitle: "27/02/2026 • Mercado Livre Arena Pacaembu, São Paulo",
+    venue: "Mercado Livre Arena Pacaembu",
+    countText: "2 Ingressos",
+    ticketQuantity: 2,
+    dateText: "Sex 27 19:45",
+    image: "https://i.postimg.cc/9Xn9b2gM/rufus-bg.png",
+    sortDate: "2026-02-27",
+    fullDate: "27/02/2026",
+    section: "Cadeira Leste",
+    gate: "PORTÃO D",
+    rowInfo: "Não numerado",
+    open: "16:00",
+    start: "19:45",
+    ticketsList: [
+      { priceInfo: "Inteira - R$ 760,00", qrCodeBase: "RUFUS-SP-CADL-I1" },
+      { priceInfo: "Inteira - R$ 760,00", qrCodeBase: "RUFUS-SP-CADL-I2" }
+    ]
+  },
+  {
+    id: 'rufus-cad-oeste',
+    eventTitle: "RÜFÜS DU SOL: SÃO PAULO",
+    subTitle: "27/02/2026 • Mercado Livre Arena Pacaembu, São Paulo",
+    venue: "Mercado Livre Arena Pacaembu",
+    countText: "2 Ingressos",
+    ticketQuantity: 2,
+    dateText: "Sex 27 19:45",
+    image: "https://i.postimg.cc/9Xn9b2gM/rufus-bg.png",
+    sortDate: "2026-02-27",
+    fullDate: "27/02/2026",
+    section: "Cadeira Oeste",
+    gate: "PORTÃO E",
+    rowInfo: "Não numerado",
+    open: "16:00",
+    start: "19:45",
+    ticketsList: [
+      { priceInfo: "Inteira - R$ 760,00", qrCodeBase: "RUFUS-SP-CADO-I1" },
+      { priceInfo: "Inteira - R$ 760,00", qrCodeBase: "RUFUS-SP-CADO-I2" }
+    ]
+  },
+  {
+    id: 'rufus-cad-oeste-coberta',
+    eventTitle: "RÜFÜS DU SOL: SÃO PAULO",
+    subTitle: "27/02/2026 • Mercado Livre Arena Pacaembu, São Paulo",
+    venue: "Mercado Livre Arena Pacaembu",
+    countText: "2 Ingressos",
+    ticketQuantity: 2,
+    dateText: "Sex 27 19:45",
+    image: "https://i.postimg.cc/9Xn9b2gM/rufus-bg.png",
+    sortDate: "2026-02-27",
+    fullDate: "27/02/2026",
+    section: "Cadeira Oeste Coberta",
+    gate: "PORTÃO E",
+    rowInfo: "Não numerado",
+    open: "16:00",
+    start: "19:45",
+    ticketsList: [
+      { priceInfo: "Inteira - R$ 790,00", qrCodeBase: "RUFUS-SP-CADOC-I1" },
+      { priceInfo: "Inteira - R$ 790,00", qrCodeBase: "RUFUS-SP-CADOC-I2" }
     ]
   },
   {
