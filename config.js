@@ -144,7 +144,7 @@ export const TICKETS_DATA = [
     countText: "2 Ingressos",
     ticketQuantity: 2,
     dateText: "Sex 27 19:45",
-    image: require('./assets/rufus.png'),
+    image: require('./assets/rufus.jpg'),
     sortDate: "2026-02-27",
     fullDate: "27/02/2026",
     section: "Cadeira Oeste Coberta",
