@@ -8,7 +8,7 @@ export const CARD_WIDTH = width * 0.90; // Reduzido mais para espaçamento visí
 export const QR_SIZE = 125; // Aumentado conforme referência
 
 // CONFIGURAÇÃO GERAL
-export const BACKGROUND_URL = "https://i.postimg.cc/9Xn9b2gM/rufus-bg.png"; // Placeholder for Rufus
+export const BACKGROUND_URL = "https://i.postimg.cc/XYj9d0Gn/Design-sem-nome.png";
 export const TM_LOGO_URL = "https://i.postimg.cc/XYj9d0Gn/Design-sem-nome.png";
 
 // CORES
@@ -39,7 +39,7 @@ export const TICKETS_DATA = [
     countText: "2 Ingressos",
     ticketQuantity: 2,
     dateText: "Sex 27 19:45",
-    image: "https://i.postimg.cc/9Xn9b2gM/rufus-bg.png",
+    image: require('./assets/rufus.png'),
     sortDate: "2026-02-27",
     fullDate: "27/02/2026",
     section: "Pista Premium",
@@ -60,7 +60,7 @@ export const TICKETS_DATA = [
     countText: "2 Ingressos",
     ticketQuantity: 2,
     dateText: "Sex 27 19:45",
-    image: "https://i.postimg.cc/9Xn9b2gM/rufus-bg.png",
+    image: require('./assets/rufus.png'),
     sortDate: "2026-02-27",
     fullDate: "27/02/2026",
     section: "Pista",
@@ -81,7 +81,7 @@ export const TICKETS_DATA = [
     countText: "2 Ingressos",
     ticketQuantity: 2,
     dateText: "Sex 27 19:45",
-    image: "https://i.postimg.cc/9Xn9b2gM/rufus-bg.png",
+    image: require('./assets/rufus.png'),
     sortDate: "2026-02-27",
     fullDate: "27/02/2026",
     section: "Arquibancada Norte",
@@ -102,7 +102,7 @@ export const TICKETS_DATA = [
     countText: "2 Ingressos",
     ticketQuantity: 2,
     dateText: "Sex 27 19:45",
-    image: "https://i.postimg.cc/9Xn9b2gM/rufus-bg.png",
+    image: require('./assets/rufus.png'),
     sortDate: "2026-02-27",
     fullDate: "27/02/2026",
     section: "Cadeira Leste",
@@ -123,7 +123,7 @@ export const TICKETS_DATA = [
     countText: "2 Ingressos",
     ticketQuantity: 2,
     dateText: "Sex 27 19:45",
-    image: "https://i.postimg.cc/9Xn9b2gM/rufus-bg.png",
+    image: require('./assets/rufus.png'),
     sortDate: "2026-02-27",
     fullDate: "27/02/2026",
     section: "Cadeira Oeste",
@@ -144,7 +144,7 @@ export const TICKETS_DATA = [
     countText: "2 Ingressos",
     ticketQuantity: 2,
     dateText: "Sex 27 19:45",
-    image: "https://i.postimg.cc/9Xn9b2gM/rufus-bg.png",
+    image: require('./assets/rufus.png'),
     sortDate: "2026-02-27",
     fullDate: "27/02/2026",
     section: "Cadeira Oeste Coberta",
