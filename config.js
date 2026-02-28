@@ -32,8 +32,8 @@ export const COLORS = {
 // DADOS
 export const TICKETS_DATA = [
   {
-    id: 'acdc-pista',
-    eventTitle: "AC/DC",
+    id: 'acdc-pista-a',
+    eventTitle: "AC/DC: Pwr Up Tour",
     subTitle: "28/02/2026 • Estádio Morumbi, São Paulo",
     venue: "Estádio Morumbi",
     countText: "2 Ingressos",
@@ -42,19 +42,40 @@ export const TICKETS_DATA = [
     image: require('./assets/acdc.jpg'),
     sortDate: "2026-02-28",
     fullDate: "28/02/2026",
-    section: "Pista A & B",
-    gate: "PORTÃO 4",
+    section: "Pista A",
+    gate: "PORTÃO 02/18",
     rowInfo: "Não numerado",
     open: "17:00",
     start: "21:00",
     ticketsList: [
-      { priceInfo: "Inteira - R$ 1.350,00", qrCodeBase: "ACDC-SP-PISTA-I1" },
-      { priceInfo: "Inteira - R$ 1.350,00", qrCodeBase: "ACDC-SP-PISTA-I2" }
+      { priceInfo: "Inteira - R$ 1.350,00", qrCodeBase: "ACDC-SP-PISTAA-I1" },
+      { priceInfo: "Inteira - R$ 1.350,00", qrCodeBase: "ACDC-SP-PISTAA-I2" }
+    ]
+  },
+  {
+    id: 'acdc-pista-b',
+    eventTitle: "AC/DC: Pwr Up Tour",
+    subTitle: "28/02/2026 • Estádio Morumbi, São Paulo",
+    venue: "Estádio Morumbi",
+    countText: "2 Ingressos",
+    ticketQuantity: 2,
+    dateText: "Sáb 28 21:00",
+    image: require('./assets/acdc.jpg'),
+    sortDate: "2026-02-28",
+    fullDate: "28/02/2026",
+    section: "Pista B",
+    gate: "PORTÃO 04",
+    rowInfo: "Não numerado",
+    open: "17:00",
+    start: "21:00",
+    ticketsList: [
+      { priceInfo: "Inteira - R$ 1.350,00", qrCodeBase: "ACDC-SP-PISTAB-I1" },
+      { priceInfo: "Inteira - R$ 1.350,00", qrCodeBase: "ACDC-SP-PISTAB-I2" }
     ]
   },
   {
     id: 'acdc-arquibancada',
-    eventTitle: "AC/DC",
+    eventTitle: "AC/DC: Pwr Up Tour",
     subTitle: "28/02/2026 • Estádio Morumbi, São Paulo",
     venue: "Estádio Morumbi",
     countText: "2 Ingressos",
@@ -64,7 +85,7 @@ export const TICKETS_DATA = [
     sortDate: "2026-02-28",
     fullDate: "28/02/2026",
     section: "Arquibancada",
-    gate: "PORTÃO 1/18",
+    gate: "PORTÃO 06/15",
     rowInfo: "Não numerado",
     open: "17:00",
     start: "21:00",
@@ -75,7 +96,7 @@ export const TICKETS_DATA = [
   },
   {
     id: 'acdc-superior',
-    eventTitle: "AC/DC",
+    eventTitle: "AC/DC: Pwr Up Tour",
     subTitle: "28/02/2026 • Estádio Morumbi, São Paulo",
     venue: "Estádio Morumbi",
     countText: "2 Ingressos",
@@ -85,7 +106,7 @@ export const TICKETS_DATA = [
     sortDate: "2026-02-28",
     fullDate: "28/02/2026",
     section: "Cadeira Superior",
-    gate: "PORTÃO 5",
+    gate: "PORTÃO 05/16",
     rowInfo: "Não numerado",
     open: "17:00",
     start: "21:00",
@@ -96,7 +117,7 @@ export const TICKETS_DATA = [
   },
   {
     id: 'acdc-inferior',
-    eventTitle: "AC/DC",
+    eventTitle: "AC/DC: Pwr Up Tour",
     subTitle: "28/02/2026 • Estádio Morumbi, São Paulo",
     venue: "Estádio Morumbi",
     countText: "2 Ingressos",
@@ -106,7 +127,7 @@ export const TICKETS_DATA = [
     sortDate: "2026-02-28",
     fullDate: "28/02/2026",
     section: "Cadeira Inferior",
-    gate: "PORTÃO 16",
+    gate: "PORTÃO 17A/17B",
     rowInfo: "Não numerado",
     open: "17:00",
     start: "21:00",
@@ -207,7 +228,7 @@ export const styles = StyleSheet.create({
   blueHeaderContainer: { position: 'relative', height: 330, width: '100%', backgroundColor: '#0149D2', borderTopLeftRadius: 8, borderTopRightRadius: 8, overflow: 'hidden', },
   ticketBlueTop: { width: '100%', height: '100%', justifyContent: 'center', alignItems: 'center' },
   scannerStrip: { height: 2, width: '100%', backgroundColor: 'rgba(0, 255, 255, 0.05)', overflow: 'hidden', position: 'absolute', bottom: 0 },
-  scannerBar: { height: '100%', backgroundColor: COLORS.cyanBar, shadowColor: COLORS.cyanBar, shadowOffset: { width: 0, height: 0 }, shadowOpacity: 0.8, shadowRadius: 3 },
+  scannerBar: { height: '100%', backgroundColor: COLORS.cyanBar, shadowColor: COLORS.cyanBar, shadowOpacity: 0.8, shadowRadius: 3 },
   ticketBoxTop: { padding: 20, backgroundColor: COLORS.white, borderBottomLeftRadius: 2, borderBottomRightRadius: 2, marginBottom: 1, paddingBottom: 22 },
   ticketBoxBottom: { paddingHorizontal: 20, paddingVertical: 22, backgroundColor: COLORS.white, borderRadius: 8, borderTopLeftRadius: 2, borderTopRightRadius: 2 },
   qrSection: { flexDirection: 'row', alignItems: 'center' },
