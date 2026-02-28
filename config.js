@@ -43,97 +43,13 @@ export const TICKETS_DATA = [
     sortDate: "2026-02-28",
     fullDate: "28/02/2026",
     section: "Pista A",
-    gate: "PORTÃO 02 e 18",
+    gate: "PORTÃO 18",
     rowInfo: "Não numerado",
     open: "17:00",
     start: "21:00",
     ticketsList: [
       { priceInfo: "Inteira - R$ 1.350,00", qrCodeBase: "ACDC-SP-PISTAA-I1" },
       { priceInfo: "Inteira - R$ 1.350,00", qrCodeBase: "ACDC-SP-PISTAA-I2" }
-    ]
-  },
-  {
-    id: 'acdc-pista-b',
-    eventTitle: "AC/DC: Pwr Up Tour",
-    subTitle: "28/02/2026 • Estádio Morumbi, São Paulo",
-    venue: "Estádio Morumbi",
-    countText: "2 Ingressos",
-    ticketQuantity: 2,
-    dateText: "Sáb 28 21:00",
-    image: require('./assets/acdc.jpg'),
-    sortDate: "2026-02-28",
-    fullDate: "28/02/2026",
-    section: "Pista B",
-    gate: "PORTÃO 04",
-    rowInfo: "Não numerado",
-    open: "17:00",
-    start: "21:00",
-    ticketsList: [
-      { priceInfo: "Inteira - R$ 1.350,00", qrCodeBase: "ACDC-SP-PISTAB-I1" },
-      { priceInfo: "Inteira - R$ 1.350,00", qrCodeBase: "ACDC-SP-PISTAB-I2" }
-    ]
-  },
-  {
-    id: 'acdc-arquibancada',
-    eventTitle: "AC/DC: Pwr Up Tour",
-    subTitle: "28/02/2026 • Estádio Morumbi, São Paulo",
-    venue: "Estádio Morumbi",
-    countText: "2 Ingressos",
-    ticketQuantity: 2,
-    dateText: "Sáb 28 21:00",
-    image: require('./assets/acdc.jpg'),
-    sortDate: "2026-02-28",
-    fullDate: "28/02/2026",
-    section: "Arquibancada",
-    gate: "PORTÃO 06 e 15",
-    rowInfo: "Não numerado",
-    open: "17:00",
-    start: "21:00",
-    ticketsList: [
-      { priceInfo: "Inteira - R$ 850,00", qrCodeBase: "ACDC-SP-ARQ-I1" },
-      { priceInfo: "Inteira - R$ 850,00", qrCodeBase: "ACDC-SP-ARQ-I2" }
-    ]
-  },
-  {
-    id: 'acdc-superior',
-    eventTitle: "AC/DC: Pwr Up Tour",
-    subTitle: "28/02/2026 • Estádio Morumbi, São Paulo",
-    venue: "Estádio Morumbi",
-    countText: "2 Ingressos",
-    ticketQuantity: 2,
-    dateText: "Sáb 28 21:00",
-    image: require('./assets/acdc.jpg'),
-    sortDate: "2026-02-28",
-    fullDate: "28/02/2026",
-    section: "Cadeira Superior",
-    gate: "PORTÃO 05 e 16",
-    rowInfo: "Não numerado",
-    open: "17:00",
-    start: "21:00",
-    ticketsList: [
-      { priceInfo: "Inteira - R$ 1.490,00", qrCodeBase: "ACDC-SP-SUP-I1" },
-      { priceInfo: "Inteira - R$ 1.490,00", qrCodeBase: "ACDC-SP-SUP-I2" }
-    ]
-  },
-  {
-    id: 'acdc-inferior',
-    eventTitle: "AC/DC: Pwr Up Tour",
-    subTitle: "28/02/2026 • Estádio Morumbi, São Paulo",
-    venue: "Estádio Morumbi",
-    countText: "2 Ingressos",
-    ticketQuantity: 2,
-    dateText: "Sáb 28 21:00",
-    image: require('./assets/acdc.jpg'),
-    sortDate: "2026-02-28",
-    fullDate: "28/02/2026",
-    section: "Cadeira Inferior",
-    gate: "PORTÃO 17A e 17B",
-    rowInfo: "Não numerado",
-    open: "17:00",
-    start: "21:00",
-    ticketsList: [
-      { priceInfo: "Inteira - R$ 1.590,00", qrCodeBase: "ACDC-SP-INF-I1" },
-      { priceInfo: "Inteira - R$ 1.590,00", qrCodeBase: "ACDC-SP-INF-I2" }
     ]
   },
   {
