@@ -32,6 +32,27 @@ export const COLORS = {
 // DADOS
 export const TICKETS_DATA = [
   {
+    id: 'acdc-pista-a',
+    eventTitle: "AC/DC: Pwr Up Tour",
+    subTitle: "04/03/2026 • Estádio Morumbi, São Paulo",
+    venue: "Estádio Morumbi",
+    countText: "2 Ingressos",
+    ticketQuantity: 2,
+    dateText: "Qua 04 21:00",
+    image: require('./assets/acdc.jpg'),
+    sortDate: "2026-03-04",
+    fullDate: "04/03/2026",
+    section: "Pista A",
+    gate: "PORTÃO 18",
+    rowInfo: "Não numerado",
+    open: "17:00",
+    start: "21:00",
+    ticketsList: [
+      { priceInfo: "Meia - R$ 675,00", qrCodeBase: "ACDC-SP-PISTAA-M1" },
+      { priceInfo: "Inteira - R$ 1.350,00", qrCodeBase: "ACDC-SP-PISTAA-I1" }
+    ]
+  },
+  {
     id: 'acdc-arquibancada',
     eventTitle: "AC/DC: Pwr Up Tour",
     subTitle: "04/03/2026 • Estádio Morumbi, São Paulo",
