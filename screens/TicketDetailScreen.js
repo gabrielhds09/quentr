@@ -56,7 +56,7 @@ function TicketCard({ item, index, qrSalt, barWidth, ticket }) {
       <View style={styles.ticketCardContainer}>
         <View style={{ borderRadius: 8, overflow: 'hidden', backgroundColor: '#fff' }}>
           <View style={[styles.blueHeaderContainer, { backgroundColor: '#0149D2' }]}>
-            <ImageBackground source={{ uri: BACKGROUND_URL }} style={styles.ticketBlueTop} resizeMode="contain">
+            <ImageBackground source={typeof BACKGROUND_URL === 'string' ? { uri: BACKGROUND_URL } : BACKGROUND_URL} style={styles.ticketBlueTop} resizeMode="contain">
               <View style={{ flex: 1 }} />
               <View style={{ paddingBottom: 15, alignItems: 'center', paddingHorizontal: 25 }}>
                 <Text style={{ color: '#fff', fontSize: 8.5, fontWeight: '800', textAlign: 'center', opacity: 0.95, letterSpacing: 0.4 }}>
