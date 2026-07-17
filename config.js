@@ -36,10 +36,10 @@ export const TICKETS_DATA = [
     eventTitle: "HARRY STYLES",
     subTitle: "17/07/2026 • Estádio MorumBIS, São Paulo",
     venue: "Estádio MorumBIS",
-    countText: "4 Ingressos",
-    ticketQuantity: 4,
+    countText: "6 Ingressos",
+    ticketQuantity: 6,
     dateText: "Sex 17 20:45",
-    image: require('./assets/weeknd.png'),
+    image: require('./assets/harry styles.jpg'),
     sortDate: "2026-07-17",
     fullDate: "17/07/2026",
     monthLabel: "Julho 2026",
@@ -52,7 +52,9 @@ export const TICKETS_DATA = [
       { priceInfo: "Meia - R$ 265,00", qrCodeBase: "HS-ARQ-M1" },
       { priceInfo: "Meia - R$ 265,00", qrCodeBase: "HS-ARQ-M2" },
       { priceInfo: "Inteira - R$ 530,00", qrCodeBase: "HS-ARQ-I1" },
-      { priceInfo: "Inteira - R$ 530,00", qrCodeBase: "HS-ARQ-I2" }
+      { priceInfo: "Inteira - R$ 530,00", qrCodeBase: "HS-ARQ-I2" },
+      { priceInfo: "Inteira - R$ 530,00", qrCodeBase: "HS-ARQ-I3" },
+      { priceInfo: "Inteira - R$ 530,00", qrCodeBase: "HS-ARQ-I4" }
     ]
   },
   {
@@ -60,10 +62,10 @@ export const TICKETS_DATA = [
     eventTitle: "HARRY STYLES",
     subTitle: "17/07/2026 • Estádio MorumBIS, São Paulo",
     venue: "Estádio MorumBIS",
-    countText: "4 Ingressos",
-    ticketQuantity: 4,
+    countText: "6 Ingressos",
+    ticketQuantity: 6,
     dateText: "Sex 17 20:45",
-    image: require('./assets/weeknd.png'),
+    image: require('./assets/harry styles verm.jpg'),
     sortDate: "2026-07-17",
     fullDate: "17/07/2026",
     monthLabel: "Julho 2026",
@@ -76,7 +78,9 @@ export const TICKETS_DATA = [
       { priceInfo: "Meia - R$ 350,00", qrCodeBase: "HS-PISTA-M1" },
       { priceInfo: "Meia - R$ 350,00", qrCodeBase: "HS-PISTA-M2" },
       { priceInfo: "Inteira - R$ 700,00", qrCodeBase: "HS-PISTA-I1" },
-      { priceInfo: "Inteira - R$ 700,00", qrCodeBase: "HS-PISTA-I2" }
+      { priceInfo: "Inteira - R$ 700,00", qrCodeBase: "HS-PISTA-I2" },
+      { priceInfo: "Inteira - R$ 700,00", qrCodeBase: "HS-PISTA-I3" },
+      { priceInfo: "Inteira - R$ 700,00", qrCodeBase: "HS-PISTA-I4" }
     ]
   },
   {
@@ -84,10 +88,10 @@ export const TICKETS_DATA = [
     eventTitle: "HARRY STYLES",
     subTitle: "17/07/2026 • Estádio MorumBIS, São Paulo",
     venue: "Estádio MorumBIS",
-    countText: "4 Ingressos",
-    ticketQuantity: 4,
+    countText: "6 Ingressos",
+    ticketQuantity: 6,
     dateText: "Sex 17 20:45",
-    image: require('./assets/weeknd.png'),
+    image: require('./assets/harry styles.jpg'),
     sortDate: "2026-07-17",
     fullDate: "17/07/2026",
     monthLabel: "Julho 2026",
@@ -100,7 +104,9 @@ export const TICKETS_DATA = [
       { priceInfo: "Meia - R$ 400,00", qrCodeBase: "HS-SUP-M1" },
       { priceInfo: "Meia - R$ 400,00", qrCodeBase: "HS-SUP-M2" },
       { priceInfo: "Inteira - R$ 800,00", qrCodeBase: "HS-SUP-I1" },
-      { priceInfo: "Inteira - R$ 800,00", qrCodeBase: "HS-SUP-I2" }
+      { priceInfo: "Inteira - R$ 800,00", qrCodeBase: "HS-SUP-I2" },
+      { priceInfo: "Inteira - R$ 800,00", qrCodeBase: "HS-SUP-I3" },
+      { priceInfo: "Inteira - R$ 800,00", qrCodeBase: "HS-SUP-I4" }
     ]
   },
   {
@@ -108,10 +114,10 @@ export const TICKETS_DATA = [
     eventTitle: "HARRY STYLES",
     subTitle: "17/07/2026 • Estádio MorumBIS, São Paulo",
     venue: "Estádio MorumBIS",
-    countText: "4 Ingressos",
-    ticketQuantity: 4,
+    countText: "6 Ingressos",
+    ticketQuantity: 6,
     dateText: "Sex 17 20:45",
-    image: require('./assets/weeknd.png'),
+    image: require('./assets/harry styles verm.jpg'),
     sortDate: "2026-07-17",
     fullDate: "17/07/2026",
     monthLabel: "Julho 2026",
@@ -124,7 +130,9 @@ export const TICKETS_DATA = [
       { priceInfo: "Meia - R$ 440,00", qrCodeBase: "HS-INF-M1" },
       { priceInfo: "Meia - R$ 440,00", qrCodeBase: "HS-INF-M2" },
       { priceInfo: "Inteira - R$ 880,00", qrCodeBase: "HS-INF-I1" },
-      { priceInfo: "Inteira - R$ 880,00", qrCodeBase: "HS-INF-I2" }
+      { priceInfo: "Inteira - R$ 880,00", qrCodeBase: "HS-INF-I2" },
+      { priceInfo: "Inteira - R$ 880,00", qrCodeBase: "HS-INF-I3" },
+      { priceInfo: "Inteira - R$ 880,00", qrCodeBase: "HS-INF-I4" }
     ]
   },
   {
@@ -132,10 +140,10 @@ export const TICKETS_DATA = [
     eventTitle: "HARRY STYLES",
     subTitle: "17/07/2026 • Estádio MorumBIS, São Paulo",
     venue: "Estádio MorumBIS",
-    countText: "4 Ingressos",
-    ticketQuantity: 4,
+    countText: "6 Ingressos",
+    ticketQuantity: 6,
     dateText: "Sex 17 20:45",
-    image: require('./assets/weeknd.png'),
+    image: require('./assets/harry styles.jpg'),
     sortDate: "2026-07-17",
     fullDate: "17/07/2026",
     monthLabel: "Julho 2026",
@@ -148,7 +156,9 @@ export const TICKETS_DATA = [
       { priceInfo: "Meia - R$ 705,00", qrCodeBase: "HS-PCIRCLE-M1" },
       { priceInfo: "Meia - R$ 705,00", qrCodeBase: "HS-PCIRCLE-M2" },
       { priceInfo: "Inteira - R$ 1.410,00", qrCodeBase: "HS-PCIRCLE-I1" },
-      { priceInfo: "Inteira - R$ 1.410,00", qrCodeBase: "HS-PCIRCLE-I2" }
+      { priceInfo: "Inteira - R$ 1.410,00", qrCodeBase: "HS-PCIRCLE-I2" },
+      { priceInfo: "Inteira - R$ 1.410,00", qrCodeBase: "HS-PCIRCLE-I3" },
+      { priceInfo: "Inteira - R$ 1.410,00", qrCodeBase: "HS-PCIRCLE-I4" }
     ]
   },
   {
@@ -156,10 +166,10 @@ export const TICKETS_DATA = [
     eventTitle: "HARRY STYLES",
     subTitle: "18/07/2026 • Estádio MorumBIS, São Paulo",
     venue: "Estádio MorumBIS",
-    countText: "4 Ingressos",
-    ticketQuantity: 4,
+    countText: "6 Ingressos",
+    ticketQuantity: 6,
     dateText: "Sáb 18 20:45",
-    image: require('./assets/weeknd.png'),
+    image: require('./assets/harry styles verm.jpg'),
     sortDate: "2026-07-18",
     fullDate: "18/07/2026",
     monthLabel: "Julho 2026",
@@ -172,7 +182,9 @@ export const TICKETS_DATA = [
       { priceInfo: "Meia - R$ 705,00", qrCodeBase: "HS-PDISCO-M1" },
       { priceInfo: "Meia - R$ 705,00", qrCodeBase: "HS-PDISCO-M2" },
       { priceInfo: "Inteira - R$ 1.410,00", qrCodeBase: "HS-PDISCO-I1" },
-      { priceInfo: "Inteira - R$ 1.410,00", qrCodeBase: "HS-PDISCO-I2" }
+      { priceInfo: "Inteira - R$ 1.410,00", qrCodeBase: "HS-PDISCO-I2" },
+      { priceInfo: "Inteira - R$ 1.410,00", qrCodeBase: "HS-PDISCO-I3" },
+      { priceInfo: "Inteira - R$ 1.410,00", qrCodeBase: "HS-PDISCO-I4" }
     ]
   },
   {
@@ -180,10 +192,10 @@ export const TICKETS_DATA = [
     eventTitle: "HARRY STYLES",
     subTitle: "21/07/2026 • Estádio MorumBIS, São Paulo",
     venue: "Estádio MorumBIS",
-    countText: "4 Ingressos",
-    ticketQuantity: 4,
+    countText: "6 Ingressos",
+    ticketQuantity: 6,
     dateText: "Ter 21 20:45",
-    image: require('./assets/weeknd.png'),
+    image: require('./assets/harry styles.jpg'),
     sortDate: "2026-07-21",
     fullDate: "21/07/2026",
     monthLabel: "Julho 2026",
@@ -196,7 +208,9 @@ export const TICKETS_DATA = [
       { priceInfo: "Meia - R$ 705,00", qrCodeBase: "HS-PKISS-M1" },
       { priceInfo: "Meia - R$ 705,00", qrCodeBase: "HS-PKISS-M2" },
       { priceInfo: "Inteira - R$ 1.410,00", qrCodeBase: "HS-PKISS-I1" },
-      { priceInfo: "Inteira - R$ 1.410,00", qrCodeBase: "HS-PKISS-I2" }
+      { priceInfo: "Inteira - R$ 1.410,00", qrCodeBase: "HS-PKISS-I2" },
+      { priceInfo: "Inteira - R$ 1.410,00", qrCodeBase: "HS-PKISS-I3" },
+      { priceInfo: "Inteira - R$ 1.410,00", qrCodeBase: "HS-PKISS-I4" }
     ]
   },
   {
@@ -204,10 +218,10 @@ export const TICKETS_DATA = [
     eventTitle: "HARRY STYLES",
     subTitle: "24/07/2026 • Estádio MorumBIS, São Paulo",
     venue: "Estádio MorumBIS",
-    countText: "4 Ingressos",
-    ticketQuantity: 4,
+    countText: "6 Ingressos",
+    ticketQuantity: 6,
     dateText: "Sex 24 20:45",
-    image: require('./assets/weeknd.png'),
+    image: require('./assets/harry styles verm.jpg'),
     sortDate: "2026-07-24",
     fullDate: "24/07/2026",
     monthLabel: "Julho 2026",
@@ -220,7 +234,9 @@ export const TICKETS_DATA = [
       { priceInfo: "Meia - R$ 705,00", qrCodeBase: "HS-PSQUARE-M1" },
       { priceInfo: "Meia - R$ 705,00", qrCodeBase: "HS-PSQUARE-M2" },
       { priceInfo: "Inteira - R$ 1.410,00", qrCodeBase: "HS-PSQUARE-I1" },
-      { priceInfo: "Inteira - R$ 1.410,00", qrCodeBase: "HS-PSQUARE-I2" }
+      { priceInfo: "Inteira - R$ 1.410,00", qrCodeBase: "HS-PSQUARE-I2" },
+      { priceInfo: "Inteira - R$ 1.410,00", qrCodeBase: "HS-PSQUARE-I3" },
+      { priceInfo: "Inteira - R$ 1.410,00", qrCodeBase: "HS-PSQUARE-I4" }
     ]
   }
 ];
