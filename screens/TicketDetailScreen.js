@@ -6,6 +6,7 @@ import {
   StatusBar,
   ScrollView,
   Animated,
+  PanResponder,
   Platform,
   StyleSheet,
 } from 'react-native';
@@ -14,19 +15,65 @@ import QRCode from 'react-native-qrcode-svg';
 import { LinearGradient } from 'expo-linear-gradient';
 import { COLORS, width } from '../config';
 
-const CARD_WIDTH = width - 30;
+const CARD_WIDTH = width - 22;
 const SCALE = CARD_WIDTH / 230;
 const s = (value) => Math.round(value * SCALE * 10) / 10;
 const QR_SIZE = Math.round(86 * SCALE);
 
 function TicketCard({ item, index, qrSalt, barWidth, ticket }) {
+  const panY = useRef(new Animated.Value(0)).current;
+  const panResponder = useRef(
+    PanResponder.create({
+      onMoveShouldSetPanResponder: (_, gestureState) =>
+        Math.abs(gestureState.dy) > Math.abs(gestureState.dx) &&
+        Math.abs(gestureState.dy) > 5,
+      onPanResponderGrant: () => {
+        panY.stopAnimation();
+      },
+      onPanResponderMove: (_, gestureState) => {
+        panY.setValue(gestureState.dy * 0.7);
+      },
+      onPanResponderRelease: () => {
+        Animated.spring(panY, {
+          toValue: 0,
+          friction: 8,
+          tension: 40,
+          useNativeDriver: false,
+        }).start();
+      },
+      onPanResponderTerminate: () => {
+        Animated.spring(panY, {
+          toValue: 0,
+          friction: 8,
+          tension: 40,
+          useNativeDriver: false,
+        }).start();
+      },
+    })
+  ).current;
+
   const dynamicQRValue = `${item.qrCodeBase || 'TICKET'}-${index + 1}-${qrSalt}`;
+  const section = item.section || ticket.section;
+  const gate = item.gate || ticket.gate;
+  const rowInfo = item.rowInfo || ticket.rowInfo;
+  const open = item.open || ticket.open;
+  const start = item.start || ticket.start;
+  const headerDate = item.headerDate || ticket.headerDate || '30/outubro';
+  const headerDay = item.headerDay || ticket.headerDay || 'Sexta-feira';
+  const headerSection = item.headerSection || ticket.headerSection || section.toUpperCase();
+  const headerGates = item.headerGates || ticket.headerGates || gate.toUpperCase();
   const categoryText = item.priceInfo?.toUpperCase().includes('MEIA')
     ? 'MEIA-ENTRADA'
-    : ticket.headerCategory || 'INTEIRA';
+    : item.headerCategory || ticket.headerCategory || 'INTEIRA';
 
   return (
-    <View style={localStyles.cardColumn}>
+    <Animated.View
+      {...panResponder.panHandlers}
+      style={[
+        localStyles.cardColumn,
+        { transform: [{ translateY: panY }] },
+      ]}
+    >
       <View style={localStyles.card}>
         <View style={localStyles.blueHeader}>
           <LinearGradient
@@ -43,20 +90,20 @@ function TicketCard({ item, index, qrSalt, barWidth, ticket }) {
               </View>
               <View style={localStyles.dateBody}>
                 <Text style={localStyles.dateText}>
-                  {ticket.headerDate || '30/outubro'}
+                  {headerDate}
                 </Text>
                 <Text style={localStyles.dayText}>
-                  {ticket.headerDay || 'Sexta-feira'}
+                  {headerDay}
                 </Text>
               </View>
             </View>
 
             <Text style={localStyles.category}>{categoryText}</Text>
             <Text style={localStyles.headerSection}>
-              {ticket.headerSection || ticket.section.toUpperCase()}
+              {headerSection}
             </Text>
             <Text style={localStyles.headerGates}>
-              {ticket.headerGates || ticket.gate.toUpperCase()}
+              {headerGates}
             </Text>
           </LinearGradient>
 
@@ -72,10 +119,10 @@ function TicketCard({ item, index, qrSalt, barWidth, ticket }) {
 
           <View style={localStyles.qrInfo}>
             <Text style={localStyles.label}>SETOR</Text>
-            <Text style={localStyles.qrValue}>{ticket.section}</Text>
+            <Text style={localStyles.qrValue}>{section}</Text>
 
             <Text style={[localStyles.label, localStyles.accessLabel]}>ACESSO</Text>
-            <Text style={localStyles.qrValue}>{ticket.gate}</Text>
+            <Text style={localStyles.qrValue}>{gate}</Text>
 
             <TouchableOpacity activeOpacity={0.8} style={localStyles.moreInfo}>
               <Text style={localStyles.moreInfoText}>Mais informação</Text>
@@ -92,22 +139,22 @@ function TicketCard({ item, index, qrSalt, barWidth, ticket }) {
           <View style={localStyles.detailRow}>
             <View style={localStyles.detailColumn}>
               <Text style={localStyles.label}>SEÇÃO</Text>
-              <Text style={localStyles.detailValue}>{ticket.section.toUpperCase()}</Text>
+              <Text style={localStyles.detailValue}>{section.toUpperCase()}</Text>
             </View>
             <View style={localStyles.detailColumn}>
               <Text style={localStyles.label}>FILEIRA</Text>
-              <Text style={localStyles.detailValue}>{ticket.rowInfo}</Text>
+              <Text style={localStyles.detailValue}>{rowInfo}</Text>
             </View>
           </View>
 
           <View style={localStyles.detailRowLast}>
             <View style={localStyles.detailColumn}>
               <Text style={localStyles.label}>ABERTURA</Text>
-              <Text style={localStyles.detailValue}>{ticket.open}</Text>
+              <Text style={localStyles.detailValue}>{open}</Text>
             </View>
             <View style={localStyles.detailColumn}>
               <Text style={localStyles.label}>INÍCIO</Text>
-              <Text style={localStyles.detailValue}>{ticket.start}</Text>
+              <Text style={localStyles.detailValue}>{start}</Text>
             </View>
           </View>
         </View>
@@ -126,17 +173,19 @@ function TicketCard({ item, index, qrSalt, barWidth, ticket }) {
           </Text>
         </View>
       ) : null}
-    </View>
+    </Animated.View>
   );
 }
 
 export default function TicketDetailScreen({ route, navigation }) {
   const { ticket } = route.params;
-  const firstTicket = ticket.ticketsList?.[0] || {
-    priceInfo: ticket.priceInfo,
-    qrCodeBase: ticket.qrCodeBase,
-    titular: ticket.titular,
-  };
+  const tickets = ticket.ticketsList?.length
+    ? ticket.ticketsList
+    : [{
+        priceInfo: ticket.priceInfo,
+        qrCodeBase: ticket.qrCodeBase,
+        titular: ticket.titular,
+      }];
   const [qrSalt, setQrSalt] = useState(0);
   const progress = useRef(new Animated.Value(1)).current;
 
@@ -193,13 +242,28 @@ export default function TicketDetailScreen({ route, navigation }) {
           showsVerticalScrollIndicator={false}
           bounces={false}
         >
-          <TicketCard
-            item={firstTicket}
-            index={0}
-            qrSalt={qrSalt}
-            barWidth={barWidth}
-            ticket={ticket}
-          />
+          <ScrollView
+            horizontal
+            pagingEnabled
+            snapToInterval={width}
+            decelerationRate="fast"
+            showsHorizontalScrollIndicator={false}
+            bounces={false}
+            nestedScrollEnabled
+            style={localStyles.ticketCarousel}
+          >
+            {tickets.map((item, index) => (
+              <View key={`${item.qrCodeBase || 'ticket'}-${index}`} style={localStyles.ticketPage}>
+                <TicketCard
+                  item={item}
+                  index={index}
+                  qrSalt={qrSalt}
+                  barWidth={barWidth}
+                  ticket={ticket}
+                />
+              </View>
+            ))}
+          </ScrollView>
         </ScrollView>
       </View>
     </View>
@@ -218,7 +282,7 @@ const localStyles = StyleSheet.create({
     backgroundColor: COLORS.bg,
   },
   nav: {
-    height: s(70),
+    height: s(47),
     paddingLeft: s(31),
     paddingRight: s(18),
     paddingBottom: s(15),
@@ -241,9 +305,17 @@ const localStyles = StyleSheet.create({
   scrollContent: {
     paddingBottom: s(80),
   },
+  ticketCarousel: {
+    width,
+  },
+  ticketPage: {
+    width,
+  },
   cardColumn: {
     width: CARD_WIDTH,
     marginLeft: 16,
+    touchAction: 'pan-x',
+    userSelect: 'none',
   },
   card: {
     width: '100%',

@@ -13,9 +13,43 @@ import {
 import { Ionicons } from '@expo/vector-icons';
 import { TICKETS_DATA, COLORS, width } from '../config';
 
-const FEATURED_TICKET =
+const BASE_TICKET =
   TICKETS_DATA.find((ticket) => ticket.id === 'bts-cadeira-inferior') ||
   TICKETS_DATA[0];
+
+const SECTOR_ORDER = [
+  'bts-cadeira-inferior',
+  'bts-pista',
+  'bts-cadeira-superior',
+  'bts-arquibancada',
+];
+
+const EVENT_TICKETS = SECTOR_ORDER.flatMap((id) => {
+  const sector = TICKETS_DATA.find((ticket) => ticket.id === id);
+  if (!sector) return [];
+
+  return (sector.ticketsList || []).map((item) => ({
+    ...item,
+    sectorId: sector.id,
+    section: sector.section,
+    gate: sector.gate,
+    rowInfo: sector.rowInfo,
+    open: sector.open,
+    start: sector.start,
+    headerDate: sector.headerDate,
+    headerDay: sector.headerDay,
+    headerCategory: sector.headerCategory,
+    headerSection: sector.headerSection,
+    headerGates: sector.headerGates,
+  }));
+});
+
+const FEATURED_TICKET = {
+  ...BASE_TICKET,
+  countText: `${EVENT_TICKETS.length} ingressos`,
+  ticketQuantity: EVENT_TICKETS.length,
+  ticketsList: EVENT_TICKETS,
+};
 
 export default function HomeScreen({ navigation }) {
   return (
@@ -65,7 +99,7 @@ export default function HomeScreen({ navigation }) {
 
             <View style={localStyles.ticketCopy}>
               <Text style={localStyles.meta} numberOfLines={1}>
-                <Text style={localStyles.count}>1 ingresso</Text>
+                <Text style={localStyles.count}>{FEATURED_TICKET.countText}</Text>
                 <Text style={localStyles.date}>   Sexta-feira 30 20:00hs</Text>
               </Text>
               <Text style={localStyles.eventTitle} numberOfLines={1}>
@@ -134,12 +168,12 @@ const localStyles = StyleSheet.create({
     paddingBottom: 80,
   },
   ticket: {
-    width: width - 44,
+    width: width - 54,
     marginLeft: 24,
   },
   posterWrap: {
     width: '100%',
-    height: (width - 44) * 0.84,
+    height: (width - 54) * 0.84,
     borderRadius: 7,
     overflow: 'hidden',
     position: 'relative',
