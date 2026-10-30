@@ -171,13 +171,13 @@ const localStyles = StyleSheet.create({
     paddingBottom: 80,
   },
   ticket: {
-    width: width - 40,
-    marginLeft: 20,
+    width: width - 34,
+    marginLeft: 17,
     marginBottom: 28,
   },
   posterWrap: {
     width: '100%',
-    height: (width - 40) * 0.84,
+    height: (width - 34) * 0.84,
     borderRadius: 7,
     overflow: 'hidden',
     position: 'relative',
@@ -223,7 +223,9 @@ const localStyles = StyleSheet.create({
   nowText: {
     color: '#166c61',
     fontSize: 7,
-    fontWeight: '700',
+    fontFamily: Platform.OS === 'web' ? 'Arial' : 'sans-serif',
+    fontWeight: '600',
+    letterSpacing: 0,
   },
   ticketCopy: {
     paddingTop: 13,
