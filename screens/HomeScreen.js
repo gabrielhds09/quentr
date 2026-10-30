@@ -22,6 +22,8 @@ const FEATURED_TICKETS = SECTOR_ORDER.map((id) =>
   TICKETS_DATA.find((ticket) => ticket.id === id)
 ).filter(Boolean);
 
+const [PRIMARY_TICKET, SECONDARY_TICKET] = FEATURED_TICKETS;
+
 export default function HomeScreen({ navigation }) {
   return (
     <SafeAreaView style={localStyles.screen}>
@@ -48,18 +50,17 @@ export default function HomeScreen({ navigation }) {
           showsVerticalScrollIndicator={false}
           bounces={false}
         >
-          {FEATURED_TICKETS.map((ticket) => (
+          {PRIMARY_TICKET ? (
             <TouchableOpacity
-              key={ticket.id}
               activeOpacity={0.92}
               onPress={() =>
-                navigation.navigate('TicketDetail', { ticket })
+                navigation.navigate('TicketDetail', { ticket: PRIMARY_TICKET })
               }
               style={localStyles.ticket}
             >
               <View style={localStyles.posterWrap}>
                 <Image
-                  source={ticket.image}
+                  source={PRIMARY_TICKET.image}
                   style={localStyles.poster}
                   resizeMode="cover"
                 />
@@ -71,17 +72,47 @@ export default function HomeScreen({ navigation }) {
 
               <View style={localStyles.ticketCopy}>
                 <Text style={localStyles.meta} numberOfLines={1}>
-                  <Text style={localStyles.count}>{ticket.countText}</Text>
-                  <Text style={localStyles.date}>   {ticket.dateText}</Text>
+                  <Text style={localStyles.count}>{PRIMARY_TICKET.countText}</Text>
+                  <Text style={localStyles.date}>   {PRIMARY_TICKET.dateText}</Text>
                 </Text>
                 <Text style={localStyles.eventTitle} numberOfLines={1}>
-                  {ticket.eventTitle}
+                  {PRIMARY_TICKET.eventTitle}
                 </Text>
-                <Text style={localStyles.sector}>{ticket.section}</Text>
-                <Text style={localStyles.venue}>{ticket.venue}</Text>
+                <Text style={localStyles.sector}>{PRIMARY_TICKET.section}</Text>
+                <Text style={localStyles.venue}>{PRIMARY_TICKET.venue}</Text>
               </View>
             </TouchableOpacity>
-          ))}
+          ) : null}
+
+          {SECONDARY_TICKET ? (
+            <TouchableOpacity
+              activeOpacity={0.92}
+              onPress={() =>
+                navigation.navigate('TicketDetail', { ticket: SECONDARY_TICKET })
+              }
+              style={localStyles.compactTicket}
+            >
+              <View style={localStyles.compactPosterWrap}>
+                <Image
+                  source={SECONDARY_TICKET.image}
+                  style={localStyles.compactPoster}
+                  resizeMode="cover"
+                />
+              </View>
+
+              <View style={localStyles.compactCopy}>
+                <Text style={localStyles.meta} numberOfLines={1}>
+                  <Text style={localStyles.count}>{SECONDARY_TICKET.countText}</Text>
+                  <Text style={localStyles.date}>   {SECONDARY_TICKET.dateText}</Text>
+                </Text>
+                <Text style={localStyles.eventTitle} numberOfLines={1}>
+                  {SECONDARY_TICKET.eventTitle}
+                </Text>
+                <Text style={localStyles.sector}>{SECONDARY_TICKET.section}</Text>
+                <Text style={localStyles.venue}>{SECONDARY_TICKET.venue}</Text>
+              </View>
+            </TouchableOpacity>
+          ) : null}
         </ScrollView>
       </View>
     </SafeAreaView>
@@ -157,6 +188,28 @@ const localStyles = StyleSheet.create({
   poster: {
     width: '100%',
     height: '100%',
+  },
+  compactTicket: {
+    width: width - 54,
+    marginLeft: 24,
+    marginBottom: 28,
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  compactPosterWrap: {
+    width: 68,
+    height: 68,
+    borderRadius: 6,
+    overflow: 'hidden',
+    backgroundColor: '#eceeef',
+  },
+  compactPoster: {
+    width: '100%',
+    height: '100%',
+  },
+  compactCopy: {
+    flex: 1,
+    marginLeft: 11,
   },
   nowBadge: {
     position: 'absolute',
