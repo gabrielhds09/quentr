@@ -33,8 +33,8 @@ export default function HomeScreen({ navigation }) {
         <View style={localStyles.header}>
           <Text style={localStyles.title}>Meus ingressos</Text>
           <View style={localStyles.headerIcons}>
-            <Ionicons name="notifications-outline" size={14} color="#687075" />
-            <Ionicons name="person-outline" size={14} color="#687075" />
+            <Ionicons name="notifications-outline" size={18} color="#687075" />
+            <Ionicons name="person-outline" size={18} color="#687075" />
           </View>
         </View>
 
@@ -75,7 +75,7 @@ export default function HomeScreen({ navigation }) {
                   <Text style={localStyles.count}>{PRIMARY_TICKET.countText}</Text>
                   <Text style={localStyles.date}>   {PRIMARY_TICKET.dateText}</Text>
                 </Text>
-                <Text style={localStyles.eventTitle} numberOfLines={1}>
+                <Text style={[localStyles.eventTitle, localStyles.compactEventTitle]} numberOfLines={1}>
                   {PRIMARY_TICKET.eventTitle}
                 </Text>
                 <Text style={localStyles.venue}>{PRIMARY_TICKET.venue}</Text>
@@ -138,8 +138,8 @@ const localStyles = StyleSheet.create({
   },
   title: {
     color: '#d8dcde',
-    fontSize: 17,
-    lineHeight: 21,
+    fontSize: 19,
+    lineHeight: 23,
     fontWeight: '400',
   },
   headerIcons: {
@@ -163,7 +163,7 @@ const localStyles = StyleSheet.create({
   },
   activeTabText: {
     color: '#171a1c',
-    fontSize: 12,
+    fontSize: 13,
     fontWeight: '500',
   },
   scroll: { flex: 1 },
@@ -213,8 +213,8 @@ const localStyles = StyleSheet.create({
     position: 'absolute',
     left: 14,
     bottom: 13,
-    height: 16,
-    paddingHorizontal: 7,
+    height: 18,
+    paddingHorizontal: 8,
     borderRadius: 2,
     backgroundColor: '#22e7bd',
     alignItems: 'center',
@@ -222,7 +222,7 @@ const localStyles = StyleSheet.create({
   },
   nowText: {
     color: '#166c61',
-    fontSize: 7,
+    fontSize: 8,
     fontFamily: Platform.OS === 'web' ? 'Arial' : 'sans-serif',
     fontWeight: '600',
     letterSpacing: 0,
@@ -232,8 +232,8 @@ const localStyles = StyleSheet.create({
     paddingLeft: 14,
   },
   meta: {
-    fontSize: 8.2,
-    lineHeight: 10,
+    fontSize: 9.2,
+    lineHeight: 11,
     marginBottom: 7,
   },
   count: {
@@ -246,14 +246,18 @@ const localStyles = StyleSheet.create({
   },
   eventTitle: {
     color: '#f1f3f4',
-    fontSize: 14,
-    lineHeight: 17,
+    fontSize: 15.5,
+    lineHeight: 19,
     fontWeight: '500',
+  },
+  compactEventTitle: {
+    fontSize: 12.5,
+    lineHeight: 15,
   },
   venue: {
     color: '#8a9498',
-    fontSize: 10.5,
-    lineHeight: 13,
+    fontSize: 11.5,
+    lineHeight: 14,
     marginTop: 2,
   },
 });
