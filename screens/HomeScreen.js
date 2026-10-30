@@ -13,43 +13,14 @@ import {
 import { Ionicons } from '@expo/vector-icons';
 import { TICKETS_DATA, COLORS, width } from '../config';
 
-const BASE_TICKET =
-  TICKETS_DATA.find((ticket) => ticket.id === 'bts-cadeira-inferior') ||
-  TICKETS_DATA[0];
-
 const SECTOR_ORDER = [
-  'bts-cadeira-inferior',
-  'bts-pista',
-  'bts-cadeira-superior',
   'bts-arquibancada',
+  'bts-cadeira-superior',
 ];
 
-const EVENT_TICKETS = SECTOR_ORDER.flatMap((id) => {
-  const sector = TICKETS_DATA.find((ticket) => ticket.id === id);
-  if (!sector) return [];
-
-  return (sector.ticketsList || []).map((item) => ({
-    ...item,
-    sectorId: sector.id,
-    section: sector.section,
-    gate: sector.gate,
-    rowInfo: sector.rowInfo,
-    open: sector.open,
-    start: sector.start,
-    headerDate: sector.headerDate,
-    headerDay: sector.headerDay,
-    headerCategory: sector.headerCategory,
-    headerSection: sector.headerSection,
-    headerGates: sector.headerGates,
-  }));
-});
-
-const FEATURED_TICKET = {
-  ...BASE_TICKET,
-  countText: `${EVENT_TICKETS.length} ingressos`,
-  ticketQuantity: EVENT_TICKETS.length,
-  ticketsList: EVENT_TICKETS,
-};
+const FEATURED_TICKETS = SECTOR_ORDER.map((id) =>
+  TICKETS_DATA.find((ticket) => ticket.id === id)
+).filter(Boolean);
 
 export default function HomeScreen({ navigation }) {
   return (
@@ -77,37 +48,40 @@ export default function HomeScreen({ navigation }) {
           showsVerticalScrollIndicator={false}
           bounces={false}
         >
-          <TouchableOpacity
-            activeOpacity={0.92}
-            onPress={() =>
-              navigation.navigate('TicketDetail', { ticket: FEATURED_TICKET })
-            }
-            style={localStyles.ticket}
-          >
-            <View style={localStyles.posterWrap}>
-              <Image
-                source={FEATURED_TICKET.image}
-                style={localStyles.poster}
-                resizeMode="cover"
-              />
+          {FEATURED_TICKETS.map((ticket) => (
+            <TouchableOpacity
+              key={ticket.id}
+              activeOpacity={0.92}
+              onPress={() =>
+                navigation.navigate('TicketDetail', { ticket })
+              }
+              style={localStyles.ticket}
+            >
+              <View style={localStyles.posterWrap}>
+                <Image
+                  source={ticket.image}
+                  style={localStyles.poster}
+                  resizeMode="cover"
+                />
 
-              <View style={localStyles.nowBadge}>
-                <Text style={localStyles.nowText}>AGORA</Text>
+                <View style={localStyles.nowBadge}>
+                  <Text style={localStyles.nowText}>AGORA</Text>
+                </View>
               </View>
 
-            </View>
-
-            <View style={localStyles.ticketCopy}>
-              <Text style={localStyles.meta} numberOfLines={1}>
-                <Text style={localStyles.count}>{FEATURED_TICKET.countText}</Text>
-                <Text style={localStyles.date}>   Sexta-feira 30 20:00hs</Text>
-              </Text>
-              <Text style={localStyles.eventTitle} numberOfLines={1}>
-                {FEATURED_TICKET.eventTitle}
-              </Text>
-              <Text style={localStyles.venue}>{FEATURED_TICKET.venue}</Text>
-            </View>
-          </TouchableOpacity>
+              <View style={localStyles.ticketCopy}>
+                <Text style={localStyles.meta} numberOfLines={1}>
+                  <Text style={localStyles.count}>{ticket.countText}</Text>
+                  <Text style={localStyles.date}>   {ticket.dateText}</Text>
+                </Text>
+                <Text style={localStyles.eventTitle} numberOfLines={1}>
+                  {ticket.eventTitle}
+                </Text>
+                <Text style={localStyles.sector}>{ticket.section}</Text>
+                <Text style={localStyles.venue}>{ticket.venue}</Text>
+              </View>
+            </TouchableOpacity>
+          ))}
         </ScrollView>
       </View>
     </SafeAreaView>
@@ -170,6 +144,7 @@ const localStyles = StyleSheet.create({
   ticket: {
     width: width - 54,
     marginLeft: 24,
+    marginBottom: 28,
   },
   posterWrap: {
     width: '100%',
@@ -225,6 +200,12 @@ const localStyles = StyleSheet.create({
   venue: {
     color: '#8a9498',
     fontSize: 8,
+    lineHeight: 11,
+    marginTop: 2,
+  },
+  sector: {
+    color: '#c8cdcf',
+    fontSize: 8.5,
     lineHeight: 11,
     marginTop: 2,
   },
