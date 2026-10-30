@@ -12,6 +12,7 @@
     "@expo/vector-icons": "^15.0.3",
     "@react-navigation/native": "*",
     "@react-navigation/stack": "*",
+    "@vercel/analytics": "^2.0.1",
     "expo": "~54.0.25",
     "expo-linear-gradient": "^58.0.3",
     "expo-screen-capture": "~8.0.8",

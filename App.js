@@ -2,6 +2,7 @@
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
+import { Analytics } from '@vercel/analytics/react';
 
 
 // O CAMINHO CORRETO E MAIS SEGURO
@@ -16,6 +17,7 @@ export default function App() {
         <Stack.Screen name="Home" component={HomeScreen} />
         <Stack.Screen name="TicketDetail" component={TicketDetailScreen} />
       </Stack.Navigator>
+      <Analytics />
     </NavigationContainer>
   );
 }
