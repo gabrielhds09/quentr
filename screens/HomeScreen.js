@@ -171,13 +171,13 @@ const localStyles = StyleSheet.create({
     paddingBottom: 80,
   },
   ticket: {
-    width: width - 34,
-    marginLeft: 17,
+    width: width - 2,
+    marginLeft: 1,
     marginBottom: 28,
   },
   posterWrap: {
     width: '100%',
-    height: (width - 34) * 0.84,
+    height: (width - 2) * 0.84,
     borderRadius: 7,
     overflow: 'hidden',
     position: 'relative',
