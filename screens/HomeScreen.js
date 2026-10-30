@@ -163,7 +163,7 @@ const localStyles = StyleSheet.create({
   },
   activeTabText: {
     color: '#171a1c',
-    fontSize: 9.5,
+    fontSize: 10.5,
     fontWeight: '500',
   },
   scroll: { flex: 1 },
@@ -232,9 +232,9 @@ const localStyles = StyleSheet.create({
     paddingLeft: 14,
   },
   meta: {
-    fontSize: 6.2,
-    lineHeight: 8,
-    marginBottom: 5,
+    fontSize: 7.1,
+    lineHeight: 9,
+    marginBottom: 6,
   },
   count: {
     color: '#23d8cf',
@@ -246,14 +246,14 @@ const localStyles = StyleSheet.create({
   },
   eventTitle: {
     color: '#f1f3f4',
-    fontSize: 10.5,
-    lineHeight: 13,
+    fontSize: 12,
+    lineHeight: 15,
     fontWeight: '500',
   },
   venue: {
     color: '#8a9498',
-    fontSize: 8,
-    lineHeight: 11,
+    fontSize: 9,
+    lineHeight: 12,
     marginTop: 2,
   },
 });
