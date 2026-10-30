@@ -120,8 +120,8 @@ export const TICKETS_DATA = [
     eventTitle: "BTS WORLD TOUR 'ARIRANG'",
     subTitle: "30/10/26 - MorumBis",
     venue: "MorumBis",
-    countText: "4 ingressos",
-    ticketQuantity: 4,
+    countText: "8 ingressos",
+    ticketQuantity: 8,
     dateText: "Sexta-feira 30 20:00hs",
     image: require('./assets/BTS-clean.png'),
     sortDate: "2026-10-30",
@@ -140,7 +140,11 @@ export const TICKETS_DATA = [
       { priceInfo: "(R) Inteira - R$ 680", qrCodeBase: "BTS-ARIRANG-ARQUIBANCADA-01", titular: "Jeferson Rodrigues De Santana Santos" },
       { priceInfo: "(R) Inteira - R$ 680", qrCodeBase: "BTS-ARIRANG-ARQUIBANCADA-02", titular: "Jeferson Rodrigues De Santana Santos" },
       { priceInfo: "(R) Inteira - R$ 680", qrCodeBase: "BTS-ARIRANG-ARQUIBANCADA-03", titular: "Jeferson Rodrigues De Santana Santos" },
-      { priceInfo: "(R) Inteira - R$ 680", qrCodeBase: "BTS-ARIRANG-ARQUIBANCADA-04", titular: "Jeferson Rodrigues De Santana Santos" }
+      { priceInfo: "(R) Inteira - R$ 680", qrCodeBase: "BTS-ARIRANG-ARQUIBANCADA-04", titular: "Jeferson Rodrigues De Santana Santos" },
+      { priceInfo: "(R) Inteira - R$ 680", qrCodeBase: "BTS-ARIRANG-ARQUIBANCADA-05", titular: "Jeferson Rodrigues De Santana Santos" },
+      { priceInfo: "(R) Inteira - R$ 680", qrCodeBase: "BTS-ARIRANG-ARQUIBANCADA-06", titular: "Jeferson Rodrigues De Santana Santos" },
+      { priceInfo: "(R) Inteira - R$ 680", qrCodeBase: "BTS-ARIRANG-ARQUIBANCADA-07", titular: "Jeferson Rodrigues De Santana Santos" },
+      { priceInfo: "(R) Inteira - R$ 680", qrCodeBase: "BTS-ARIRANG-ARQUIBANCADA-08", titular: "Jeferson Rodrigues De Santana Santos" }
     ]
   }
 ];

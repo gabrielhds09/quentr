@@ -15,7 +15,6 @@ import { TICKETS_DATA, COLORS, width } from '../config';
 
 const SECTOR_ORDER = [
   'bts-arquibancada',
-  'bts-cadeira-superior',
 ];
 
 const FEATURED_TICKETS = SECTOR_ORDER.map((id) =>
@@ -75,7 +74,7 @@ export default function HomeScreen({ navigation }) {
                   <Text style={localStyles.count}>{PRIMARY_TICKET.countText}</Text>
                   <Text style={localStyles.date}>   {PRIMARY_TICKET.dateText}</Text>
                 </Text>
-                <Text style={[localStyles.eventTitle, localStyles.compactEventTitle]} numberOfLines={1}>
+                <Text style={localStyles.eventTitle} numberOfLines={1}>
                   {PRIMARY_TICKET.eventTitle}
                 </Text>
                 <Text style={localStyles.venue}>{PRIMARY_TICKET.venue}</Text>
@@ -104,7 +103,7 @@ export default function HomeScreen({ navigation }) {
                   <Text style={localStyles.count}>{SECONDARY_TICKET.countText}</Text>
                   <Text style={localStyles.date}>   {SECONDARY_TICKET.dateText}</Text>
                 </Text>
-                <Text style={localStyles.eventTitle} numberOfLines={1}>
+                <Text style={[localStyles.eventTitle, localStyles.compactEventTitle]} numberOfLines={1}>
                   {SECONDARY_TICKET.eventTitle}
                 </Text>
                 <Text style={localStyles.venue}>{SECONDARY_TICKET.venue}</Text>
