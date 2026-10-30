@@ -138,8 +138,8 @@ const localStyles = StyleSheet.create({
   },
   title: {
     color: '#d8dcde',
-    fontSize: 14.5,
-    lineHeight: 18,
+    fontSize: 17,
+    lineHeight: 21,
     fontWeight: '400',
   },
   headerIcons: {
@@ -163,7 +163,7 @@ const localStyles = StyleSheet.create({
   },
   activeTabText: {
     color: '#171a1c',
-    fontSize: 10.5,
+    fontSize: 12,
     fontWeight: '500',
   },
   scroll: { flex: 1 },
@@ -232,9 +232,9 @@ const localStyles = StyleSheet.create({
     paddingLeft: 14,
   },
   meta: {
-    fontSize: 7.1,
-    lineHeight: 9,
-    marginBottom: 6,
+    fontSize: 8.2,
+    lineHeight: 10,
+    marginBottom: 7,
   },
   count: {
     color: '#23d8cf',
@@ -246,14 +246,14 @@ const localStyles = StyleSheet.create({
   },
   eventTitle: {
     color: '#f1f3f4',
-    fontSize: 12,
-    lineHeight: 15,
+    fontSize: 14,
+    lineHeight: 17,
     fontWeight: '500',
   },
   venue: {
     color: '#8a9498',
-    fontSize: 9,
-    lineHeight: 12,
+    fontSize: 10.5,
+    lineHeight: 13,
     marginTop: 2,
   },
 });
