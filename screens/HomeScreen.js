@@ -78,7 +78,6 @@ export default function HomeScreen({ navigation }) {
                 <Text style={localStyles.eventTitle} numberOfLines={1}>
                   {PRIMARY_TICKET.eventTitle}
                 </Text>
-                <Text style={localStyles.sector}>{PRIMARY_TICKET.section}</Text>
                 <Text style={localStyles.venue}>{PRIMARY_TICKET.venue}</Text>
               </View>
             </TouchableOpacity>
@@ -108,7 +107,6 @@ export default function HomeScreen({ navigation }) {
                 <Text style={localStyles.eventTitle} numberOfLines={1}>
                   {SECONDARY_TICKET.eventTitle}
                 </Text>
-                <Text style={localStyles.sector}>{SECONDARY_TICKET.section}</Text>
                 <Text style={localStyles.venue}>{SECONDARY_TICKET.venue}</Text>
               </View>
             </TouchableOpacity>
@@ -173,13 +171,13 @@ const localStyles = StyleSheet.create({
     paddingBottom: 80,
   },
   ticket: {
-    width: width - 54,
-    marginLeft: 24,
+    width: width - 40,
+    marginLeft: 20,
     marginBottom: 28,
   },
   posterWrap: {
     width: '100%',
-    height: (width - 54) * 0.84,
+    height: (width - 40) * 0.84,
     borderRadius: 7,
     overflow: 'hidden',
     position: 'relative',
@@ -253,12 +251,6 @@ const localStyles = StyleSheet.create({
   venue: {
     color: '#8a9498',
     fontSize: 8,
-    lineHeight: 11,
-    marginTop: 2,
-  },
-  sector: {
-    color: '#c8cdcf',
-    fontSize: 8.5,
     lineHeight: 11,
     marginTop: 2,
   },
