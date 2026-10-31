@@ -15,13 +15,31 @@ import { TICKETS_DATA, COLORS, width } from '../config';
 
 const SECTOR_ORDER = [
   'bts-arquibancada',
+  'bts-cadeira-inferior',
+  'bts-pista',
+  'bts-cadeira-superior',
 ];
 
 const FEATURED_TICKETS = SECTOR_ORDER.map((id) =>
   TICKETS_DATA.find((ticket) => ticket.id === id)
 ).filter(Boolean);
 
-const [PRIMARY_TICKET, SECONDARY_TICKET] = FEATURED_TICKETS;
+const [PRIMARY_TICKET, ...COMPACT_TICKETS] = FEATURED_TICKETS;
+
+function TicketIcons({ quantity, compact = false }) {
+  return (
+    <View style={compact ? localStyles.compactTicketIcons : localStyles.ticketIcons}>
+      {Array.from({ length: quantity }, (_, index) => (
+        <Ionicons
+          key={index}
+          name="ticket-outline"
+          size={compact ? 13 : 17}
+          color={compact ? '#25d8cf' : '#ff3150'}
+        />
+      ))}
+    </View>
+  );
+}
 
 export default function HomeScreen({ navigation }) {
   return (
@@ -67,6 +85,7 @@ export default function HomeScreen({ navigation }) {
                 <View style={localStyles.nowBadge}>
                   <Text style={localStyles.nowText}>AGORA</Text>
                 </View>
+                <TicketIcons quantity={PRIMARY_TICKET.ticketQuantity} />
               </View>
 
               <View style={localStyles.ticketCopy}>
@@ -82,17 +101,18 @@ export default function HomeScreen({ navigation }) {
             </TouchableOpacity>
           ) : null}
 
-          {SECONDARY_TICKET ? (
+          {COMPACT_TICKETS.map((ticket) => (
             <TouchableOpacity
+              key={ticket.id}
               activeOpacity={0.92}
               onPress={() =>
-                navigation.navigate('TicketDetail', { ticket: SECONDARY_TICKET })
+                navigation.navigate('TicketDetail', { ticket })
               }
               style={localStyles.compactTicket}
             >
               <View style={localStyles.compactPosterWrap}>
                 <Image
-                  source={SECONDARY_TICKET.image}
+                  source={ticket.image}
                   style={localStyles.compactPoster}
                   resizeMode="cover"
                 />
@@ -100,16 +120,19 @@ export default function HomeScreen({ navigation }) {
 
               <View style={localStyles.compactCopy}>
                 <Text style={localStyles.meta} numberOfLines={1}>
-                  <Text style={localStyles.count}>{SECONDARY_TICKET.countText}</Text>
-                  <Text style={localStyles.date}>   {SECONDARY_TICKET.dateText}</Text>
+                  <Text style={localStyles.count}>{ticket.countText}</Text>
+                  <Text style={localStyles.date}>   {ticket.dateText}</Text>
                 </Text>
                 <Text style={[localStyles.eventTitle, localStyles.compactEventTitle]} numberOfLines={1}>
-                  {SECONDARY_TICKET.eventTitle}
+                  {ticket.eventTitle}
                 </Text>
-                <Text style={localStyles.venue}>{SECONDARY_TICKET.venue}</Text>
+                <View style={localStyles.compactFooter}>
+                  <Text style={localStyles.venue}>{ticket.venue}</Text>
+                  <TicketIcons quantity={ticket.ticketQuantity} compact />
+                </View>
               </View>
             </TouchableOpacity>
-          ) : null}
+          ))}
         </ScrollView>
       </View>
     </SafeAreaView>
@@ -208,6 +231,16 @@ const localStyles = StyleSheet.create({
     flex: 1,
     marginLeft: 11,
   },
+  compactFooter: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+  },
+  compactTicketIcons: {
+    flexDirection: 'row',
+    gap: 2,
+    alignItems: 'center',
+  },
   nowBadge: {
     position: 'absolute',
     left: 14,
@@ -225,6 +258,18 @@ const localStyles = StyleSheet.create({
     fontFamily: Platform.OS === 'web' ? 'Arial' : 'sans-serif',
     fontWeight: '600',
     letterSpacing: 0,
+  },
+  ticketIcons: {
+    position: 'absolute',
+    right: 15,
+    bottom: 13,
+    flexDirection: 'row',
+    gap: 4,
+    paddingHorizontal: 7,
+    height: 25,
+    borderRadius: 13,
+    backgroundColor: 'rgba(18, 22, 24, 0.88)',
+    alignItems: 'center',
   },
   ticketCopy: {
     paddingTop: 13,
