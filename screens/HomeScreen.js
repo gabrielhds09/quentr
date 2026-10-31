@@ -26,21 +26,6 @@ const FEATURED_TICKETS = SECTOR_ORDER.map((id) =>
 
 const [PRIMARY_TICKET, ...COMPACT_TICKETS] = FEATURED_TICKETS;
 
-function TicketIcons({ quantity, compact = false }) {
-  return (
-    <View style={compact ? localStyles.compactTicketIcons : localStyles.ticketIcons}>
-      {Array.from({ length: quantity }, (_, index) => (
-        <Ionicons
-          key={index}
-          name="ticket-outline"
-          size={compact ? 13 : 17}
-          color={compact ? '#25d8cf' : '#ff3150'}
-        />
-      ))}
-    </View>
-  );
-}
-
 export default function HomeScreen({ navigation }) {
   return (
     <SafeAreaView style={localStyles.screen}>
@@ -85,7 +70,6 @@ export default function HomeScreen({ navigation }) {
                 <View style={localStyles.nowBadge}>
                   <Text style={localStyles.nowText}>AGORA</Text>
                 </View>
-                <TicketIcons quantity={PRIMARY_TICKET.ticketQuantity} />
               </View>
 
               <View style={localStyles.ticketCopy}>
@@ -126,10 +110,7 @@ export default function HomeScreen({ navigation }) {
                 <Text style={[localStyles.eventTitle, localStyles.compactEventTitle]} numberOfLines={1}>
                   {ticket.eventTitle}
                 </Text>
-                <View style={localStyles.compactFooter}>
-                  <Text style={localStyles.venue}>{ticket.venue}</Text>
-                  <TicketIcons quantity={ticket.ticketQuantity} compact />
-                </View>
+                <Text style={localStyles.venue}>{ticket.venue}</Text>
               </View>
             </TouchableOpacity>
           ))}
@@ -231,16 +212,6 @@ const localStyles = StyleSheet.create({
     flex: 1,
     marginLeft: 11,
   },
-  compactFooter: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-  },
-  compactTicketIcons: {
-    flexDirection: 'row',
-    gap: 2,
-    alignItems: 'center',
-  },
   nowBadge: {
     position: 'absolute',
     left: 14,
@@ -258,18 +229,6 @@ const localStyles = StyleSheet.create({
     fontFamily: Platform.OS === 'web' ? 'Arial' : 'sans-serif',
     fontWeight: '600',
     letterSpacing: 0,
-  },
-  ticketIcons: {
-    position: 'absolute',
-    right: 15,
-    bottom: 13,
-    flexDirection: 'row',
-    gap: 4,
-    paddingHorizontal: 7,
-    height: 25,
-    borderRadius: 13,
-    backgroundColor: 'rgba(18, 22, 24, 0.88)',
-    alignItems: 'center',
   },
   ticketCopy: {
     paddingTop: 13,
